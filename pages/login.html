@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Access</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br flex items-center justify-center min-h-screen">
+    <div class="bg-zinc-50 p-4 rounded-lg w-xl">
+        <form name="login" class="flex flex-col" novalidate>
+            <h1 class="text-2xl font-bold text-center mb-4">Đăng nhập vào Life Control</h1>
+            <div>
+                <div class="flex items-center justify-between">
+                    <label for="">Email</label>
+                    <a name="notHaveAccount" href="javascript:void" class="text-blue-500 text-sm hover:underline">Chưa có tài khoản?</a>
+                </div>
+                <input name="userLoginEmailAddress" type="email" class="w-full p-2 rounded-md border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p class="text-red-500 text-sm">&nbsp;</p>
+            </div>
+            <div>
+                <label for="">Password</label>
+                <input name="userLoginPassword" type="password" class="w-full p-2 rounded-md border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p class="text-red-500 text-sm">&nbsp;</p>
+            </div>
+            <button type="submit" class="bg-zinc-100 p-2 rounded-lg cursor-pointer">Đăng nhập</button>
+        </form>
+
+        <form name="register" class="flex flex-col hidden" novalidate>
+            <h1 class="text-2xl font-bold text-center mb-4">Đăng ký tài khoản mới</h1>
+            <div>
+                <div class="flex items-center justify-between">
+                    <label for="">Email</label>
+                    <a name="haveAccount" href="javascript:void" class="text-blue-500 text-sm hover:underline">Đã có tài khoản?</a>
+                </div>
+                <input name="userLoginEmailAddress" type="email" class="w-full p-2 rounded-md border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p class="text-red-500 text-sm">&nbsp;</p>
+            </div>
+            <div>
+                <label for="">Mật khẩu</label>
+                <input name="userLoginPassword" type="password" class="w-full p-2 rounded-md border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p class="text-red-500 text-sm">&nbsp;</p>
+            </div>
+            <div>
+                <label for="">Nhập lại mật khẩu</label>
+                <input name="userLoginPasswordConfirm" type="password" class="w-full p-2 rounded-md border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p class="text-red-500 text-sm">&nbsp;</p>
+            </div>
+            <div>
+                <input type="checkbox" name="userAgree" value="agree" class="mr-2">
+                <label for="userAgree">Tôi đồng ý với <a href="javascript:void" class="text-blue-500 hover:underline">Điều khoản dịch vụ</a> và <a href="javascript:void" class="text-blue-500 text-sm hover:underline">Chính sách bảo mật</a></label>
+            </div>
+            <button type="submit" class="bg-zinc-100 p-2 rounded-lg cursor-pointer">Đăng ký</button>
+        </form>
+    </div>
+    <script type="module" src="../src/js/main.js"></script>
+    <script type="module" src="../src/js/login.js"></script>
+</body>
+</html>
