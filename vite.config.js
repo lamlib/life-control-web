@@ -1,19 +1,20 @@
 import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   esbuild: {
     minify: true,
-    target: 'es2015',
-    legalComments: 'none',
   },
+  plugins: [
+    tailwindcss(),
+  ],
   server: {
     proxy: {
-      '/auth': {
+      '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/auth/, 'auth')
+        rewrite: (path) => path.replace(/^\/api/, 'api')
       }
     }
-  }
-
+  },
 })

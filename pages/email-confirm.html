@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification - LamLib</title>
+    <link rel="stylesheet" href="../src/css/main.css">
+    <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .success-checkmark {
+            animation: checkmark 0.6s ease-in-out;
+        }
+        
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .error-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center fade-in">
+            <!-- Loading State -->
+            <div id="loading-state" class="block">
+                <div class="loading-spinner w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full mx-auto mb-6"></div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Verifying Your Email</h2>
+                <p class="text-gray-600">Please wait while we confirm your email address...</p>
+            </div>
+
+            <!-- Success State -->
+            <div id="success-state" class="hidden">
+                <div class="success-checkmark w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Email Verified Successfully!</h2>
+                <p class="text-gray-600 mb-6">Your account has been activated. You can now access all features of LamLib.</p>
+                <div class="space-y-3">
+                    <button id="continue-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 transform hover:scale-105">
+                        Continue to Dashboard
+                    </button>
+                    <button id="login-btn" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg transition duration-200">
+                        Go to Login
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="hidden">
+                <div class="error-shake w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Verification Failed</h2>
+                <p id="error-message" class="text-gray-600 mb-6">The verification link is invalid or has expired. Please request a new verification email.</p>
+                <div class="space-y-3">
+                    <button id="resend-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                        Resend Verification Email
+                    </button>
+                    <button id="back-home-btn" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg transition duration-200">
+                        Back to Home
+                    </button>
+                </div>
+            </div>
+
+            <!-- Expired State -->
+            <div id="expired-state" class="hidden">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Link Expired</h2>
+                <p class="text-gray-600 mb-6">This verification link has expired for security reasons. Please request a new one.</p>
+                <div class="space-y-3">
+                    <button id="new-link-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                        Get New Verification Link
+                    </button>
+                    <button id="contact-support-btn" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg transition duration-200">
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="text-2xl font-bold text-blue-600">LamLib</div>
+                </div>
+                <p class="text-sm text-gray-500">
+                    Need help? <a href="mailto:support@lamlib.com" class="text-blue-600 hover:underline">Contact Support</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class EmailVerification {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                // Get token from URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const token = urlParams.get('token');
+                
+                if (!token) {
+                    this.showError('No verification token found in URL');
+                    return;
+                }
+
+                // Simulate verification process
+                this.verifyEmail(token);
+                this.setupEventListeners();
+            }
+
+            async verifyEmail(token) {
+                try {
+                    // Simulate API call delay
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Simulate verification logic
+                    const response = await this.mockApiCall(token);
+                    
+                    if (response.success) {
+                        this.showSuccess();
+                    } else if (response.expired) {
+                        this.showExpired();
+                    } else {
+                        this.showError(response.message);
+                    }
+                } catch (error) {
+                    this.showError('Network error. Please try again.');
+                }
+            }
+
+            async mockApiCall(token) {
+                // Mock API response - replace with actual API call
+                const mockResponses = [
+                    { success: true },
+                    { success: false, expired: true },
+                    { success: false, message: 'Invalid token' },
+                    { success: false, message: 'User already verified' }
+                ];
+                
+                // For demo purposes, randomly return success or error
+                const randomIndex = Math.floor(Math.random() * mockResponses.length);
+                return mockResponses[0]; // Always return success for demo
+            }
+
+            showLoading() {
+                this.hideAllStates();
+                document.getElementById('loading-state').classList.remove('hidden');
+            }
+
+            showSuccess() {
+                this.hideAllStates();
+                document.getElementById('success-state').classList.remove('hidden');
+            }
+
+            showError(message) {
+                this.hideAllStates();
+                document.getElementById('error-state').classList.remove('hidden');
+                document.getElementById('error-message').textContent = message;
+            }
+
+            showExpired() {
+                this.hideAllStates();
+                document.getElementById('expired-state').classList.remove('hidden');
+            }
+
+            hideAllStates() {
+                const states = ['loading-state', 'success-state', 'error-state', 'expired-state'];
+                states.forEach(state => {
+                    document.getElementById(state).classList.add('hidden');
+                });
+            }
+
+            setupEventListeners() {
+                // Success state buttons
+                document.getElementById('continue-btn')?.addEventListener('click', () => {
+                    window.location.href = '/dashboard';
+                });
+
+                document.getElementById('login-btn')?.addEventListener('click', () => {
+                    window.location.href = '/login';
+                });
+
+                // Error state buttons
+                document.getElementById('resend-btn')?.addEventListener('click', () => {
+                    this.resendVerificationEmail();
+                });
+
+                document.getElementById('back-home-btn')?.addEventListener('click', () => {
+                    window.location.href = '/';
+                });
+
+                // Expired state buttons
+                document.getElementById('new-link-btn')?.addEventListener('click', () => {
+                    this.requestNewLink();
+                });
+
+                document.getElementById('contact-support-btn')?.addEventListener('click', () => {
+                    window.location.href = 'mailto:support@lamlib.com';
+                });
+            }
+
+            async resendVerificationEmail() {
+                try {
+                    const button = document.getElementById('resend-btn');
+                    const originalText = button.textContent;
+                    button.textContent = 'Sending...';
+                    button.disabled = true;
+
+                    // Mock API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    alert('Verification email sent! Please check your inbox.');
+                    
+                    button.textContent = originalText;
+                    button.disabled = false;
+                } catch (error) {
+                    alert('Failed to send email. Please try again.');
+                }
+            }
+
+            async requestNewLink() {
+                try {
+                    const button = document.getElementById('new-link-btn');
+                    const originalText = button.textContent;
+                    button.textContent = 'Sending...';
+                    button.disabled = true;
+
+                    // Mock API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    alert('New verification link sent! Please check your email.');
+                    
+                    button.textContent = originalText;
+                    button.disabled = false;
+                } catch (error) {
+                    alert('Failed to send new link. Please try again.');
+                }
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new EmailVerification();
+        });
+    </script>
+</body>
+</html>

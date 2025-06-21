@@ -1,0 +1,58 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* .ce-block__content {
+    p,
+    .ce-paragraph {
+        @apply tracking-wider text-[14px] text-gray-700 leading-relaxed;
+        margin-bottom: 0.75rem;
+    }
+
+    h1 {
+        @apply text-[32px] leading-tight font-extrabold text-gray-900;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        @apply text-[24px] leading-tight font-bold text-gray-900;
+        margin-top: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    h3 {
+        @apply text-[18px] leading-snug font-bold text-gray-900;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h4 {
+        @apply text-[16px] leading-snug font-semibold text-gray-900;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h5 {
+        @apply text-[14px] leading-normal font-semibold text-gray-800;
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    h6 {
+        @apply text-[13px] leading-normal font-medium text-gray-800;
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    ul, ol {
+        @apply text-[14px] text-gray-700 leading-relaxed;
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+    }
+
+    li {
+        margin-bottom: 0.25rem;
+    }
+} */
