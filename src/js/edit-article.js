@@ -1,8 +1,9 @@
-import { getOneElementOrFail } from "./utils";
+import { getOneElementOrFail, getSearchParams } from "./utils";
 import { requestHandlers as articlesService, hasError } from'@lamlib/data-sync';
 
 const app = (function () {
     let _editor;
+    let _article;
 
     const _ui = {
         get toolSave() {
@@ -19,7 +20,7 @@ const app = (function () {
         }
     }
 
-    function _setupEditor() {
+    function _setupEditor(data = {}) {
         return new EditorJS({
             holder: 'editorjs',
             placeholder: 'Hãy bắt đầu viết nội dung của bạn...',
@@ -90,14 +91,23 @@ const app = (function () {
             },
             onChange: function () {
                 console.log('Nội dung đã thay đổi');
-            }
+            },
+            data,
         })
     }
 
-
+    async function _loadArticle() {
+        const id = getSearchParams('id');
+        if (!id) {
+            console.error('Article ID is required to view the article.');
+            return;
+        }
+        return await articlesService.getArticleById({ id });
+    }
 
     async function _handleClickToolSave() {
         _ui.saveModal.classList.remove('hidden');
+        _ui.saveForm.articleDescription.value = _article.description || '';
         return;
     }
 
@@ -121,30 +131,34 @@ const app = (function () {
                 return;
             }
             const data = await _editor.save();
-            await articlesService.postArticle({
+            await articlesService.patchArticleById({
                 title,
                 description,
-                content: JSON.stringify(data)
-            });
+                content: JSON.stringify(data),
+            }, { id: _article.id });
             if(hasError()) {
-                alert('Lỗi, không thể lưu bài viết, vui lòng thử lại sau.');
+                alert('Lỗi, không thể chỉnh sửa bài viết, vui lòng thử lại sau.');
             } else {
-                alert('Lưu bài viết thành công!');
+                alert('Chỉnh sửa bài viết thành công!');
                 location.href = '/pages/all-article';
             }
         });
         _ui.saveModal.addEventListener('click', (e) => {
             if (e.target.id === 'cancelSave' || e.target.id === 'saveModal') {
                 e.preventDefault();
+                _ui.saveForm.reset();
                 _ui.saveModal.classList.add('hidden');
             }
         });
     }
-    function init() {
-        _editor = _setupEditor();
+
+    async function init() {
+        _article = await _loadArticle()
+        _editor = _setupEditor(JSON.parse(_article.content));
         window.editor = _editor;
         _setupEventListener();
     }
+
     return {
         init,
     };

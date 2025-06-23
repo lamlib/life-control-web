@@ -8,17 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-   
-  <div class="grid grid-cols-12 grid-rows-[auto_1fr] min-h-screen">
-    
-    <!-- Header -->
-    <header class="col-span-12 text-white flex items-center justify-between px-6 fixed top-0 w-full z-50 h-[64px] shadow-md bg-gray-900" role="banner">
+<body class="bg-zinc-100 text-zinc-900 min-h-screen">
+  <header role="heading" class="bg-zinc-100 flex items-center justify-between px-6 sticky top-0 w-full z-50 h-[64px] border-b border-b-zinc-200" role="banner">
       <div class="flex items-center gap-4">
         <button id="sidebarToggle" class="text-2xl p-2 rounded transition" aria-label="Toggle Sidebar">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Material Design Icons by Pictogrammers - https://github.com/Templarian/MaterialDesign/blob/master/LICENSE --><path fill="currentColor" d="M22 13c0 1.11-.89 2-2 2H4a2 2 0 1 1 0-4h9l2.5 2l2.5-2h2a2 2 0 0 1 2 2M12 3C3 3 3 9 3 9h18s0-6-9-6M3 18c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3v-1H3z"/></svg>
         </button>
-        <span class="text-xl font-semibold">JAVASCRIPT LOVER</span>
+        <span class="text-xl font-semibold">CLOVER</span>
       </div>
       <div class="flex items-center gap-4">
         <label class="flex items-center cursor-pointer" for="darkToggle">
@@ -27,9 +23,8 @@
         </label>
       </div>
     </header>
-
-    <!-- Sidebar Left -->
-    <aside id="sidebar" class="z-40 fixed top-[64px] left-0 w-full bg-gray-100 dark:bg-gray-800 border-r-[5px] border-yellow-500 h-[calc(100vh-64px)] p-6 lg:w-64" role="navigation">
+  <div class="relative max-w-[1200px] mx-auto" >
+    <aside role="navigation" id="sidebar" class="p-6 bg-cover" style="background-image: url(https://www.vpnunlimited.com/img-partials/ext-download/bg-ext.png);">
       <nav>
         <h2 class="text-lg font-semibold mb-4">Navigation</h2>
         <ul class="space-y-3 text-sm font-medium">
@@ -72,50 +67,24 @@
               <li><a href="#" class="block hover:text-blue-600 transition">Categories</a></li>
             </ul>
           </li>
-          
           <li><a href="#" class="flex items-center gap-2 hover:text-blue-600 transition"><span>📚</span> Tutorials</a></li>
           <li><a href="#" class="flex items-center gap-2 hover:text-blue-600 transition"><span>📩</span> Contact</a></li>
         </ul>
       </nav>
+      <div role="doc-introduction" class="my-4  flex items-center gap-4">
+        <div>
+          <h1 class="text-2xl font-bold  mb-1">Welcome to Life Control Web!</h1>
+          <p class=" text-sm">Khám phá các bài viết, khoá học, tài nguyên để làm hành trang trong con đường gắn bó với <b>Lập trình phần mềm</b>. Hãy luôn cập nhập những thông tin mới nhất!</p>
+        </div>
+      </div>
     </aside>
+    <main role="main">
 
-    <!-- Main Content -->
-    <main class="col-span-12 lg:col-span-8 px-6 py-8 mt-[64px] lg:ml-64 lg:w-[calc(100vw-512px)]" role="main">
-      <div class="grid gap-6">
-        <article class="p-6 dark:bg-gray-800">
-          <h2 class="text-2xl font-bold mb-2 hover:underline cursor-pointer">Trợ thủ đắc lực DataSync giúp nhất quán và dễ dàng làm việc với dữ liệu</h2>
-          <p class="mb-4 text-gray-600 dark:text-gray-300">Shoelace is a forward-thinking component library built on Web Components.</p>
-          <a class="text-yellow-500 text-sm hover:underline cursor-pointer">Read More</a>
-        </article>
-        <article class="p-6">
-          <h2 class="text-2xl font-bold mb-2 hover:underline cursor-pointer">Xử lý giao diện dạng danh sách, bảng biểu</h2>
-          <p class="mb-4 text-gray-600 dark:text-gray-300">Learn how to make your layouts adapt to different screen sizes using CSS Grid and Flexbox.</p>
-          <a class="text-yellow-500 text-sm hover:underline cursor-pointer">Read More</a>
-        </article>
-        <article class="p-6 dark:bg-gray-800">
-          <h2 class="text-2xl font-bold mb-2 hover:underline cursor-pointer">Tailwindcss, khi việc đặt tên class không còn là vấn đề</h2>
-          <p class="mb-4 text-gray-600 dark:text-gray-300">Learn how to make your layouts adapt to different screen sizes using CSS Grid and Flexbox.</p>
-          <a class="text-yellow-500 text-sm hover:underline cursor-pointer">Read More</a>
-        </article>
-        <article class="p-6">
-          <h2 class="text-2xl font-bold mb-2 hover:underline cursor-pointer">Nestjs, khi cấu trúc không còn là vấn đề đối với backend Javascript</h2>
-          <p class="mb-4 text-gray-600 dark:text-gray-300">Learn how to make your layouts adapt to different screen sizes using CSS Grid and Flexbox.</p>
-          <a class="text-yellow-500 text-sm hover:underline cursor-pointer">Read More</a>
-        </article>
-        <article class="p-6 dark:bg-gray-800">
-          <h2 class="text-2xl font-bold mb-2 hover:underline cursor-pointer">Bootstrap, nhanh và mạnh, một thư viện UI không lỗi thời</h2>
-          <p class="mb-4 text-gray-600 dark:text-gray-300">Learn how to make your layouts adapt to different screen sizes using CSS Grid and Flexbox.</p>
-          <a class="text-yellow-500 text-sm hover:underline cursor-pointer">Read More</a>
-        </article>
-        <article class="p-6 dark:bg-gray-800">
-          <h2 class="text-2xl font-bold mb-2 hover:underline cursor-pointer">Bootstrap, nhanh và mạnh, một thư viện UI không lỗi thời</h2>
-          <p class="mb-4 text-gray-600 dark:text-gray-300">Learn how to make your layouts adapt to different screen sizes using CSS Grid and Flexbox.</p>
-          <a class="text-yellow-500 text-sm hover:underline cursor-pointer">Read More</a>
-        </article>
+
+      <div class="grid-cols-3 gap-4 grid" id="articleTable">
       </div>
     </main>
-    <!-- Sidebar Right -->
-    <aside class="fixed hidden lg:block top-[64px] right-0 w-64 h-[calc(100vh-64px)] bg-gray-100 dark:bg-gray-800 border-l-[5px] border-red-500 p-6" role="complementary">
+    <aside role="complementary" class="p-6" >
       <h3 class="text-lg font-semibold mb-3">Recent Posts</h3>
       <ul class="mb-6 list-disc list-inside text-sm space-y-2 text-gray-700 dark:text-gray-300">
         <li><a href="#" class="hover:underline cursor-pointer">Understanding Web Components</a></li>
@@ -172,5 +141,6 @@
     <div id="app">
     </div>
     <script type="module" src="./src/js/main.js"></script>
+    <script type="module" src="./src/js/home.js"></script>
 </body>
 </html>

@@ -95,5 +95,4 @@ const app = (function() {
         _loadArticles
     }
 })();
-window.app = app;
 document.addEventListener('DOMContentLoaded', app.init)

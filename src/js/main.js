@@ -50,4 +50,4 @@ datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
 datasync.registerGetEndpoint('getArticles', `${SERVICE_URL}/articles`);
 datasync.registerGetEndpoint('getArticleById', `${SERVICE_URL}/articles/:id`);
 datasync.registerDeleteEndpoint('deleteArticleById', `${SERVICE_URL}/articles/:id`);
-
+datasync.registerPatchEndpoint('patchArticleById', `${SERVICE_URL}/articles/:id`);

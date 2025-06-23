@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@calumk/editorjs-codecup@latest"></script>
 </head>
 <body>
-    <header class="sticky top-0 border-b border-zinc-200 p-4 flex justify-between items-center">
+        <header class="sticky top-0 border-b border-zinc-200 p-4 flex justify-between items-center">
         <div class="flex flex-col gap-2">
             <h1 id="username" class="text-3xl font-bold">Viết bài</h1>
             <h3 class="flex gap-8 text-gray-500">
@@ -44,10 +44,10 @@
     </header>
     <main class="p-4 container mx-auto flex flex-col gap-4">
         <header class="flex justify-center gap-2">
-            <button id="tool-save" type="button" title="Lưu" class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
+            <button id="tool-save" type="button" title="Lưu" class="bg-gray-200 text-gray-900 px-2 py-1 rounded-md cursor-pointer hover:text-blue-500">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M21 7v12q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h12zm-9 11q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-6-8h9V6H6z"/></svg>
             </button>
-            <button id="tool-clear" type="button" title="Xoá" class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
+            <button id="tool-clear" type="button" title="Xoá" class="bg-gray-200 text-gray-900 px-2 py-1 rounded-md cursor-pointer hover:text-blue-500">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg>
             </button>
         </header>
@@ -56,74 +56,19 @@
 
     <!-- Modal lưu bài viêt -->
     <div id="saveModal" class="fixed inset-0 bg-gray-500/50 flex items-center justify-center z-50 hidden">
-        <form name="save" class="bg-white shadow-lg p-6 w-full max-w-md rounded-xl">
+        <form name="save" class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
             <label for="articleTitle" class="block mb-2 font-medium text-gray-700">Tiêu đề</label>
-            <textarea id="articleTitle" name="articleTitle" rows="1" class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none" placeholder="Nhập tiêu đề bài viết..."></textarea>
+            <textarea id="articleTitle" name="articleTitle" rows="1" class="w-full p-2 mb-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none" placeholder="Nhập tiêu đề bài viết..."></textarea>
             <label for="articleDescription" class="block mb-2 font-medium text-gray-700">Mô tả</label>
-            <textarea id="articleDescription" name="articleDescription" rows="3" class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none" placeholder="Nhập mô tả ngắn..."></textarea>
-            <label for="articleImage" class="block mb-2 font-medium text-gray-700">Ảnh nền</label>
-            <div class="w-full mb-4">
-                <label for="articleImage" class="block">
-                    <div id="drop-area" class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-4 cursor-pointer hover:border-green-900 transition">
-                        <svg class="mb-2 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 16.5q.425 0 .713-.288T13 15.5V7.925l2.3 2.3q.3.3.713.3t.713-.3q.3-.3.3-.713t-.3-.712l-3.6-3.6q-.3-.3-.713-.3t-.712.3l-3.6 3.6q-.3.3-.3.713t.3.712q.3.3.713.3t.712-.3l2.3-2.3V15.5q0 .425.288.713T12 16.5M6 20q-.825 0-1.413-.588T4 18q0-.825.588-1.413T6 16h12q.825 0 1.413.587T20 18q0 .825-.587 1.413T18 20z"/></svg>
-                        <span class="text-gray-500">Kéo & thả ảnh vào đây hoặc <span class="text-blue-900 underline">chọn ảnh</span></span>
-                        <input type="file" id="articleImage" name="articleImage" accept="image/*" class="hidden">
-                        <img id="previewImage" class="mt-2 max-h-40 hidden" alt="Xem trước ảnh">
-                    </div>
-                </label>
-            </div>
-            <div class="flex justify-end gap-4">
-                <button type="reset" id="cancelSave" class="px-4 py-2 bg-gray-200 rounded-md hover:cursor-pointer text-gray-700">Huỷ</button>
-                <button type="submit" id="confirmSave" class="px-4 py-2 bg-blue-900 rounded-md hover:cursor-pointer text-white">Lưu</button>
+            <textarea id="articleDescription" name="articleDescription" rows="3" class="w-full p-2 mb-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none" placeholder="Nhập mô tả ngắn..."></textarea>
+            <div class="flex justify-end gap-2">
+                <button type="button" id="cancelSave" class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700">Huỷ</button>
+                <button type="submit" id="confirmSave" class="px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white">Lưu</button>
             </div>
         </form>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const dropArea = document.getElementById('drop-area');
-        const fileInput = document.getElementById('articleImage');
-        const previewImage = document.getElementById('previewImage');
 
-        dropArea.addEventListener('click', () => fileInput.click());
-
-        dropArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropArea.classList.add('border-blue-400', 'bg-blue-50');
-        });
-
-        dropArea.addEventListener('dragleave', (e) => {
-            e.preventDefault();
-            dropArea.classList.remove('border-blue-400', 'bg-blue-50');
-        });
-
-        dropArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropArea.classList.remove('border-blue-400', 'bg-blue-50');
-            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                fileInput.files = e.dataTransfer.files;
-                showPreview(e.dataTransfer.files[0]);
-            }
-        });
-
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files && fileInput.files[0]) {
-                showPreview(fileInput.files[0]);
-            }
-        });
-
-        function showPreview(file) {
-            if (!file.type.startsWith('image/')) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImage.src = e.target.result;
-                previewImage.classList.remove('hidden');
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-    </script>
     <script type="module" src="../src/js/main.js"></script>
-    <script type="module" src="../src/js/add-article.js"></script>
-
+    <script type="module" src="../src/js/edit-article.js"></script>
 </body>
 </html>
