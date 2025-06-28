@@ -47,6 +47,7 @@ datasync.registerPostEndpoint( 'postRegister', `${SERVICE_URL}/auth/register`);
 datasync.registerPostEndpoint( 'postLogin', `${SERVICE_URL}/auth/login`);
 datasync.registerGetEndpoint( 'getProfile', `${SERVICE_URL}/auth/profile`);
 datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
+datasync.registerPostEndpoint('postImage', `${SERVICE_URL}/files/byFile`);
 datasync.registerGetEndpoint('getArticles', `${SERVICE_URL}/articles`);
 datasync.registerGetEndpoint('getArticleById', `${SERVICE_URL}/articles/:id`);
 datasync.registerDeleteEndpoint('deleteArticleById', `${SERVICE_URL}/articles/:id`);

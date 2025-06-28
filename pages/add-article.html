@@ -61,6 +61,8 @@
             <textarea id="articleTitle" name="articleTitle" rows="1" class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none" placeholder="Nhập tiêu đề bài viết..."></textarea>
             <label for="articleDescription" class="block mb-2 font-medium text-gray-700">Mô tả</label>
             <textarea id="articleDescription" name="articleDescription" rows="3" class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none" placeholder="Nhập mô tả ngắn..."></textarea>
+            <label for="articleTags" class="block mb-2 font-medium text-gray-700">Tags</label>
+            <input id="articleTags" name="articleTags" type="text" class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900" placeholder="Nhập tags, cách nhau bởi dấu phẩy...">
             <label for="articleImage" class="block mb-2 font-medium text-gray-700">Ảnh nền</label>
             <div class="w-full mb-4">
                 <label for="articleImage" class="block">
@@ -72,6 +74,7 @@
                     </div>
                 </label>
             </div>
+            <input type="text" value="" name="thumbnail" id="thumbnail" class="hidden">
             <div class="flex justify-end gap-4">
                 <button type="reset" id="cancelSave" class="px-4 py-2 bg-gray-200 rounded-md hover:cursor-pointer text-gray-700">Huỷ</button>
                 <button type="submit" id="confirmSave" class="px-4 py-2 bg-blue-900 rounded-md hover:cursor-pointer text-white">Lưu</button>
@@ -79,51 +82,8 @@
         </form>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const dropArea = document.getElementById('drop-area');
-        const fileInput = document.getElementById('articleImage');
-        const previewImage = document.getElementById('previewImage');
-
-        dropArea.addEventListener('click', () => fileInput.click());
-
-        dropArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropArea.classList.add('border-blue-400', 'bg-blue-50');
-        });
-
-        dropArea.addEventListener('dragleave', (e) => {
-            e.preventDefault();
-            dropArea.classList.remove('border-blue-400', 'bg-blue-50');
-        });
-
-        dropArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropArea.classList.remove('border-blue-400', 'bg-blue-50');
-            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                fileInput.files = e.dataTransfer.files;
-                showPreview(e.dataTransfer.files[0]);
-            }
-        });
-
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files && fileInput.files[0]) {
-                showPreview(fileInput.files[0]);
-            }
-        });
-
-        function showPreview(file) {
-            if (!file.type.startsWith('image/')) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImage.src = e.target.result;
-                previewImage.classList.remove('hidden');
-            };
-            reader.readAsDataURL(file);
-        }
-    });
     </script>
     <script type="module" src="../src/js/main.js"></script>
     <script type="module" src="../src/js/add-article.js"></script>
-
 </body>
 </html>

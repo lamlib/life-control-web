@@ -12,16 +12,16 @@ const app = (function() {
 
     function _drawArticlesTable(articles) {
         ui.articlesTable.innerHTML = articles.map((element, idx) => {
+            const tags = element.tags.map(tag => `<span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-xs cursor-pointer hover:opacity-80">${tag}</span>`).join('')
             return `
-                <article class="p-6 flex flex-col gap-4 ${idx % 2 === 0 ? '' : 'dark:bg-gray-800'}">
-                    <img src="./src/img/banner.png" alt="" class="w-full object-cover rounded-lg mb-4">
-                    <div>
-                        <h2 class="text-2xl font-bold mb-2 hover:underline cursor-pointer"><a href="/pages/view-article?id=${element.id}">${element.title}</a></h2>
-                        <p class="mb-4 text-gray-600 dark:text-gray-300">${element.description}</p>
-                        <a href="/pages/view-article?id=${element.id}" class="text-yellow-500 text-sm hover:underline cursor-pointer">Read More</a>
-                    </div>
+                <article class="p-4">
+                    <div class="mb-2 flex gap-2 h-6">${tags}</div>
+                    <img src="${element.thumbnail}" alt="" class="w-full rounded mb-2 size-52 object-cover">
+                    <h2 class="text-lg font-bold mb-1"><a href="/pages/view-article?id=${element.id}" class="hover:underline">${element.title}</a></h2>
+                    <p class="text-xs text-gray-600 mb-2">${element.description}</p>
+                    <a href="/pages/view-article?id=${element.id}" class="text-yellow-500 text-xs hover:underline">Read More</a>
                 </article>
-                `;
+            `;
         }).join('');
     }
 
@@ -42,5 +42,4 @@ const app = (function() {
         init,
     }
 })();
-window.app = app;
 document.addEventListener('DOMContentLoaded', app.init)

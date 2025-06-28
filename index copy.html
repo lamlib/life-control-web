@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLOVER - Life Control Web</title>
+  <link rel="stylesheet" href="./src/css/main.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+    font-family: 'Inter', sans-serif;
+    }
+    body {
+    transition: background 0.3s, color 0.3s;
+    }
+    .glass {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
+    }
+    .dark .glass {
+    background: rgba(24,24,27,0.7);
+    }
+    .sidebar-gradient {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+    }
+    .dark .sidebar-gradient {
+    background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+    }
+    .sidebar-border {
+    border-right: 1px solid #e5e7eb;
+    }
+    .dark .sidebar-border {
+    border-right: 1px solid #27272a;
+    }
+    .submenu-toggle svg {
+    transition: transform 0.2s;
+    }
+  </style>
+</head>
+<body class="bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 min-h-screen transition-colors duration-300">
+  <header class="glass dark:bg-zinc-900/80 flex items-center justify-between px-6 sticky top-0 w-full z-50 h-[64px] border-b border-b-zinc-200 dark:border-b-zinc-800 shadow-sm">
+    <div class="flex items-center gap-4">
+    <button id="sidebarToggle" class="text-2xl p-2 rounded transition hover:bg-zinc-200 dark:hover:bg-zinc-800" aria-label="Toggle Sidebar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M22 13c0 1.11-.89 2-2 2H4a2 2 0 1 1 0-4h9l2.5 2l2.5-2h2a2 2 0 0 1 2 2M12 3C3 3 3 9 3 9h18s0-6-9-6M3 18c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3v-1H3z"/></svg>
+    </button>
+    <span class="text-2xl font-bold tracking-wide bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">CLOVER</span>
+    </div>
+    <div class="flex items-center gap-4">
+    <label class="flex items-center cursor-pointer" for="darkToggle">
+      <input type="checkbox" id="darkToggle" class="hidden peer" />
+      <span class="text-2xl peer-checked:text-yellow-400 transition">🌙</span>
+    </label>
+    </div>
+  </header>
+  <div class="relative max-w-[1200px] mx-auto flex flex-col md:flex-row gap-6 py-6">
+  <aside id="sidebar" class="sidebar-gradient sidebar-border p-6 rounded-xl shadow-lg w-full md:w-64 mb-6 md:mb-0 transition-all duration-300">
+    <nav>
+    <h2 class="text-lg font-semibold mb-4">Navigation</h2>
+    <ul class="space-y-3 text-sm font-medium">
+      <li>
+      <button type="button" class="flex items-center gap-2 w-full hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none submenu-toggle">
+        <span>🏠</span> Home
+        <svg class="ml-auto h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"></svg>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <ul class="ml-6 mt-2 space-y-2 hidden submenu">
+        <li>
+        <button type="button" class="flex items-center gap-2 w-full hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none submenu-toggle">
+          Dashboard
+          <svg class="ml-auto h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="ml-6 mt-2 space-y-2 hidden submenu">
+          <li><a href="#" class="block hover:text-blue-600 dark:hover:text-blue-400 transition">Overview</a></li>
+          <li><a href="#" class="block hover:text-blue-600 dark:hover:text-blue-400 transition">Stats</a></li>
+        </ul>
+        </li>
+        <li><a href="#" class="block hover:text-blue-600 dark:hover:text-blue-400 transition">Activity</a></li>
+      </ul>
+      </li>
+      <li>
+      <button type="button" class="flex items-center gap-2 w-full hover:text-blue-600 dark:hover:text-blue-400 transition focus:outline-none submenu-toggle">
+        <span>📝</span> Posts
+        <svg class="ml-auto h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <ul class="ml-6 mt-2 space-y-2 hidden submenu">
+        <li><a href="./pages/all-post.html" class="block hover:text-blue-600 dark:hover:text-blue-400 transition">All Posts</a></li>
+        <li><a href="./pages/add-article.html" class="block hover:text-blue-600 dark:hover:text-blue-400 transition">Add New</a></li>
+        <li><a href="#" class="block hover:text-blue-600 dark:hover:text-blue-400 transition">Categories</a></li>
+      </ul>
+      </li>
+      <li><a href="#" class="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition"><span>📚</span> Tutorials</a></li>
+      <li><a href="#" class="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition"><span>📩</span> Contact</a></li>
+    </ul>
+    </nav>
+    <div class="my-6 flex items-center gap-4">
+    <div>
+      <h1 class="text-2xl font-bold mb-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Welcome to Life Control Web!</h1>
+      <p class="text-sm text-zinc-700 dark:text-zinc-300">Khám phá các bài viết, khoá học, tài nguyên để làm hành trang trong con đường gắn bó với <b>Lập trình phần mềm</b>. Hãy luôn cập nhập những thông tin mới nhất!</p>
+    </div>
+    </div>
+  </aside>
+  <main class="flex-1 min-w-0">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="articleTable">
+    <!-- Articles will be injected here -->
+    </div>
+  </main>
+  <aside class="glass dark:bg-zinc-900/80 p-6 rounded-xl shadow-lg w-full md:w-72">
+    <h3 class="text-lg font-semibold mb-3">Recent Posts</h3>
+    <ul class="mb-6 list-disc list-inside text-sm space-y-2 text-gray-700 dark:text-gray-300">
+    <li><a href="#" class="hover:underline cursor-pointer">Understanding Web Components</a></li>
+    <li><a href="#" class="hover:underline cursor-pointer">Grid vs Flexbox</a></li>
+    <li><a href="#" class="hover:underline cursor-pointer">Using Shoelace in Projects</a></li>
+    </ul>
+    <h3 class="text-lg font-semibold mb-3">Tags</h3>
+    <div class="flex flex-wrap gap-2">
+    <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-xs cursor-pointer hover:opacity-80">HTML</span>
+    <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-xs cursor-pointer hover:opacity-80">CSS</span>
+    <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-xs cursor-pointer hover:opacity-80">JavaScript</span>
+    <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-xs cursor-pointer hover:opacity-80">Shoelace</span>
+    </div>
+  </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+  const darkToggle = document.getElementById("darkToggle");
+  const sidebar = document.getElementById("sidebar");
+  const sidebarToggle = document.getElementById("sidebarToggle");
+
+  // Dark mode toggle
+  darkToggle.addEventListener("change", () => {
+    document.documentElement.classList.toggle("dark");
+    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+  });
+
+  // Sidebar toggle (mobile)
+  sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("hidden");
+  });
+
+  // Persist dark mode
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+    darkToggle.checked = true;
+  }
+
+  // Submenu toggles
+  document.querySelectorAll('.submenu-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+    const submenu = button.nextElementSibling;
+    const svg = button.querySelector('svg');
+    if (submenu && submenu.classList.contains('hidden')) {
+      submenu.classList.remove('hidden');
+      svg.style.transform = 'rotate(180deg)';
+    } else if (submenu) {
+      submenu.classList.add('hidden');
+      svg.style.transform = 'rotate(0deg)';
+    }
+    });
+  });
+  </script>
+  <script type="module" src="./src/js/main.js"></script>
+  <script type="module" src="./src/js/home.js"></script>
+</body>
+</html>
