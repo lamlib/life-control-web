@@ -22,7 +22,7 @@ const app = (function() {
         if(articles.length === 0) {
             const row = document.createElement('tr');
             const td = document.createElement('td');
-            td.setAttribute('colspan', '4');
+            td.setAttribute('colspan', '6');
             td.classList.add('text-center', 'py-4');
             td.textContent = 'Không có bài viết nào.';
             row.appendChild(td);
@@ -58,6 +58,7 @@ const app = (function() {
             row.appendChild(td3);
             row.appendChild(td4);
             row.appendChild(td5);
+            row.appendChild(td6);
             ui.articlesTable.tBodies.item(0).appendChild(row);
         });
     }
