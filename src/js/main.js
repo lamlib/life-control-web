@@ -21,7 +21,7 @@ datasync.interceptors.before = async function (request) {
                     headers
                 });
                 if(!res.ok) { // Refresh đã hết hạn, bắt bộc phải login lại.
-                    location.href = '/pages/login';
+                    location.href = '/pages/login.html';
                 } else {
                     const { data } = await res.json();
                     store = data;
@@ -38,8 +38,8 @@ datasync.interceptors.before = async function (request) {
 }
 
 datasync.interceptors.after = async function(response) {
-    if(response.status == 401 && location.pathname != '/pages/login') {
-        location.href = '/pages/login';
+    if(response.status == 401 && location.pathname != '/pages/login.html') {
+        location.href = '/pages/login.html';
     }
 }
 
