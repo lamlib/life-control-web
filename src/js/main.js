@@ -1,7 +1,7 @@
 import * as datasync from '@lamlib/data-sync';
 // ============== App Config ================
 
-const SERVICE_URL = "http://localhost:5173/api/v1";
+const SERVICE_URL = "/api/v1";
 
 // ============== API Client ================
 datasync.interceptors.before = async function (request) {
