@@ -45,8 +45,8 @@ const app = (function () {
                     class: ImageTool,
                     config: {
                         endpoints: {
-                            byFile: 'http://localhost:3000/api/v1/files/byFile',
-                            byUrl: 'http://localhost:3000/api/v1/files/byUrl', 
+                            byFile: '/api/v1/files/byFile',
+                            byUrl: '/api/v1/files/byUrl', 
                         }
                     }
                 },
