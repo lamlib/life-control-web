@@ -15,8 +15,12 @@ export const sidebar = (function () {
          _ui.bar.classList.toggle("hidden");
     }
     
+    /**
+     * 
+     * @param {MouseEvent} e 
+     */
     function _handleSubmenuToggle(e) {
-        const button = e.target;
+        const button = e.currentTarget;
         const submenu = button.nextElementSibling;
         const svg = button.querySelector('svg');
         if (submenu && submenu.classList.contains('hidden')) {

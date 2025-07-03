@@ -25,26 +25,40 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
 </head>
-<body>
-        <header class="sticky top-0 border-b border-zinc-200 p-4 flex justify-between items-center">
-        <div class="flex flex-col gap-2">
-            <h1 id="username" class="text-3xl font-bold">Viết bài</h1>
-            <h3 class="flex gap-8 text-gray-500">
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M17 21.025q-.2 0-.4-.05t-.375-.175l-3-1.75q-.35-.2-.537-.537t-.188-.738V14.25q0-.4.188-.737t.537-.538l3-1.75q.175-.125.375-.175T17 11t.388.063t.362.162l3 1.75q.35.2.55.538t.2.737v3.525q0 .4-.2.738t-.55.537l-3 1.75q-.175.1-.363.163t-.387.062M2 20v-2.8q0-.825.425-1.55t1.175-1.1q1.275-.65 2.875-1.1T10 13h.35q.15 0 .3.05q-.725 1.8-.6 3.575T11.25 20zm8-8q-1.65 0-2.825-1.175T6 8t1.175-2.825T10 4t2.825 1.175T14 8t-1.175 2.825T10 12m4.65 1.85L17 15.225l2.35-1.375L17 12.5zm3.1 5.2l2.25-1.3V15l-2.25 1.325zM14 17.75l2.25 1.325V16.35L14 15.025z"/></svg>
-                    <span class="hover:underline cursor-pointer">Ẩn danh</span>
-                </div>
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M4 21q-.825 0-1.412-.587T2 19V8q0-.825.588-1.412T4 6h4V4q0-.825.588-1.412T10 2h4q.825 0 1.413.588T16 4v2h4q.825 0 1.413.588T22 8v11q0 .825-.587 1.413T20 21zm6-15h4V4h-4z"/></svg>
-                    <span class="hover:underline cursor-pointer">Không có dealine</span>
-                </div>
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M2.1 11.1L0 9q2.375-2.425 5.488-3.713T12 4q.6 0 1.2.038t1.2.112l-1.5 2.9q-.225-.025-.45-.038T12 7Q9.2 7 6.637 8.063T2.1 11.1m4.25 4.25l-2.1-2.15q1.425-1.425 3.275-2.225t3.875-.925l-1.6 3.275q-.975.275-1.85.788t-1.6 1.237m4.95 4.5q-.825-.275-1.2-1.037t0-1.513l6-12.2q.1-.2.3-.262t.4.012t.3.263t.05.387L13.9 18.65q-.2.825-.987 1.175t-1.613.025m6.35-4.5q-.175-.175-.337-.312t-.363-.288l.8-3.125q.525.35 1.038.738t.962.837zm4.225-4.225q-.8-.725-1.638-1.375T18.45 8.6l.7-3q1.35.65 2.575 1.5T24 9z"/></svg>
-                    <span class="hover:underline cursor-pointer">Truy cập 23 phút trước</span>
-                </div>
-            </h3>
+<body class="min-h-screen bg-zinc-50 font-roboto">
+  <header class="bg-white sticky top-0 w-full z-50 border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <button id="sidebarToggle" class="  p-2 rounded-lg transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <path fill="#b70b0b" d="M27.5 5.5h-9.3l-2.1 4.2H4.4v16.8h25.2v-21Zm0 4.2h-8.2l1.1-2.1h7.1Z"/><path fill="#fac6c5" d="M28.3 27.423c-1.729-.4-2.332-2.482-1.329-4.583a8.95 8.95 0 0 1 2.217-2.779l.314-.26l.009.357a6.7 6.7 0 0 0 .748 2.425a14 14 0 0 1 .625 1.631a3.2 3.2 0 0 1-.073 1.958a2.67 2.67 0 0 1-1.111 1.087a2.8 2.8 0 0 1-1.4.164m.351-3.565c.124-.143.155-.332.164-1l.011-.825l-.2.158a1.68 1.68 0 0 0-.635 1.4c.07.214.286.448.411.446a.5.5 0 0 0 .249-.179m-15.527 7.087a3.85 3.85 0 0 1-3.031-4.563c.254-1.07.2-1.008 5.726-6.787l5.2-5.442l.738.7l.738.7l-3 3.132l-3 3.132l2.508-.054l2.508-.054l1.773-1.85l1.773-1.85l.735.707l.735.707l-5.213 5.43c-4.783 4.982-5.257 5.452-5.743 5.692a3.9 3.9 0 0 1-2.452.393Zm14.662-12.484c-.138-.082-1.546-1.4-3.129-2.921l-2.879-2.772l-.009-.421a.86.86 0 0 1 .194-.673A.99.99 0 0 1 23 11.3a69 69 0 0 1 6.277 6.023a1 1 0 0 1-1.492 1.133Z"/><path fill="#fac6c5" d="M11.578 26.851a2.1 2.1 0 0 0 2.579 2.614c.191-.2 2.407-2.515 7.387-7.737c-2.505.054-2.475-.055-4.98 0c-5.015 5.195-5.114 5.157-4.986 5.123"/>
+          </svg>
         </div>
-    </header>
+        <div class="flex items-center gap-4">
+          <nav class="hidden md:flex items-center gap-6">
+            <a href="#" class="  transition-colors text-sm font-medium">Thành tựu</a>
+            <a href="#" class="  transition-colors text-sm font-medium">Thử thách</a>
+            <a href="#" class="  transition-colors text-sm font-medium">Điểm nhấn</a>
+            <a href="#" class="  transition-colors text-sm font-medium">Bài viết</a>
+          </nav>
+          <a href="/pages/add-article.html" type="button" class="bg-red-800 px-4 py-2 rounded-lg text-sm font-medium text-zinc-50">
+            + Create
+          </a>
+          <label class="flex items-center cursor-pointer" for="darkToggle">
+            <input type="checkbox" id="darkToggle" class="hidden peer" />
+            <span class="text-xl peer-checked:text-yellow-400   transition">🌙</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
     <main class="p-4 container mx-auto flex flex-col gap-4">
         <div id="editorjs"></div>
     </main>

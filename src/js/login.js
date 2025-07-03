@@ -43,7 +43,7 @@ const app = (function() {
                 throw new Error(messageState.error.message);
             } else {
                 localStorage.setItem('lamlib_clover', JSON.stringify(data));
-                location.href = '/pages/profile';
+                location.href = '/';
             }
     }
 

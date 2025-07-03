@@ -199,7 +199,7 @@ const app = (function () {
             alert('Lỗi, không thể lưu bài viết, vui lòng thử lại sau.');
         } else {
             alert('Lưu bài viết thành công!');
-            location.href = '/pages/all-article';
+            location.href = '/';
         }
     }
 
