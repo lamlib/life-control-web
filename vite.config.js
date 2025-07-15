@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
+import monacoEditorPlugin from 'vite-plugin-monaco-editor-esm';
 
 export default defineConfig({
   esbuild: {
@@ -22,6 +23,7 @@ export default defineConfig({
   },
   plugins: [
     tailwindcss(),
+    monacoEditorPlugin(),
   ],
   server: {
     proxy: {

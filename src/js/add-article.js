@@ -1,3 +1,4 @@
+import MonacoCodeBlock from "../plugin/code";
 import { getOneElementOrFail } from "./utils";
 import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator } from'@lamlib/data-sync';
 
@@ -10,6 +11,9 @@ const app = (function () {
         },
         get toolClear() {
             return getOneElementOrFail('#tool-clear');
+        },
+        get toolPreview() {
+            return getOneElementOrFail('#tool-preview');
         },
         get saveModal () {
             return getOneElementOrFail('#saveModal');
@@ -26,80 +30,21 @@ const app = (function () {
         get previewImage () {
             return getOneElementOrFail('#previewImage');
         },
+
     }
 
     function _setupEditor() {
         return new EditorJS({
             holder: 'editorjs',
-            placeholder: 'Hãy bắt đầu viết nội dung của bạn...',
             tools: {
-                header: {
-                    class: Header,
-                    config: {
-                        placeholder: 'Nhập tiêu đề...',
-                        levels: [1, 2, 3, 4, 5, 6],
-                        defaultLevel: 2
-                    }
-                },
-                image: {
-                    class: ImageTool,
-                    config: {
-                        endpoints: {
-                            byFile: '/api/v1/files/byFile',
-                            byUrl: '/api/v1/files/byUrl', 
-                        }
-                    }
-                },
-                checklist: {
-                    class: Checklist,
-                    inlineToolbar: true,
-                },
-                embed: {
-                    class: Embed,
-                },
-                list: {
-                    class: EditorjsList,
-                    inlineToolbar: true,
-                    config: {
-                        defaultStyle: 'unordered'
-                    }
-                },
-                paragraph: {
-                    class: Paragraph,
-                    inlineToolbar: true,
-                    config: {
-                        placeholder: 'Nhập đoạn văn...'
-                    }
-                },
-                quote: {
-                    class: Quote,
-                    inlineToolbar: true,
-                    shortcut: 'CMD+SHIFT+O',
-                    config: {
-                        quotePlaceholder: 'Enter a quote',
-                        captionPlaceholder: 'Quote\'s author',
-                    },
-                },
-                delimiter: Delimiter,
-                table: {
-                    class: Table,
-                    inlineToolbar: true,
-                    config: {
-                        rows: 2,
-                        cols: 3,
-                    }
-                },
-                warning: Warning,
-                code: {
-                    class: editorJsCodeCup,
-                    config: {
-                        placeholder: 'Nhập code...'
-                    }
-                },
+                 monacoCode: MonacoCodeBlock,
             },
-            onChange: function () {
-                console.log('Nội dung đã thay đổi');
-            }
+            onChange: () => { console.log('Nội dung đã thay đổi') },
+            onReady: () => { console.log('Editor sẵn sàng hoạt động!') },
+            autofocus: true,
+            placeholder: 'Viết blog tại đây!',
+            logLevel: 'VERBOSE',
+            readOnly: false,
         })
     }
 
@@ -129,7 +74,12 @@ const app = (function () {
 
     async function _handleClickToolSave() {
         _ui.saveModal.classList.remove('hidden');
-        return;
+    }
+
+    async function _handleClickToolPreview() {
+        _editor.readOnly.toggle()
+        console.log(_editor.readOnly.isEnabled);
+        
     }
 
     async function _handleClickToolClear() {
@@ -219,6 +169,7 @@ const app = (function () {
         _ui.toolClear.addEventListener('click', _handleClickToolClear);
         _ui.saveForm.addEventListener('submit', _handleSubmitForm);
         _ui.saveModal.addEventListener('click', _handleClickModal);
+        _ui.toolPreview.addEventListener('click', _handleClickToolPreview)
     }
 
     function init() {

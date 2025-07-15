@@ -1,73 +1,21 @@
 import { requestHandlers as articlesService } from'@lamlib/data-sync';
 import { getSearchParams } from './utils';
+import MonacoCodeBlock from "../plugin/code";
 
 const app = (function () {
     function _setupEditor(data = {}) {
         return new EditorJS({
             holder: 'editorjs',
-            placeholder: 'Hãy bắt đầu viết nội dung của bạn...',
             tools: {
-                header: {
-                    class: Header,
-                    config: {
-                        placeholder: 'Nhập tiêu đề...',
-                        levels: [1, 2, 3, 4, 5, 6],
-                        defaultLevel: 2
-                    }
-                },
-                list: {
-                    class: EditorjsList,
-                    inlineToolbar: true,
-                    config: {
-                        defaultStyle: 'unordered'
-                    }
-                },
-                paragraph: {
-                    class: Paragraph,
-                    inlineToolbar: true,
-                    config: {
-                        placeholder: 'Nhập đoạn văn...'
-                    }
-                },
-                quote: {
-                    class: Quote,
-                    inlineToolbar: true,
-                    config: {
-                        quotePlaceholder: 'Nhập trích dẫn...',
-                        captionPlaceholder: 'Tác giả'
-                    }
-                },
-                delimiter: Delimiter,
-                table: {
-                    class: Table,
-                    inlineToolbar: true,
-                    config: {
-                        rows: 2,
-                        cols: 3,
-                    }
-                },
-                code: {
-                    class: CodeTool,
-                    config: {
-                        placeholder: 'Nhập code...'
-                    }
-                },
-                image: {
-                    class: ImageTool,
-                    config: {
-                        endpoints: {
-                            byFile: 'http://localhost:3000/api/v1/files/byFile',
-                            byUrl: 'http://localhost:3000/api/v1/files/byUrl', 
-                        }
-                    }
-                },
-                warning: Warning,
+                 monacoCode: MonacoCodeBlock,
             },
-            onChange: function () {
-                console.log('Nội dung đã thay đổi');
-            },
-            data,
+            onChange: () => { console.log('Nội dung đã thay đổi') },
+            onReady: () => { console.log('Editor sẵn sàng hoạt động!') },
+            autofocus: true,
+            placeholder: 'Viết blog tại đây!',
+            logLevel: 'VERBOSE',
             readOnly: true,
+            data,
         })
     }
 
