@@ -1,0 +1,168 @@
+export default class List {
+  static get toolbox() {
+    return {
+      title: 'List',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Huge Icons by Hugeicons - undefined --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5h12M3 5h2m4 7h12M3 12h2m4 7h12M3 19h2" color="currentColor"/></svg>'
+    };
+  }
+
+  static get isReadOnlySupported() {
+    return true;
+  }
+
+  constructor({data, config, api}) {
+    this.api = api;
+    this.data = {
+      style: data.style || 'unordered',
+      items: data.items || ['']
+    };
+    this.config = config;
+  }
+
+  render() {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('relative', 'group');
+
+    const styleToggle = document.createElement('button');
+    styleToggle.classList.add(
+      'absolute', '-left-12', 'top-3',
+      'opacity-0', 'group-hover:opacity-100', 'transition-opacity',
+      'p-1', 'rounded', 'hover:bg-gray-100',
+      'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500'
+    );
+    
+    styleToggle.innerHTML = this.data.style === 'ordered' ? '1.' : '•';
+    
+    styleToggle.addEventListener('click', () => {
+      this.data.style = this.data.style === 'ordered' ? 'unordered' : 'ordered';
+      styleToggle.innerHTML = this.data.style === 'ordered' ? '1.' : '•';
+      this._updateList();
+    });
+
+    this.listElement = this.data.style === 'ordered' ? 
+      document.createElement('ol') : 
+      document.createElement('ul');
+
+    this.listElement.classList.add('list-inside', 'px-4');
+    
+    if (this.data.style === 'ordered') {
+      this.listElement.classList.add('list-decimal');
+    } else {
+      this.listElement.classList.add('list-disc');
+    }
+
+    this.data.items.forEach((item, index) => {
+      this.listElement.appendChild(this._createListItem(item, index));
+    });
+
+    wrapper.appendChild(styleToggle);
+    wrapper.appendChild(this.listElement);
+
+    return wrapper;
+  }
+
+  _createListItem(content, index) {
+    const li = document.createElement('li');
+    li.classList.add('py-1');
+    
+    const input = document.createElement('div');
+    input.contentEditable = true;
+    input.classList.add('inline-block', 'w-full', 'outline-none', 'px-2');
+    input.innerHTML = content;
+
+    input.addEventListener('keydown', (e) => {
+      switch(e.key) {
+        case 'Enter':
+          e.preventDefault();
+          this._addNewItem(index + 1);
+          break;
+        case 'Backspace':
+          if (input.innerHTML === '') {
+            e.preventDefault();
+            this._removeItem(index);
+          }
+          break;
+      }
+    });
+
+    li.appendChild(input);
+    return li;
+  }
+
+  _updateList() {
+    const items = Array.from(this.listElement.children).map(li => 
+      li.querySelector('[contenteditable]').innerHTML
+    );
+
+    const newList = this.data.style === 'ordered' ? 
+      document.createElement('ol') : 
+      document.createElement('ul');
+
+    newList.classList.add('list-inside', 'px-4');
+    
+    if (this.data.style === 'ordered') {
+      newList.classList.add('list-decimal');
+    } else {
+      newList.classList.add('list-disc');
+    }
+
+    items.forEach((item, index) => {
+      newList.appendChild(this._createListItem(item, index));
+    });
+
+    this.listElement.replaceWith(newList);
+    this.listElement = newList;
+  }
+
+  _addNewItem(index) {
+    const items = Array.from(this.listElement.children).map(li => 
+      li.querySelector('[contenteditable]').innerHTML
+    );
+    
+    items.splice(index, 0, '');
+    this.data.items = items;
+    
+    const newItem = this._createListItem('', index);
+    
+    if (this.listElement.children[index]) {
+      this.listElement.insertBefore(newItem, this.listElement.children[index]);
+    } else {
+      this.listElement.appendChild(newItem);
+    }
+    
+    newItem.querySelector('[contenteditable]').focus();
+  }
+
+  _removeItem(index) {
+    if (this.listElement.children.length === 1) return;
+    
+    const items = Array.from(this.listElement.children).map(li => 
+      li.querySelector('[contenteditable]').innerHTML
+    );
+    
+    items.splice(index, 1);
+    this.data.items = items;
+    
+    this.listElement.children[index].remove();
+    
+    if (index > 0) {
+      const prevInput = this.listElement.children[index - 1].querySelector('[contenteditable]');
+      const len = prevInput.innerHTML.length;
+      prevInput.focus();
+      this.api.selection.setRange(prevInput, len, len);
+    }
+  }
+
+  save() {
+    return {
+      style: this.data.style,
+      items: Array.from(this.listElement.children).map(li => 
+        li.querySelector('[contenteditable]').innerHTML
+      )
+    };
+  }
+
+  validate(savedData) {
+    return savedData.items && savedData.items.length > 0;
+  }
+}

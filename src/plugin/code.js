@@ -7,7 +7,7 @@ export default class CodeBlock {
   static get toolbox() {
     return {
       title: 'Code',
-      icon: '<svg width="17" height="15"><path d="M6 14l-5-7 5-7M11 0l5 7-5 7"/></svg>',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Huge Icons by Hugeicons - undefined --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m17 8l1.84 1.85c.773.778 1.16 1.167 1.16 1.65s-.387.872-1.16 1.65L17 15M7 8L5.16 9.85C4.387 10.628 4 11.017 4 11.5s.387.872 1.16 1.65L7 15m7.5-11l-5 16" color="currentColor"/></svg>',
     };
   }
 
@@ -16,8 +16,8 @@ export default class CodeBlock {
   }
 
   static get enableLineBreaks() {
-  return true;
-}
+    return true;
+  }
 
   static get sanitize() {
     return {

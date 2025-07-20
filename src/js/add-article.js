@@ -1,6 +1,25 @@
+import Bold from "../plugin/bold";
+import Checklist from "../plugin/checklist";
 import MonacoCodeBlock from "../plugin/code";
+import Heading from "../plugin/heading";
+import Image from "../plugin/image";
+import Link from "../plugin/link";
+import List from "../plugin/list";
+import Marker from "../plugin/marker";
+import Quote from "../plugin/quote";
+import Table from "../plugin/table";
+import Color from "../plugin/color";
+import Alignment from "../plugin/alignment";
+import Footnote from "../plugin/footnote";
+import ScriptTool from "../plugin/script";
+import TableOfContents from "../plugin/table-of-contents";
 import { getOneElementOrFail } from "./utils";
 import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator } from'@lamlib/data-sync';
+import Delimiter from "../plugin/delimiter";
+import Embed from "../plugin/embed";
+import File from "../plugin/file";
+import Math from "../plugin/math";
+import Note from "../plugin/note";
 
 const app = (function () {
     let _editor;
@@ -37,7 +56,26 @@ const app = (function () {
         return new EditorJS({
             holder: 'editorjs',
             tools: {
-                 monacoCode: MonacoCodeBlock,
+                //  alignment: Alignment,
+                //  bold: Bold,
+                //  checklist: Checklist,
+                //  monacoCode: MonacoCodeBlock,
+                //  color: Color,
+                //  delimiter: Delimiter,
+                //  embed: Embed,
+                //  file: File,
+                //  footnote: Footnote,
+                 heading: Heading,
+                //  image: Image,
+                //  link: Link,
+                //  list: List,
+                //  marker: Marker,
+                //  math: Math,
+                //  note: Note,
+                //  quote: Quote,
+                //  script: ScriptTool,
+                //  toc: TableOfContents,
+                //  table: Table,
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },
@@ -76,10 +114,15 @@ const app = (function () {
         _ui.saveModal.classList.remove('hidden');
     }
 
-    async function _handleClickToolPreview() {
-        _editor.readOnly.toggle()
-        console.log(_editor.readOnly.isEnabled);
-        
+    /**
+     * 
+     * @param {MouseEvent} event 
+     */
+    async function _handleClickToolPreview(event) {
+        _editor.readOnly.toggle();
+        event.currentTarget.querySelectorAll('svg').forEach(svg => {
+            svg.classList.toggle('hidden');
+        });
     }
 
     async function _handleClickToolClear() {
