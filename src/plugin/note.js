@@ -8,6 +8,10 @@ export default class Note {
     };
   }
 
+  static get isReadOnlySupported() {
+    return true;
+  }
+
   constructor({ data }) {
     this.data = {
       type: data.type || 'info', // info, warning, success, error

@@ -16,7 +16,6 @@ export const sidebar = (function () {
     }
     
     /**
-     * 
      * @param {MouseEvent} e 
      */
     function _handleSubmenuToggle(e) {

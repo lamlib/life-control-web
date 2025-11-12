@@ -65,8 +65,8 @@ export default class List {
 
     const input = document.createElement('span');
     input.contentEditable = true;
-    input.classList.add('inline-block', 'outline-none', 'px-1');
-    input.style.minWidth = '1ch'; // ensures empty items are clickable
+    input.classList.add('outline-none', 'px-1');
+    input.style.minWidth = '1ch';
     input.textContent = content;
 
     input.addEventListener('keydown', (e) => {

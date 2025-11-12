@@ -1,25 +1,14 @@
-import Bold from "../plugin/bold";
-import Checklist from "../plugin/checklist";
 import MonacoCodeBlock from "../plugin/code";
 import Heading from "../plugin/heading";
-import Image from "../plugin/image";
-import Link from "../plugin/link";
 import List from "../plugin/list";
-import Marker from "../plugin/marker";
-import Quote from "../plugin/quote";
-import Table from "../plugin/table";
-import Alignment from "../plugin/alignment";
-import Footnote from "../plugin/footnote";
-import TableOfContents from "../plugin/table-of-contents";
 import { getOneElementOrFail } from "./utils";
 import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator } from'@lamlib/data-sync';
 import Delimiter from "../plugin/delimiter";
-import Embed from "../plugin/embed";
-import File from "../plugin/file";
-import Math from "../plugin/math";
 import Note from "../plugin/note";
 import { sidebar } from "../plugin/sidebar";
 import { theme } from "../plugin/theme";
+import { toast } from "../plugin/toast";
+import EditorJS from '@editorjs/editorjs';
 
 const app = (function () {
     let _editor;
@@ -49,31 +38,17 @@ const app = (function () {
         get previewImage () {
             return getOneElementOrFail('#previewImage');
         },
-
     }
 
     function _setupEditor() {
         return new EditorJS({
             holder: 'editorjs',
             tools: {
-                //  alignment: Alignment,
-                //  bold: Bold,
-                //  checklist: Checklist,
                  monacoCode: MonacoCodeBlock,
                  delimiter: Delimiter,
-                //  embed: Embed,
-                //  file: File,
-                //  footnote: Footnote,
                  heading: Heading,
-                //  image: Image,
-                //  link: Link,
                  list: List,
-                //  marker: Marker,
-                //  math: Math,
                  note: Note,
-                //  quote: Quote,
-                //  toc: TableOfContents,
-                 table: Table,
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },
@@ -159,26 +134,28 @@ const app = (function () {
         const thumbnail = _ui.saveForm.thumbnail.value.trim();
         const listTag = _ui.saveForm.articleTags.value.trim().split(',').map(tag => tag.trim()).filter(tag => tag);
         if(listTag.length === 0) {
-            alert('Vui lòng nhập ít nhất một tag cho bài viết');
+            toast.light('Hệ thống' ,'Nhập ít nhất một tag cho bài viết');
             return;
         }
         if(listTag.length > 5) {
-            alert('Vui lòng nhập tối đa 5 tag cho bài viết');
+            toast.light('Hệ thống' ,'Vui lòng nhập tối đa 5 tag cho bài viết')
             return;
         } 
         if(!title) {
-            alert('Vui lòng nhập tiêu đề bài viết');
+            toast.light('Hệ thống' ,'Vui lòng nhập tiêu đề bài viết')
             return;
         }
         if(!description) {
-            alert('Vui lòng nhập mô tả bài viết');
+            toast.light('Hệ thống' ,'Vui lòng nhập mô tả bài viết')
             return;
         }
         if(!thumbnail) {
-            alert('Vui lòng tải lên hình ảnh đại diện cho bài viết');
+            toast.light('Hệ thống' ,'Vui lòng tải lên hình ảnh đại diện cho bài viết')
             return;
         }
         const data = await _editor.save();
+        console.log(data);
+        return;
         await articlesService.postArticle({
             title,
             listTag,

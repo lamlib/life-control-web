@@ -1,9 +1,16 @@
 import * as datasync from '@lamlib/data-sync';
-// ============== App Config ================
+// ============== Cấu hình ứng dụng ================
 
 const SERVICE_URL = "/api/v1";
 
-// ============== API Client ================
+// ============== Xử lý middleware ================
+/**
+ * Trước mỗi khi gọi tới API thì kiểu tra xem có thông tin người dùng lưu trước đó hay không
+ *  -> Yes: 
+ *  -> No: Báo rằng không tìm thấy mã truy cập
+ * 
+ * @param {*} request 
+ */
 datasync.interceptors.before = async function (request) {
     let store = localStorage.getItem('lamlib_clover');
     if(store) {
@@ -20,7 +27,7 @@ datasync.interceptors.before = async function (request) {
                     }),
                     headers
                 });
-                if(!res.ok) { // Refresh đã hết hạn, bắt bộc phải login lại.
+                if(!res.ok && location.pathname != '/pages/login') { // Refresh đã hết hạn, bắt bộc phải login lại.
                     location.href = '/pages/login';
                 } else {
                     const { data } = await res.json();

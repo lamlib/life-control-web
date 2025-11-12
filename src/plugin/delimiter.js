@@ -8,6 +8,10 @@ export default class Delimiter {
     };
   }
 
+  static get isReadOnlySupported() {
+    return true;
+  }
+
   constructor({data}) {
     this.data = {
       style: data.style || 'dots'

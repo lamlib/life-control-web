@@ -1,5 +1,11 @@
 import { getOneElementOrFail, getSearchParams } from "./utils";
 import { requestHandlers as articlesService, hasError } from'@lamlib/data-sync';
+import MonacoCodeBlock from "../plugin/code";
+import Delimiter from '../plugin/delimiter';
+import Heading from '../plugin/heading';
+import List from '../plugin/list';
+import Note from '../plugin/note';
+import EditorJS from '@editorjs/editorjs';
 
 const app = (function () {
     let _editor;
@@ -25,69 +31,11 @@ const app = (function () {
             holder: 'editorjs',
             placeholder: 'Hãy bắt đầu viết nội dung của bạn...',
             tools: {
-                header: {
-                    class: Header,
-                    config: {
-                        placeholder: 'Nhập tiêu đề...',
-                        levels: [1, 2, 3, 4, 5, 6],
-                        defaultLevel: 2
-                    }
-                },
-                image: {
-                    class: ImageTool,
-                    config: {
-                        endpoints: {
-                            byFile: 'http://localhost:3000/api/v1/files/byFile',
-                            byUrl: 'http://localhost:3000/api/v1/files/byUrl', 
-                        }
-                    }
-                },
-                checklist: {
-                    class: Checklist,
-                    inlineToolbar: true,
-                },
-                embed: {
-                    class: Embed,
-                },
-                list: {
-                    class: EditorjsList,
-                    inlineToolbar: true,
-                    config: {
-                        defaultStyle: 'unordered'
-                    }
-                },
-                paragraph: {
-                    class: Paragraph,
-                    inlineToolbar: true,
-                    config: {
-                        placeholder: 'Nhập đoạn văn...'
-                    }
-                },
-                quote: {
-                    class: Quote,
-                    inlineToolbar: true,
-                    shortcut: 'CMD+SHIFT+O',
-                    config: {
-                        quotePlaceholder: 'Enter a quote',
-                        captionPlaceholder: 'Quote\'s author',
-                    },
-                },
+                monacoCode: MonacoCodeBlock,
                 delimiter: Delimiter,
-                table: {
-                    class: Table,
-                    inlineToolbar: true,
-                    config: {
-                        rows: 2,
-                        cols: 3,
-                    }
-                },
-                warning: Warning,
-                code: {
-                    class: editorJsCodeCup,
-                    config: {
-                        placeholder: 'Nhập code...'
-                    }
-                },
+                heading: Heading,
+                list: List,
+                note: Note,
             },
             onChange: function () {
                 console.log('Nội dung đã thay đổi');

@@ -30,6 +30,10 @@ export default class Heading {
     const wrapper = document.createElement('div');
     if (this.readOnly) {
       wrapper.classList.add('cdx-block', 'cdx-heading', 'read-only');
+      this.input = document.createElement('div');
+      this.input.innerHTML = this.data.text;
+      this._updateHeadingStyle(this.input);
+      wrapper.appendChild(this.input);
     } else {
       wrapper.classList.add('relative', 'group');
       this.input = document.createElement('div');
@@ -38,7 +42,7 @@ export default class Heading {
       this.input.dataset.placeholder = 'Enter a heading';
       this.input.innerHTML = this.data.text;
       this.input.addEventListener('input', () => {
-        this.data.text = input.innerHTML;
+        this.data.text = this.input.innerHTML;
       });
       this._updateHeadingStyle(this.input);
       wrapper.appendChild(this.input);
