@@ -38,7 +38,7 @@ export default class Bold {
 
     const termWrapper = document.createElement(this.tag);
 
-    termWrapper.classList.add('font-bold');
+    termWrapper.classList.add('font-semibold');
 
     if (this._state) {
       this.unwrap(range);
@@ -66,9 +66,7 @@ export default class Bold {
 
   checkState() {
     const bold = this.api.selection.findParentTag(this.tag);
-    
     this._state = !!bold;
-
     if (this._state) {
       this.button.classList.add('bg-gray-200');
     } else {

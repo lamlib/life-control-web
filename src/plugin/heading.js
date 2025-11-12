@@ -1,8 +1,10 @@
+import { IconH, IconH1, IconH2, IconH3, IconH4, IconH5, IconH6 } from "../svg";
+
 export default class Heading {
   static get toolbox() {
     return {
       title: 'Heading',
-      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Huge Icons by Hugeicons - undefined --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 4v16M18 4v16M6 12h12" color="currentColor"/></svg>'
+      icon: IconH
     };
   }
 
@@ -21,6 +23,7 @@ export default class Heading {
       level: data.level || 2
     };
     this.config = config;
+    this.input = null;
   }
 
   render(){
@@ -29,52 +32,71 @@ export default class Heading {
       wrapper.classList.add('cdx-block', 'cdx-heading', 'read-only');
     } else {
       wrapper.classList.add('relative', 'group');
-      const input = document.createElement('div');
-      input.classList.add('ce-paragraph', 'cdx-block', 'px-4', 'py-3', 'outline-none');
-      input.setAttribute('contenteditable', true);
-      input.dataset.placeholder = 'Enter a heading';
-      input.innerHTML = this.data.text;
-      
-      const levelSelector = document.createElement('div');
-      levelSelector.classList.add(
-        'absolute', 'right-[-24px]', 'top-1/2', '-translate-y-1/2',
-        'opacity-0', 'group-hover:opacity-100',
-        'transition-opacity', 'bg-white', 'rounded-lg', 'shadow-sm',
-        'p-1'
-      );
-      
-      const select = document.createElement('select');
-      select.classList.add(
-        'block', 'w-12', 'p-1', 'bg-transparent', 'hover:bg-gray-100',
-        'rounded', 'text-sm', 'focus:outline-none', 'focus:ring-2', 
-        'focus:ring-blue-500', 'border-none'
-      );
-      
-      [1, 2, 3, 4, 5, 6].forEach(level => {
-        const option = document.createElement('option');
-        option.value = level;
-        option.text = `H${level}`;
-        option.selected = this.data.level === level;
-        select.appendChild(option);
-      });
-      
-      select.addEventListener('change', (e) => {
-        this.data.level = parseInt(e.target.value);
-        this._updateHeadingStyle(input);
-      });
-      
-      input.addEventListener('input', () => {
+      this.input = document.createElement('div');
+      this.input.classList.add('ce-paragraph', 'cdx-block', 'px-4', 'py-3', 'outline-none');
+      this.input.setAttribute('contenteditable', true);
+      this.input.dataset.placeholder = 'Enter a heading';
+      this.input.innerHTML = this.data.text;
+      this.input.addEventListener('input', () => {
         this.data.text = input.innerHTML;
       });
-      
-      this._updateHeadingStyle(input);
-      
-      levelSelector.appendChild(select);
-      wrapper.appendChild(levelSelector);
-      wrapper.appendChild(input);
-      
+      this._updateHeadingStyle(this.input);
+      wrapper.appendChild(this.input);
     }
     return wrapper;
+  }
+
+  renderSettings(){
+    return [
+      {
+        icon: IconH1,
+        label: 'H1',
+        onActivate: () => {
+          this.data.level = 1;          
+          this._updateHeadingStyle(this.input);
+        }
+      },
+      {
+        icon: IconH2,
+        label: 'H2',
+        onActivate: () => {
+          this.data.level = 2;
+          this._updateHeadingStyle(this.input);
+        }
+      },
+      {
+        icon: IconH3,
+        label: 'H3',
+        onActivate: () => {
+          this.data.level = 3;
+          this._updateHeadingStyle(this.input);
+        }
+      },
+      {
+        icon: IconH4,
+        label: 'H4',
+        onActivate: () => {
+          this.data.level = 4;
+          this._updateHeadingStyle(this.input);
+        }
+      },
+      {
+        icon: IconH5,
+        label: 'H5',
+        onActivate: () => {
+          this.data.level = 5;
+          this._updateHeadingStyle(this.input);
+        }
+      },
+      {
+        icon: IconH6,
+        label: 'H6',
+        onActivate: () => {
+          this.data.level = 6;
+          this._updateHeadingStyle(this.input);
+        }
+      },
+    ];
   }
 
   _updateHeadingStyle(element) {
@@ -87,14 +109,14 @@ export default class Heading {
       6: 'text-base font-bold'
     };
 
-    // Remove all size classes
+    // Xóa mọi style có thể được thêm vào lúc trước
     Object.values(sizes).forEach(classes => {
       classes.split(' ').forEach(cls => {
         element.classList.remove(cls);
       });
     });
 
-    // Add new size classes
+    // Thêm lớp css mới vào
     sizes[this.data.level].split(' ').forEach(cls => {
       element.classList.add(cls);
     });

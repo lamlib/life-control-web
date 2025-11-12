@@ -8,10 +8,8 @@ import List from "../plugin/list";
 import Marker from "../plugin/marker";
 import Quote from "../plugin/quote";
 import Table from "../plugin/table";
-import Color from "../plugin/color";
 import Alignment from "../plugin/alignment";
 import Footnote from "../plugin/footnote";
-import ScriptTool from "../plugin/script";
 import TableOfContents from "../plugin/table-of-contents";
 import { getOneElementOrFail } from "./utils";
 import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator } from'@lamlib/data-sync';
@@ -20,6 +18,8 @@ import Embed from "../plugin/embed";
 import File from "../plugin/file";
 import Math from "../plugin/math";
 import Note from "../plugin/note";
+import { sidebar } from "../plugin/sidebar";
+import { theme } from "../plugin/theme";
 
 const app = (function () {
     let _editor;
@@ -59,28 +59,26 @@ const app = (function () {
                 //  alignment: Alignment,
                 //  bold: Bold,
                 //  checklist: Checklist,
-                //  monacoCode: MonacoCodeBlock,
-                //  color: Color,
-                //  delimiter: Delimiter,
+                 monacoCode: MonacoCodeBlock,
+                 delimiter: Delimiter,
                 //  embed: Embed,
                 //  file: File,
                 //  footnote: Footnote,
                  heading: Heading,
                 //  image: Image,
                 //  link: Link,
-                //  list: List,
+                 list: List,
                 //  marker: Marker,
                 //  math: Math,
-                //  note: Note,
+                 note: Note,
                 //  quote: Quote,
-                //  script: ScriptTool,
                 //  toc: TableOfContents,
-                //  table: Table,
+                 table: Table,
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },
             autofocus: true,
-            placeholder: 'Viết blog tại đây!',
+            placeholder: 'Viết ghi chú tại đây!',
             logLevel: 'VERBOSE',
             readOnly: false,
         })
@@ -215,7 +213,8 @@ const app = (function () {
         _ui.toolPreview.addEventListener('click', _handleClickToolPreview)
     }
 
-    function init() {
+    function init(plugins) {
+        plugins.forEach(plugin => plugin.init());
         _editor = _setupEditor();
         window.editor = _editor;
         _setupEventListener();
@@ -226,4 +225,7 @@ const app = (function () {
     };
 })();
 
-document.addEventListener('DOMContentLoaded', app.init);
+document.addEventListener('DOMContentLoaded', () => {
+    const plugins = [sidebar, theme];
+    app.init(plugins);
+});

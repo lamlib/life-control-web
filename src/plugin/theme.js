@@ -14,6 +14,13 @@ export const theme = (function () {
         _ui.toggle.addEventListener('change', _handleChangeToggle);
     }
 
+    function isDark() {
+        if(localStorage.getItem("theme") === "dark") {
+            return true;
+        }
+        return false;
+    }
+
     function init() {
         if(localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark");
@@ -22,5 +29,8 @@ export const theme = (function () {
         _setupEventListeners();
     }
 
-    return { init };
+    return {
+        init,
+        isDark,
+    };
 })();
