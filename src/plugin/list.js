@@ -19,31 +19,32 @@ export default class List {
     this.config = config;
   }
 
+  renderSettings() {
+    return [
+      {
+        icon: '',
+        label: 'Ordered',
+        onActivate: () => {
+          this.data.style = 'ordered';
+          this._updateList();
+        }
+      },
+      {
+        icon: '',
+        label: 'Unordered',
+        onActivate: () => {
+          this.data.style = 'unordered';
+          this._updateList();
+        }
+      },
+    ];
+  }
+
   render() {
     const wrapper = document.createElement('div');
     wrapper.classList.add('relative', 'group');
-
-    // Style toggle button
-    const styleToggle = document.createElement('button');
-    styleToggle.classList.add(
-      'absolute', '-left-12', 'top-3',
-      'opacity-0', 'group-hover:opacity-100', 'transition-opacity',
-      'p-1', 'rounded', 'hover:bg-gray-100',
-      'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500'
-    );
-    styleToggle.innerHTML = this.data.style === 'ordered' ? '1.' : '•';
-    styleToggle.addEventListener('click', () => {
-      this.data.style = this.data.style === 'ordered' ? 'unordered' : 'ordered';
-      styleToggle.innerHTML = this.data.style === 'ordered' ? '1.' : '•';
-      this._updateList();
-    });
-
-    // Create list
     this.listElement = this._createListElement();
-
-    wrapper.appendChild(styleToggle);
     wrapper.appendChild(this.listElement);
-
     return wrapper;
   }
 
@@ -51,11 +52,9 @@ export default class List {
     const list = this.data.style === 'ordered' ? document.createElement('ol') : document.createElement('ul');
     list.classList.add('list-inside', 'px-4');
     list.classList.add(this.data.style === 'ordered' ? 'list-decimal' : 'list-disc');
-
     this.data.items.forEach((item, index) => {
       list.appendChild(this._createListItem(item, index));
     });
-
     return list;
   }
 

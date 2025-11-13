@@ -154,8 +154,6 @@ const app = (function () {
             return;
         }
         const data = await _editor.save();
-        console.log(data);
-        return;
         await articlesService.postArticle({
             title,
             listTag,
@@ -164,15 +162,15 @@ const app = (function () {
             content: JSON.stringify(data)
         });
         if(hasError()) {
-            alert('Lỗi, không thể lưu bài viết, vui lòng thử lại sau.');
+            toast.error('Hệ thống' ,'Không thể lưu bài viết, vui lòng thử lại sau.')
         } else {
-            alert('Lưu bài viết thành công!');
+            toast.success('Hệ thống' ,'Lưu bài viết thành công!')
             location.href = '/';
         }
     }
 
     function _handleClickModal(e) {
-        if (e.target.id === 'cancelSave' || e.target.id === 'saveModal') {
+        if (['cancelSave', 'saveModal'].includes(e.target.id)) {
             e.preventDefault();
             _ui.saveModal.classList.add('hidden');
         }

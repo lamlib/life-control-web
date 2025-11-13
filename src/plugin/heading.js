@@ -56,7 +56,7 @@ export default class Heading {
         icon: IconH1,
         label: 'H1',
         onActivate: () => {
-          this.data.level = 1;          
+          this.data.level = 1;
           this._updateHeadingStyle(this.input);
         }
       },
