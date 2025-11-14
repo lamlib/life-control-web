@@ -2,7 +2,7 @@ import MonacoCodeBlock from "../plugin/code";
 import Heading from "../plugin/heading";
 import List from "../plugin/list";
 import { getOneElementOrFail } from "./utils";
-import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator } from'@lamlib/data-sync';
+import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator, messageState } from'@lamlib/data-sync';
 import Delimiter from "../plugin/delimiter";
 import Note from "../plugin/note";
 import { sidebar } from "../plugin/sidebar";
@@ -162,7 +162,7 @@ const app = (function () {
             content: JSON.stringify(data)
         });
         if(hasError()) {
-            toast.error('Hệ thống' ,'Không thể lưu bài viết, vui lòng thử lại sau.')
+            toast.error('Hệ thống' , messageState.error?.message ?? 'Không thể lưu bài viết, vui lòng thử lại sau.')
         } else {
             toast.success('Hệ thống' ,'Lưu bài viết thành công!')
             location.href = '/';

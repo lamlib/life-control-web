@@ -1,10 +1,9 @@
-import { IconH, IconH1, IconH2, IconH3, IconH4, IconH5, IconH6 } from "../svg";
+import { IconH, IconH1, IconH2, IconH3, IconH4, IconH5, IconH6 } from "../svg/icons";
 
 export default class Heading {
   static get toolbox() {
     return {
       title: 'Heading',
-      icon: IconH
     };
   }
 
@@ -12,17 +11,13 @@ export default class Heading {
     return true;
   }
 
-  static get isInline() {
-    return false;
-  }
-
   constructor({data, config, readOnly}){
     this.readOnly = readOnly;
+    this.config = config;
     this.data = {
       text: data.text || '',
-      level: data.level || 2
+      level: data.level || 6,
     };
-    this.config = config;
     this.input = null;
   }
 

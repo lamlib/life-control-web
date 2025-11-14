@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang chủ</title>
+  <script type="module" src="./src/js/bootrap.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/css/main.css">
 </head>
@@ -30,13 +31,20 @@
             <a href="#" class="  transition-colors text-sm font-medium">Điểm nhấn</a>
             <a href="#" class="  transition-colors text-sm font-medium">Bài viết</a>
           </nav>
+          <a href="/pages/add-article.html" type="button" class="bg-red-800 px-4 py-2 rounded-lg text-sm font-medium text-zinc-50">
+            + Create
+          </a>
+          <label class="flex items-center cursor-pointer" for="darkToggle">
+            <input type="checkbox" id="darkToggle" class="hidden peer" />
+            <span class="text-xl peer-checked:text-yellow-400 transition">🌙</span>
+          </label>
         </div>
       </div>
     </div>
   </header>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="flex flex-col lg:flex-row gap-8">
-      <aside id="sidebar" class="bg-zinc-100 dark:bg-zinc-950 rounded-2xl p-6 w-full lg:w-80 transition-all duration-300 space-y-6">
+      <aside id="sidebar" class="bg-zinc-100 dark:bg-zinc-950 rounded-2xl p-6 w-full lg:w-80 space-y-6">
         <div class="space-y-4">
           <h1 class="text-3xl font-bold">Chào bạn!</h1>
           <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -89,7 +97,6 @@
           </ul>
         </nav>
       </aside>
-
       <main class="flex-1">
         <div class="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3" id="articleTable">
         </div>

@@ -11,7 +11,6 @@ export function clearError(input) {
 }
 
 /**
- * 
  * @param {string} str name of params you wanna get.
  * @returns {string}
  */

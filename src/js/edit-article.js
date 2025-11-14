@@ -5,6 +5,7 @@ import Delimiter from '../plugin/delimiter';
 import Heading from '../plugin/heading';
 import List from '../plugin/list';
 import Note from '../plugin/note';
+import Table from '../plugin/table';
 import EditorJS from '@editorjs/editorjs';
 
 const app = (function () {
@@ -55,7 +56,8 @@ const app = (function () {
 
     async function _handleClickToolSave() {
         _ui.saveModal.classList.remove('hidden');
-        _ui.saveForm.articleDescription.value = _article.description || '';
+        _ui.saveForm.articleDescription.value = _article.description ?? '';
+        _ui.saveForm.articleTitle.value = _article.title ?? '';
         return;
     }
 

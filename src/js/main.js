@@ -50,9 +50,9 @@ datasync.interceptors.after = async function(response) {
     }
 }
 
-datasync.registerPostEndpoint( 'postRegister', `${SERVICE_URL}/auth/register`);
-datasync.registerPostEndpoint( 'postLogin', `${SERVICE_URL}/auth/login`);
-datasync.registerGetEndpoint( 'getProfile', `${SERVICE_URL}/auth/profile`);
+datasync.registerPostEndpoint('postRegister', `${SERVICE_URL}/auth/register`);
+datasync.registerPostEndpoint('postLogin', `${SERVICE_URL}/auth/login`);
+datasync.registerGetEndpoint('getProfile', `${SERVICE_URL}/auth/profile`);
 datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
 datasync.registerPostEndpoint('postImage', `${SERVICE_URL}/files/byFile`);
 datasync.registerGetEndpoint('getArticles', `${SERVICE_URL}/articles`);
