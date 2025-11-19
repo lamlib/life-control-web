@@ -5,6 +5,8 @@ import { sidebar } from '../plugin/sidebar.js';
 import { theme } from '../plugin/theme.js';
 import { toast } from '../plugin/toast.js';
 import fallbackAvatar from '../img/fallback/avatar.svg';
+import DOMPurify from 'dompurify';
+import dayjs from 'dayjs';
 
 const app = (function() {
     const { getArticles } = requestHandlers;
@@ -15,10 +17,20 @@ const app = (function() {
         },
     }
 
+    /**
+     * @param {string | undefined} date 
+     */
+    function _convertPublishDate(date) {
+        if(date == null) {
+            return 'Chưa xuất bản';
+        } else {
+            return dayjs(date).format('DD/MM/YYYY');
+        }
+    }
+
     function _drawArticlesTable(articles) {
         ui.articlesTable.innerHTML = articles.map((element, idx) => {
-            console.log(element.authorName);
-            const tags = element.tags.map(tag => `<span class="bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full text-xs cursor-pointer hover:opacity-80">${tag}</span>`).join('')
+            const tags = element.tags.map(tag => `<a class="relative z-10 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-500 dark:text-zinc-200 px-2 py-1 font-medium hover:bg-dark-500" data-discover="true" href="/blog/category/${tag}">${tag}</a>`).join('')
             return `
                 <article class="relative flex flex-col items-start">
                     <a class="relative w-full" data-discover="true" href="/pages/view-article?id=${element.id}">
@@ -27,12 +39,12 @@ const app = (function() {
                     <div class="w-full max-w-xl">
                         <div class="flex items-center justify-between w-full mt-2 text-xs gap-x-4 min-h-[28px]">
                             <div class="flex flex-wrap gap-2">
-                                <a class="relative z-10 rounded-lg bg-dark-600 px-3 py-1.5 font-medium text-gray-300 hover:bg-dark-500" data-discover="true" href="/blog/category/CSS">CSS</a>
+                                ${tags}
                             </div>
-                            <div class="flex items-center gap-4 text-gray-400">
-                                <time datetime="2025-06-24T13:26:40.837Z">Jun 24</time>
+                            <div class="flex items-center gap-2 text-gray-400">
+                                <time datetime="${element.publishedAt}">${_convertPublishDate(element.publishedAt)}</time>
                                 <div class="flex items-center gap-1">
-                                    <span>187</span> views
+                                    <span>${element.viewCount}</span> lượt xem
                                 </div>
                             </div>
                         </div>

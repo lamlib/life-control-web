@@ -1,88 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../src/css/main.css">
-    <link rel="stylesheet" href="../src/css/components/toast.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    (() => {
+      const theme = (localStorage.getItem('theme') || 'light');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <script src="/src/plugin/overlayscrollbar/overlayscrollbar.min.js"></script>
+  <link rel="stylesheet" href="/src/plugin/overlayscrollbar/overlayscrollbar.min.css">
+  <link rel="stylesheet" href="../src/css/main.css">
+  <link rel="stylesheet" href="../src/css/components/toast.css">
 </head>
+
 <body class="min-h-screen dark:bg-zinc-950 bg-zinc-50 text-zinc-900 dark:text-zinc-100 font-opensan">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-4">
-          <button id="sidebarToggle" class="  p-2 rounded-lg transition-colors">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-            <path fill="#b70b0b" d="M27.5 5.5h-9.3l-2.1 4.2H4.4v16.8h25.2v-21Zm0 4.2h-8.2l1.1-2.1h7.1Z"/><path fill="#fac6c5" d="M28.3 27.423c-1.729-.4-2.332-2.482-1.329-4.583a8.95 8.95 0 0 1 2.217-2.779l.314-.26l.009.357a6.7 6.7 0 0 0 .748 2.425a14 14 0 0 1 .625 1.631a3.2 3.2 0 0 1-.073 1.958a2.67 2.67 0 0 1-1.111 1.087a2.8 2.8 0 0 1-1.4.164m.351-3.565c.124-.143.155-.332.164-1l.011-.825l-.2.158a1.68 1.68 0 0 0-.635 1.4c.07.214.286.448.411.446a.5.5 0 0 0 .249-.179m-15.527 7.087a3.85 3.85 0 0 1-3.031-4.563c.254-1.07.2-1.008 5.726-6.787l5.2-5.442l.738.7l.738.7l-3 3.132l-3 3.132l2.508-.054l2.508-.054l1.773-1.85l1.773-1.85l.735.707l.735.707l-5.213 5.43c-4.783 4.982-5.257 5.452-5.743 5.692a3.9 3.9 0 0 1-2.452.393Zm14.662-12.484c-.138-.082-1.546-1.4-3.129-2.921l-2.879-2.772l-.009-.421a.86.86 0 0 1 .194-.673A.99.99 0 0 1 23 11.3a69 69 0 0 1 6.277 6.023a1 1 0 0 1-1.492 1.133Z"/><path fill="#fac6c5" d="M11.578 26.851a2.1 2.1 0 0 0 2.579 2.614c.191-.2 2.407-2.515 7.387-7.737c-2.505.054-2.475-.055-4.98 0c-5.015 5.195-5.114 5.157-4.986 5.123"/>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-4">
+        <button id="sidebarToggle" class="  p-2 rounded-lg transition-colors">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
-        </div>
-        <div class="flex items-center gap-4">
-          <nav class="hidden md:flex items-center gap-6">
-            <a href="#" class="transition-colors text-sm font-medium hover:underline">Thành tựu</a>
-            <a href="#" class="transition-colors text-sm font-medium hover:underline">Thử thách</a>
-            <a href="#" class="transition-colors text-sm font-medium hover:underline">Điểm nhấn</a>
-            <a href="/" class="transition-colors text-sm font-medium hover:underline">Bài viết</a>
-          </nav>
-          <a href="/pages/add-article.html" type="button" class="bg-red-800 px-4 py-2 rounded-lg text-sm font-medium text-zinc-50">
-            + Create
-          </a>
-          <label class="flex items-center cursor-pointer" for="darkToggle">
-            <input type="checkbox" id="darkToggle" class="hidden peer" />
-            <span class="text-xl peer-checked:text-yellow-400   transition">🌙</span>
-          </label>
-        </div>
+        </button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+          <path fill="#b70b0b" d="M27.5 5.5h-9.3l-2.1 4.2H4.4v16.8h25.2v-21Zm0 4.2h-8.2l1.1-2.1h7.1Z" />
+          <path fill="#fac6c5"
+            d="M28.3 27.423c-1.729-.4-2.332-2.482-1.329-4.583a8.95 8.95 0 0 1 2.217-2.779l.314-.26l.009.357a6.7 6.7 0 0 0 .748 2.425a14 14 0 0 1 .625 1.631a3.2 3.2 0 0 1-.073 1.958a2.67 2.67 0 0 1-1.111 1.087a2.8 2.8 0 0 1-1.4.164m.351-3.565c.124-.143.155-.332.164-1l.011-.825l-.2.158a1.68 1.68 0 0 0-.635 1.4c.07.214.286.448.411.446a.5.5 0 0 0 .249-.179m-15.527 7.087a3.85 3.85 0 0 1-3.031-4.563c.254-1.07.2-1.008 5.726-6.787l5.2-5.442l.738.7l.738.7l-3 3.132l-3 3.132l2.508-.054l2.508-.054l1.773-1.85l1.773-1.85l.735.707l.735.707l-5.213 5.43c-4.783 4.982-5.257 5.452-5.743 5.692a3.9 3.9 0 0 1-2.452.393Zm14.662-12.484c-.138-.082-1.546-1.4-3.129-2.921l-2.879-2.772l-.009-.421a.86.86 0 0 1 .194-.673A.99.99 0 0 1 23 11.3a69 69 0 0 1 6.277 6.023a1 1 0 0 1-1.492 1.133Z" />
+          <path fill="#fac6c5"
+            d="M11.578 26.851a2.1 2.1 0 0 0 2.579 2.614c.191-.2 2.407-2.515 7.387-7.737c-2.505.054-2.475-.055-4.98 0c-5.015 5.195-5.114 5.157-4.986 5.123" />
+        </svg>
+      </div>
+      <div class="flex items-center gap-4">
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#" class="transition-colors text-sm font-medium hover:underline">Thành tựu</a>
+          <a href="#" class="transition-colors text-sm font-medium hover:underline">Thử thách</a>
+          <a href="#" class="transition-colors text-sm font-medium hover:underline">Điểm nhấn</a>
+          <a href="/" class="transition-colors text-sm font-medium hover:underline">Bài viết</a>
+        </nav>
+        <a href="/pages/add-article.html" type="button"
+          class="bg-red-800 px-4 py-2 rounded-lg text-sm font-medium text-zinc-50">
+          + Create
+        </a>
+        <label class="flex items-center cursor-pointer" for="darkToggle">
+          <input type="checkbox" id="darkToggle" class="hidden peer" />
+          <span class="text-xl peer-checked:text-yellow-400   transition">🌙</span>
+        </label>
       </div>
     </div>
-    <main class="p-4 container mx-auto flex flex-col gap-4">
-        <header class="flex justify-center gap-2">
-            <button id="tool-save" type="button" title="Lưu" class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M21 7v12q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h12zm-9 11q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-6-8h9V6H6z"/></svg>
-            </button>
-            <button id="tool-clear" type="button" title="Xoá" class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg>
-            </button>
-            <button id="tool-preview" type="button" title="Chế độ đọc" class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="currentColor"><path d="M21.544 11.045c.304.426.456.64.456.955c0 .316-.152.529-.456.955C20.178 14.871 16.689 19 12 19c-4.69 0-8.178-4.13-9.544-6.045C2.152 12.529 2 12.315 2 12c0-.316.152-.529.456-.955C3.822 9.129 7.311 5 12 5c4.69 0 8.178 4.13 9.544 6.045"/><path d="M15 12a3 3 0 1 0-6 0a3 3 0 0 0 6 0"/></g></svg>
-                <svg class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="currentColor"><path d="M19.439 15.439a19.5 19.5 0 0 0 2.105-2.484c.304-.426.456-.64.456-.955c0-.316-.152-.529-.456-.955C20.178 9.129 16.689 5 12 5c-.908 0-1.77.155-2.582.418m-2.67 1.33c-2.017 1.36-3.506 3.195-4.292 4.297c-.304.426-.456.64-.456.955c0 .316.152.529.456.955C3.822 14.871 7.311 19 12 19c1.99 0 3.765-.744 5.253-1.747"/><path d="M9.858 10A2.929 2.929 0 1 0 14 14.142M3 3l18 18"/></g></svg>
-            </button>
-        </header>
-        <div id="editorjs"></div>
-    </main>
+  </div>
+  <main class="p-4 container mx-auto flex flex-col gap-4">
+    <header class="flex justify-center gap-2">
+      <button id="tool-save" type="button" title="Lưu"
+        class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+          <path fill="currentColor"
+            d="M21 7v12q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h12zm-9 11q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-6-8h9V6H6z" />
+        </svg>
+      </button>
+      <button id="tool-clear" type="button" title="Xoá"
+        class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+          <path fill="currentColor"
+            d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z" />
+        </svg>
+      </button>
+      <button id="tool-preview" type="button" title="Chế độ đọc"
+        class="bg-gray-200 text-gray-900 px-2 py-1 cursor-pointer hover:text-blue-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            color="currentColor">
+            <path
+              d="M21.544 11.045c.304.426.456.64.456.955c0 .316-.152.529-.456.955C20.178 14.871 16.689 19 12 19c-4.69 0-8.178-4.13-9.544-6.045C2.152 12.529 2 12.315 2 12c0-.316.152-.529.456-.955C3.822 9.129 7.311 5 12 5c4.69 0 8.178 4.13 9.544 6.045" />
+            <path d="M15 12a3 3 0 1 0-6 0a3 3 0 0 0 6 0" />
+          </g>
+        </svg>
+        <svg class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            color="currentColor">
+            <path
+              d="M19.439 15.439a19.5 19.5 0 0 0 2.105-2.484c.304-.426.456-.64.456-.955c0-.316-.152-.529-.456-.955C20.178 9.129 16.689 5 12 5c-.908 0-1.77.155-2.582.418m-2.67 1.33c-2.017 1.36-3.506 3.195-4.292 4.297c-.304.426-.456.64-.456.955c0 .316.152.529.456.955C3.822 14.871 7.311 19 12 19c1.99 0 3.765-.744 5.253-1.747" />
+            <path d="M9.858 10A2.929 2.929 0 1 0 14 14.142M3 3l18 18" />
+          </g>
+        </svg>
+      </button>
+    </header>
+    <div id="editorjs"></div>
+  </main>
 
-    <!-- Modal lưu bài viêt -->
-    <div id="saveModal" class="fixed inset-0 bg-gray-200/50 dark:bg-zinc-700/50 flex items-center justify-center z-50 hidden">
-        <form name="save" class="bg-zinc-50 dark:bg-zinc-950 shadow-lg p-6 w-full max-w-md rounded-xl">
-            <label for="articleTitle" class="block mb-2 font-medium text-zinc-700 dark:text-zinc-300">Tiêu đề</label>
-            <textarea id="articleTitle" name="articleTitle" rows="2" class="placeholder:text-zinc-400 dark:placeholder:text-gray-600 w-full rounded-md p-2 mb-2 border border-gray-200 dark:border-gray-800 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none" placeholder="Nhập tiêu đề bài viết..."></textarea>
-            <label for="articleDescription" class="block mb-2 font-medium text-gray-700">Mô tả</label>
-            <textarea id="articleDescription" name="articleDescription" rows="3" class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none" placeholder="Nhập mô tả ngắn..."></textarea>
-            <label for="articleTags" class="block mb-2 font-medium text-gray-700">Tags</label>
-            <input id="articleTags" name="articleTags" type="text" class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900" placeholder="Nhập tags, cách nhau bởi dấu phẩy...">
-            <label for="articleImage" class="block mb-2 font-medium text-gray-700">Ảnh nền</label>
-            <div class="w-full mb-4">
-                <label for="articleImage" class="block">
-                    <div id="drop-area" class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-4 cursor-pointer hover:border-green-900 transition">
-                        <svg class="mb-2 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 16.5q.425 0 .713-.288T13 15.5V7.925l2.3 2.3q.3.3.713.3t.713-.3q.3-.3.3-.713t-.3-.712l-3.6-3.6q-.3-.3-.713-.3t-.712.3l-3.6 3.6q-.3.3-.3.713t.3.712q.3.3.713.3t.712-.3l2.3-2.3V15.5q0 .425.288.713T12 16.5M6 20q-.825 0-1.413-.588T4 18q0-.825.588-1.413T6 16h12q.825 0 1.413.587T20 18q0 .825-.587 1.413T18 20z"/></svg>
-                        <span class="text-gray-500">Kéo & thả ảnh vào đây hoặc <span class="text-blue-900 underline">chọn ảnh</span></span>
-                        <input type="file" id="articleImage" name="articleImage" accept="image/*" class="hidden">
-                        <img id="previewImage" class="mt-2 max-h-40 hidden" alt="Xem trước ảnh">
-                    </div>
-                </label>
-            </div>
-            <input type="text" value="" name="thumbnail" id="thumbnail" class="hidden">
-            <div class="flex justify-end gap-4">
-                <button type="reset" id="cancelSave" class="px-4 py-2 bg-gray-200 rounded-md hover:cursor-pointer text-gray-700">Huỷ</button>
-                <button type="submit" id="confirmSave" class="px-4 py-2 bg-blue-900 rounded-md hover:cursor-pointer text-white">Lưu</button>
-            </div>
-        </form>
-    </div>
-    <script type="module" src="../src/js/main.js"></script>
-    <script type="module" src="../src/js/add-article.js"></script>
+  <!-- Modal lưu bài viêt -->
+  <div id="saveModal"
+    class="fixed inset-0 bg-gray-200/50 dark:bg-zinc-700/50 flex items-center justify-center z-50 hidden">
+    <form name="save" class="bg-zinc-50 dark:bg-zinc-950 shadow-lg p-6 w-full max-w-md rounded-xl">
+      <label for="articleTitle" class="block mb-2 font-medium text-zinc-700 dark:text-zinc-300">Tiêu đề</label>
+      <textarea id="articleTitle" name="articleTitle" rows="2"
+        class="placeholder:text-zinc-400 dark:placeholder:text-gray-600 w-full rounded-md p-2 mb-2 border border-gray-200 dark:border-gray-800 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none"
+        placeholder="Nhập tiêu đề bài viết..."></textarea>
+      <label for="articleDescription" class="block mb-2 font-medium text-gray-700">Mô tả</label>
+      <textarea id="articleDescription" name="articleDescription" rows="3"
+        class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900 resize-none"
+        placeholder="Nhập mô tả ngắn..."></textarea>
+      <label for="articleTags" class="block mb-2 font-medium text-gray-700">Tags</label>
+      <input id="articleTags" name="articleTags" type="text"
+        class="w-full rounded-md p-2 mb-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-900"
+        placeholder="Nhập tags, cách nhau bởi dấu phẩy...">
+      <label for="articleImage" class="block mb-2 font-medium text-gray-700">Ảnh nền</label>
+      <div class="w-full mb-4">
+        <label for="articleImage" class="block">
+          <div id="drop-area"
+            class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-4 cursor-pointer hover:border-green-900 transition">
+            <svg class="mb-2 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"
+              viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M12 16.5q.425 0 .713-.288T13 15.5V7.925l2.3 2.3q.3.3.713.3t.713-.3q.3-.3.3-.713t-.3-.712l-3.6-3.6q-.3-.3-.713-.3t-.712.3l-3.6 3.6q-.3.3-.3.713t.3.712q.3.3.713.3t.712-.3l2.3-2.3V15.5q0 .425.288.713T12 16.5M6 20q-.825 0-1.413-.588T4 18q0-.825.588-1.413T6 16h12q.825 0 1.413.587T20 18q0 .825-.587 1.413T18 20z" />
+            </svg>
+            <span class="text-gray-500">Kéo & thả ảnh vào đây hoặc <span class="text-blue-900 underline">chọn
+                ảnh</span></span>
+            <input type="file" id="articleImage" name="articleImage" accept="image/*" class="hidden">
+            <img id="previewImage" class="mt-2 max-h-40 hidden" alt="Xem trước ảnh">
+          </div>
+        </label>
+      </div>
+      <input type="text" value="" name="thumbnail" id="thumbnail" class="hidden">
+      <div class="flex justify-end gap-4">
+        <button type="reset" id="cancelSave"
+          class="px-4 py-2 bg-gray-200 rounded-md hover:cursor-pointer text-gray-700">Huỷ</button>
+        <button type="submit" id="confirmSave"
+          class="px-4 py-2 bg-blue-900 rounded-md hover:cursor-pointer text-white">Lưu</button>
+      </div>
+    </form>
+  </div>
+  <script type="module" src="../src/js/main.js"></script>
+  <script type="module" src="../src/js/add-article.js"></script>
 </body>
+
 </html>

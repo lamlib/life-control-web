@@ -11,7 +11,7 @@ import { toast } from "../plugin/toast";
 import EditorJS from '@editorjs/editorjs';
 
 const app = (function () {
-    let _editor;
+    let _editor;    
 
     const _ui = {
         get toolSave() {

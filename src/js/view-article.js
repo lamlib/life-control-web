@@ -6,6 +6,8 @@ import Heading from '../plugin/heading';
 import List from '../plugin/list';
 import Note from '../plugin/note';
 import EditorJS from '@editorjs/editorjs';
+import { sidebar } from '../plugin/sidebar';
+import { theme } from '../plugin/theme';
 
 const app = (function () {
     function _setupEditor(data = {}) {
@@ -37,7 +39,8 @@ const app = (function () {
         return await articlesService.getArticleById({ id });
     }
 
-    async function init() {
+    async function init(plugins) {
+        plugins.forEach(plugin => plugin.init());
         const article = await _loadArticle();
         const content = JSON.parse(article.content);
         console.log(content); 
@@ -49,4 +52,7 @@ const app = (function () {
     };
 })();
 
-document.addEventListener('DOMContentLoaded', app.init);
+document.addEventListener('DOMContentLoaded', () => {
+    const plugins = [sidebar, theme];
+    app.init(plugins);
+});
