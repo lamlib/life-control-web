@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang chủ</title>
   <script>
-  (() => {
-      const theme = (localStorage.getItem('theme') || 'light');
-      if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      }
-  })();
+    (() => {
+        const theme = (localStorage.getItem('theme') || 'light');
+        if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        }
+    })();
   </script>
+
   <script src="/src/plugin/overlayscrollbar/overlayscrollbar.min.js"></script>
   <link rel="stylesheet" href="/src/plugin/overlayscrollbar/overlayscrollbar.min.css">
   <link rel="stylesheet" href="/src/css/main.css">
