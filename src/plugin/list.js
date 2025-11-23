@@ -6,6 +6,8 @@ export default class List {
     };
   }
 
+  static get enableLineBreaks() { return true; }
+
   static get isReadOnlySupported() {
     return true;
   }

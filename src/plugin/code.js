@@ -1,5 +1,6 @@
 import * as monaco from 'monaco-editor';
 import { theme } from './theme.js';
+
 import('monaco-themes/themes/Github Dark.json').then((data) => {
   monaco.editor.defineTheme('github-dark', data);
 });
@@ -32,7 +33,7 @@ export default class CodeBlock {
     this.supportedLanguages = ['javascript', 'typescript', 'html', 'css', 'json', 'python', 'c', 'cpp'];
 
     this.data = {
-      files: data.files || [{ name: 'main.js', code: '', language: 'javascript' }],
+      files: data.files || [{ name: 'Untitled.js', code: '', language: 'javascript' }],
       activeFileIndex: data.activeFileIndex || 0
     };
   }
@@ -71,7 +72,10 @@ export default class CodeBlock {
     this.wrapper.appendChild(this.tabBarEl);
 
     this.editorContainerEl = document.createElement('div');
-    this.editorContainerEl.className = 'w-full h-96';
+    this.editorContainerEl.className = 'w-full';
+    this.editorContainerEl.style.minHeight = "100px";
+    this.editorContainerEl.style.maxHeight = "384px"; // h-96
+    this.editorContainerEl.style.overflow = "hidden";
     this.wrapper.appendChild(this.editorContainerEl);
 
     this.statusBarEl = document.createElement('div');
@@ -86,7 +90,6 @@ export default class CodeBlock {
 
   updateTabUI() {
     const classes = this.getThemeClasses();
-
     this.tabBarEl.innerHTML = '';
     this.tabBarEl.className = classes.tabBar;
 
@@ -156,8 +159,24 @@ export default class CodeBlock {
     this.tabBarEl.appendChild(addBtn);
   }
 
+  /** 📌 Auto-resize Editor */
+  updateEditorHeight() {
+    if (!this.editor || !this.editorContainerEl) return;
+
+    const minHeight = 100;
+    const maxHeight = 384;
+
+    const contentHeight = this.editor.getContentHeight();
+
+    const newHeight = Math.min(Math.max(contentHeight, minHeight), maxHeight);
+
+    this.editorContainerEl.style.height = newHeight + "px";
+    this.editor.layout();
+  }
+
   initEditor() {
     const file = this.data.files[this.data.activeFileIndex];
+
     this.editor = monaco.editor.create(this.editorContainerEl, {
       value: file.code,
       language: file.language,
@@ -165,6 +184,23 @@ export default class CodeBlock {
       readOnly: this.readOnly,
       minimap: { enabled: false },
       padding: { top: 20, bottom: 20 },
+      domReadOnly: true,
+      automaticLayout: false,
+      scrollBeyondLastLine: false,
+      overviewRulerLanes: 0,
+      hideCursorInOverviewRuler: true,
+      glyphMargin: false,
+      lineNumbers: "on",
+      folding: false,
+      links: false,
+      contextmenu: false,
+      smoothScrolling: false,
+      hover: { enabled: false },
+      parameterHints: { enabled: false },
+      quickSuggestions: false,
+      suggestOnTriggerCharacters: false,
+      wordBasedSuggestions: false,
+      renderLineHighlight: "none"
     });
 
     if (!this.readOnly) {
@@ -173,12 +209,15 @@ export default class CodeBlock {
       });
     }
 
+    // 📌 Auto-resize theo nội dung
+    this.editor.onDidContentSizeChange(() => this.updateEditorHeight());
+    this.updateEditorHeight();
+
     this.editor.onDidChangeCursorPosition((e) => this.updateStatusBar(e.position));
     this.updateStatusBar(this.editor.getPosition());
   }
 
   updateStatusBar(position) {
-    const classes = this.getThemeClasses();
     const file = this.data.files[this.data.activeFileIndex];
     const left = `Ln ${position.lineNumber}, Col ${position.column}`;
 
@@ -212,6 +251,7 @@ export default class CodeBlock {
     if (this.editor) {
       this.editor.setValue(file.code);
       monaco.editor.setModelLanguage(this.editor.getModel(), file.language);
+      this.updateEditorHeight(); // update height khi đổi file
       this.updateStatusBar(this.editor.getPosition());
     }
   }
@@ -231,7 +271,9 @@ export default class CodeBlock {
   closeFile(index) {
     this.saveCurrentFileContent();
     this.data.files.splice(index, 1);
-    if (this.data.files.length === 0) this.data.files.push({ name: 'untitled.js', code: '', language: 'javascript' });
+    if (this.data.files.length === 0)
+      this.data.files.push({ name: 'untitled.js', code: '', language: 'javascript' });
+
     this.data.activeFileIndex = Math.min(this.data.activeFileIndex, this.data.files.length - 1);
     this.updateTabUI();
     this.updateEditorContent();
