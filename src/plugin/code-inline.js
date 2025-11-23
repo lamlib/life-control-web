@@ -10,9 +10,8 @@ export default class InlineCodeTool {
         text-[0.95em]
         px-[4px] py-[2px] 
         rounded 
-        bg-zinc-200 text-zinc-900 
-        dark:bg-zinc-800 dark:text-zinc-100 
-        text-red-500
+        bg-zinc-200 text-red-500 
+        dark:bg-zinc-800 
       `
     };
   }
