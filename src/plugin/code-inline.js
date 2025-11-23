@@ -11,7 +11,7 @@ export default class InlineCodeTool {
         px-[4px] py-[2px] 
         rounded 
         bg-zinc-200 text-red-500 
-        dark:bg-zinc-800 
+        dark:bg-zinc-700
       `
     };
   }
