@@ -9,6 +9,7 @@ import { sidebar } from "../plugin/sidebar";
 import { theme } from "../plugin/theme";
 import { toast } from "../plugin/toast";
 import EditorJS from '@editorjs/editorjs';
+import InlineCodeTool from "../plugin/code-inline";
 
 const app = (function () {
     let _editor;    
@@ -49,6 +50,7 @@ const app = (function () {
                  heading: Heading,
                  list: List,
                  note: Note,
+                 inlineCode: InlineCodeTool,
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },

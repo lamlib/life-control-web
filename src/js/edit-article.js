@@ -7,6 +7,7 @@ import List from '../plugin/list';
 import Note from '../plugin/note';
 import Table from '../plugin/table';
 import EditorJS from '@editorjs/editorjs';
+import InlineCodeTool from "../plugin/code-inline";
 
 const app = (function () {
     let _editor;
@@ -37,6 +38,7 @@ const app = (function () {
                 heading: Heading,
                 list: List,
                 note: Note,
+                inlineCode: InlineCodeTool,
             },
             onChange: function () {
                 console.log('Nội dung đã thay đổi');
