@@ -1,78 +1,90 @@
-export default class InlineCodeTool {
+import { IconCode } from "../svg/icons";
+
+export default class EditorJSCodeInline {
   static get isInline() {
     return true;
   }
 
-  static get CSS() {
-    return {
-      code: `
-        font-mono 
-        text-[0.95em]
-        px-[4px] py-[2px] 
-        rounded 
-        bg-zinc-200 text-red-500 
-        dark:bg-zinc-700
-      `
-    };
+  static get shortcut() {
+    return 'CMD+G';
   }
 
   static get sanitize() {
     return {
-      code: true
+        code: true
     };
   }
 
-  constructor({ api, config = {}, readOnly }) {
+  get state() {
+    return this._state;
+  }
+
+  set state(state) {
+    this._state = state;
+
+    this.button.classList.toggle(this.api.styles.inlineToolButtonActive, state);
+  }
+
+  constructor({ api }) {
     this.api = api;
-    this.readOnly = readOnly;   // <<< QUAN TRỌNG
     this.button = null;
-    this.tagName = 'CODE';
+    this._state = false;
+
+    this.tag = 'CODE';
+    this.class = `font-mono text-[0.95em] px-[4px] py-[2px] rounded bg-zinc-200 text-red-500 dark:bg-zinc-700`;
   }
 
   render() {
     this.button = document.createElement('button');
-    this.button.type = 'button';
-
-    this.button.innerHTML = `<span class="text-sm">&lt;/&gt;</span>`;
-
-    this.button.classList.add(
-      'p-1',
-      'rounded',
-      'hover:bg-zinc-200',
-      'dark:hover:bg-zinc-700',
-      'transition'
-    );
-
-    if (this.readOnly) {
-      this.button.disabled = true;
-      this.button.classList.add("opacity-50", "cursor-not-allowed");
-    }
+    this.button.type = "button";
+    this.button.innerHTML = IconCode;
+    this.button.classList.add(this.api.styles.inlineToolButton);
 
     return this.button;
   }
 
   surround(range) {
-    if (this.readOnly) return;  // <<< CHẶN MỌI EDIT
-
     if (!range) return;
 
-    const selectedText = range.extractContents();
-    const isCode = this.api.selection.findParentTag(this.tagName);
+    const wrapper = this.api.selection.findParentTag(this.tag, this.class);
 
-    if (isCode) {
-      const parent = isCode.parentNode;
-      while (isCode.firstChild) {
-        parent.insertBefore(isCode.firstChild, isCode);
-      }
-      parent.removeChild(isCode);
-      return;
+    if (wrapper) {
+      this.unwrap(wrapper);
+    } else {
+      this.wrap(range);
     }
+  }
 
-    const code = document.createElement(this.tagName);
-    code.className = InlineCodeTool.CSS.code.replace(/\s+/g, ' ');
+  wrap(range) {
+    const selectedText = range.extractContents();
+    const code = document.createElement(this.tag);
+
+    code.classList.add(...this.class.split(' '));
     code.appendChild(selectedText);
-
     range.insertNode(code);
+
     this.api.selection.expandToTag(code);
+  }
+
+  unwrap(wrapper) {
+    this.api.selection.expandToTag(wrapper);
+
+    const selection = window.getSelection();
+
+    if (selection && selection.rangeCount) {
+      const range = selection.getRangeAt(0);
+      const unwrappedContent = range.extractContents();
+
+      wrapper.remove();
+      range.insertNode(unwrappedContent);
+
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  }
+
+  checkState() {
+    const mark = this.api.selection.findParentTag(this.tag);
+    this.state = !!mark;
   }
 }

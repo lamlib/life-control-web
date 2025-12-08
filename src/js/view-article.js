@@ -8,6 +8,7 @@ import Note from '../plugin/note';
 import EditorJS from '@editorjs/editorjs';
 import { sidebar } from '../plugin/sidebar';
 import { theme } from '../plugin/theme';
+import InlineCodeTool from '../plugin/code-inline';
 
 const app = (function () {
     function _setupEditor(data = {}) {
@@ -19,6 +20,7 @@ const app = (function () {
                 heading: Heading,
                 list: List,
                 note: Note,
+                inlineCode: InlineCodeTool
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },

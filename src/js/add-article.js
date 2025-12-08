@@ -10,6 +10,8 @@ import { theme } from "../plugin/theme";
 import { toast } from "../plugin/toast";
 import EditorJS from '@editorjs/editorjs';
 import InlineCodeTool from "../plugin/code-inline";
+import EditorJSMarker from "../plugin/marker";
+import Bold from "../plugin/bold";
 
 const app = (function () {
     let _editor;    
@@ -51,6 +53,7 @@ const app = (function () {
                  list: List,
                  note: Note,
                  inlineCode: InlineCodeTool,
+                 marker: EditorJSMarker,
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },

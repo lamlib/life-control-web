@@ -58,9 +58,7 @@ export default class Bold {
   unwrap(range) {
     const bold = this.api.selection.findParentTag(this.tag);
     const text = bold.innerHTML;
-
     bold.remove();
-
     range.insertNode(document.createTextNode(text));
   }
 

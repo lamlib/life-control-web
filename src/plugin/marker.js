@@ -1,78 +1,91 @@
-export default class Marker {
+import { IconCode, IconMarker } from "../svg/icons";
+
+export default class EditorJSMarker {
   static get isInline() {
     return true;
   }
 
+  static get shortcut() {
+    return 'CMD+M';
+  }
+
   static get sanitize() {
     return {
-      mark: true
+        mark: true
     };
   }
 
-  constructor({api}) {
+  get state() {
+    return this._state;
+  }
+
+  set state(state) {
+    this._state = state;
+
+    this.button.classList.toggle(this.api.styles.inlineToolButtonActive, state);
+  }
+
+  constructor({ api }) {
     this.api = api;
     this.button = null;
     this._state = false;
+
     this.tag = 'MARK';
+    this.class = 'bg-yellow-200';
   }
 
   render() {
     this.button = document.createElement('button');
-    this.button.type = 'button';
-    this.button.classList.add(
-      'px-2', 'py-1', 'rounded', 'hover:bg-gray-100',
-      'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500'
-    );
-
-    this.button.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><!-- Icon from Huge Icons by Hugeicons - undefined --><path fill="currentColor" d="M6.755 21.244h-4c-.3 0-.57-.18-.69-.46s-.06-.6.15-.81l3.78-3.88c-.21-.58-.11-1.27.3-1.81c.72-.93.95-1.73 1.01-2.24c.1-.81.3-1.83 1.03-2.55l.47-.47c-.07-.19-.1-.39-.1-.59c0-.47.18-.91.51-1.24l4.24-4.23c.29-.29.77-.29 1.06 0s.29.77 0 1.06l-4.24 4.23c-.06.06-.07.14-.07.18s0 .12.07.18l6.35 6.35c.1.1.26.1.36 0l4.23-4.24c.29-.29.77-.29 1.06 0s.29.77 0 1.06l-4.23 4.24c-.49.5-1.21.63-1.83.41l-.48.48c-.71.72-1.73.93-2.54 1.03c-.51.06-1.31.28-2.24 1.01c-.54.42-1.23.52-1.82.3l-1.88 1.79a.76.76 0 0 1-.52.21zm-2.22-1.5h1.92l1.52-1.44l-1.03-1.03zm5.04-1.96c.12.12.33.08.47-.02c1.19-.93 2.28-1.23 2.98-1.31c.52-.06 1.26-.19 1.65-.59l.36-.36l-5.29-5.29l-.36.36c-.4.39-.53 1.09-.6 1.66c-.08.7-.38 1.79-1.31 2.98c-.12.15-.13.36-.02.47l2.11 2.11z" color="currentColor"/></svg>
-    `;
+    this.button.type = "button";
+    this.button.innerHTML = IconMarker;
+    this.button.classList.add(this.api.styles.inlineToolButton);
 
     return this.button;
   }
 
   surround(range) {
-    if (!range) {
-      return;
-    }
+    if (!range) return;
 
-    const markerWrapper = document.createElement(this.tag);
+    const wrapper = this.api.selection.findParentTag(this.tag, this.class);
 
-    markerWrapper.classList.add('bg-yellow-200');
-
-    if (this._state) {
-      this.unwrap(range);
+    if (wrapper) {
+      this.unwrap(wrapper);
     } else {
-      this.wrap(range, markerWrapper);
+      this.wrap(range);
     }
   }
 
-  wrap(range, tag) {
-    const selectedContent = range.extractContents();
-    tag.appendChild(selectedContent);
-    range.insertNode(tag);
+  wrap(range) {
+    const selectedText = range.extractContents();
+    const mark = document.createElement(this.tag);
 
-    this.api.selection.expandToTag(tag);
+    mark.classList.add(...this.class.split(' '));
+    mark.appendChild(selectedText);
+    range.insertNode(mark);
+
+    this.api.selection.expandToTag(mark);
   }
 
-  unwrap(range) {
-    const mark = this.api.selection.findParentTag(this.tag);
-    const text = mark.innerHTML;
+  unwrap(wrapper) {
+    this.api.selection.expandToTag(wrapper);
 
-    mark.remove();
+    const selection = window.getSelection();
 
-    range.insertNode(document.createTextNode(text));
+    if (selection && selection.rangeCount) {
+      const range = selection.getRangeAt(0);
+      const unwrappedContent = range.extractContents();
+
+      wrapper.remove();
+      range.insertNode(unwrappedContent);
+
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
   }
 
   checkState() {
     const mark = this.api.selection.findParentTag(this.tag);
-    
-    this._state = !!mark;
 
-    if (this._state) {
-      this.button.classList.add('bg-gray-200');
-    } else {
-      this.button.classList.remove('bg-gray-200');
-    }
+    this.state = !!mark;
   }
 }
