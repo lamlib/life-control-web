@@ -13,12 +13,18 @@
             }
         })();
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/browser/overlayscrollbars.browser.es5.min.js" integrity="sha512-GF7WfYmKBuq3HAnaWShvov9x98MKHOxtIlldp3QiesJ5M5uhIyHVq091O6RlFBgs9o0q1O4PAF4X9bCtAj4Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/styles/overlayscrollbars.min.css" integrity="sha512-2WP3kcyJFX2VpAZsV7UOpbLjGS62iunKpT+kgn72tzNGnP7mSGoVl1u5AWzi59xeOaY+N62Cldi4qNR1Ug1NQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/browser/overlayscrollbars.browser.es5.min.js"
+        integrity="sha512-GF7WfYmKBuq3HAnaWShvov9x98MKHOxtIlldp3QiesJ5M5uhIyHVq091O6RlFBgs9o0q1O4PAF4X9bCtAj4Vfw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/styles/overlayscrollbars.min.css"
+        integrity="sha512-2WP3kcyJFX2VpAZsV7UOpbLjGS62iunKpT+kgn72tzNGnP7mSGoVl1u5AWzi59xeOaY+N62Cldi4qNR1Ug1NQg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../src/css/main.css">
 </head>
 
-<body class="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200 font-roboto">
+<body class="min-h-screen bg-zinc-50 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-roboto">
     <header
         class="sticky top-0 bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700 p-4 flex justify-between items-center z-10">
         <div class="flex flex-col gap-2">
@@ -97,17 +103,13 @@
             mới</a>
     </main>
 
-    <!-- Modal xoá bài viêt -->
-    <div id="deleteModal" class="fixed inset-0 bg-gray-500/50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
+    <div id="deleteModal" class="fixed inset-0 bg-gray-500/50 dark:bg-gray-500/10 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-zinc-700 rounded-xl shadow-lg p-6 w-full max-w-md">
             <h2 class="text-xl font-semibold mb-4">Xác nhận xoá bài viết</h2>
-            <p class="mb-6 text-gray-600">Bạn có chắc chắn muốn xoá bài viết này không? Hành động này không thể hoàn
-                tác.</p>
+            <p class="mb-6 text-gray-600 dark:text-zinc-200">Bạn có chắc chắn muốn xoá bài viết này không? Hành động này không thể hoàn tác.</p>
             <div class="flex justify-end gap-2">
-                <button id="cancelDelete"
-                    class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700">Huỷ</button>
-                <button id="confirmDelete"
-                    class="px-4 py-2 rounded-md bg-red-500 hover:bg-red-600 text-white">Xoá</button>
+                <button id="cancelDelete" class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700 cursor-pointer">Huỷ</button>
+                <button id="confirmDelete" class="px-4 py-2 rounded-md bg-red-500 hover:bg-red-600 text-white cursor-pointer">Xoá</button>
             </div>
         </div>
     </div>

@@ -2,44 +2,44 @@ name: Triển khai dự án HTML tĩnh
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 
-        uses: actions/setup-node@v4 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '20.19.6'
-      
+          node-version: "20.19.6"
+
       - name: Build project
         run: npm ci && npm run build
-      
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist-build
           path: dist/
-  
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
+
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: dist-build
           path: dist/
-      
+
       - name: Deploy to server
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
@@ -50,17 +50,17 @@ jobs:
           echo "$DEPLOY_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
-          
+
           # Backup file cũ
           ssh -i ~/.ssh/deploy_key $DEPLOY_USER@$DEPLOY_HOST 'mkdir -p /var/www/backups && cp -r /var/www/html /var/www/backups/html_$(date +%s) 2>/dev/null || true'
-          
+
           # Upload file mới
           scp -i ~/.ssh/deploy_key -r dist/* $DEPLOY_USER@$DEPLOY_HOST:/var/www/html/
-      
+
       - name: Notify deployment
         if: success()
         run: echo "Deploy thành công!"
-      
+
       - name: Notify failure
         if: failure()
         run: echo "Deploy thất bại!"
