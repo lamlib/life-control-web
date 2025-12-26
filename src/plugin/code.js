@@ -1,13 +1,11 @@
 import * as monaco from 'monaco-editor';
 import { theme } from './theme.js';
 import { IconCode } from '../svg/icons.js';
+import githubDark from 'monaco-themes/themes/GitHub Dark.json'; 
+import githubLight from 'monaco-themes/themes/GitHub Light.json';
 
-import('monaco-themes/themes/Github Dark.json').then((data) => {
-  monaco.editor.defineTheme('github-dark', data);
-});
-import('monaco-themes/themes/Github Light.json').then((data) => {
-  monaco.editor.defineTheme('github-light', data);
-});
+monaco.editor.defineTheme('github-dark', githubDark);
+monaco.editor.defineTheme('github-light', githubLight);
 
 export default class CodeBlock {
   static get toolbox() {
