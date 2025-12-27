@@ -13,7 +13,7 @@
 </head>
 
 <body class="flex md:items-center items-stretch justify-center min-h-screen bg-[url('/src/img/background-login.svg')] bg-cover bg-bottom bg-no-repeat p-4">
-    <div class="w-xl backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-lg p-4 max-w-md text-zinc-800">
+    <div class="w-xl md:backdrop-blur-md md:bg-white/20 md:border md:border-white/30 rounded-xl shadow-lg p-4 max-w-md text-zinc-800">
         <form name="login" class="flex flex-col" novalidate>
             <h1 class="text-2xl font-bold text-center mb-4">ĐĂNG NHẬP</h1>
             <p id="msg-error-login" class="text-red-500 text-center text-xl">&nbsp;</p>
@@ -32,17 +32,13 @@
                     </svg>
                     <span>Đăng nhập với Google</span>
                 </button>
-
-                <button type="button" id="appleLogin"
-                    class="social-btn w-full bg-black hover:bg-gray-900 text-white font-medium p-3 rounded-xl flex items-center justify-center space-x-3 transition">
+                <button type="button" id="appleLogin" class="social-btn w-full bg-black hover:bg-gray-900 text-white font-medium p-3 rounded-xl flex items-center justify-center space-x-3 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 256 315">
-                        <path fill="#FFF"
-                            d="M213.803 167.03c.442 47.58 41.74 63.413 42.197 63.615c-.35 1.116-6.599 22.563-21.757 44.716c-13.104 19.153-26.705 38.235-48.13 38.63c-21.05.388-27.82-12.483-51.888-12.483c-24.061 0-31.582 12.088-51.51 12.871c-20.68.783-36.428-20.71-49.64-39.793c-27-39.033-47.633-110.3-19.928-158.406c13.763-23.89 38.36-39.017 65.056-39.405c20.307-.387 39.475 13.662 51.889 13.662c12.406 0 35.699-16.895 60.186-14.414c10.25.427 39.026 4.14 57.503 31.186c-1.49.923-34.335 20.044-33.978 59.822M174.24 50.199c10.98-13.29 18.369-31.79 16.353-50.199c-15.826.636-34.962 10.546-46.314 23.828c-10.173 11.763-19.082 30.589-16.678 48.633c17.64 1.365 35.66-8.964 46.64-22.262" />
+                        <path fill="#FFF" d="M213.803 167.03c.442 47.58 41.74 63.413 42.197 63.615c-.35 1.116-6.599 22.563-21.757 44.716c-13.104 19.153-26.705 38.235-48.13 38.63c-21.05.388-27.82-12.483-51.888-12.483c-24.061 0-31.582 12.088-51.51 12.871c-20.68.783-36.428-20.71-49.64-39.793c-27-39.033-47.633-110.3-19.928-158.406c13.763-23.89 38.36-39.017 65.056-39.405c20.307-.387 39.475 13.662 51.889 13.662c12.406 0 35.699-16.895 60.186-14.414c10.25.427 39.026 4.14 57.503 31.186c-1.49.923-34.335 20.044-33.978 59.822M174.24 50.199c10.98-13.29 18.369-31.79 16.353-50.199c-15.826.636-34.962 10.546-46.314 23.828c-10.173 11.763-19.082 30.589-16.678 48.633c17.64 1.365 35.66-8.964 46.64-22.262" />
                     </svg>
                     <span>Đăng nhập với Apple &nbsp;</span>
                 </button>
             </div>
-            <!-- Divider -->
             <div class="relative mb-6">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-white/20"></div>
@@ -54,11 +50,9 @@
             <div>
                 <div class="flex items-center justify-between">
                     <label for="">Email</label>
-                    <a name="notHaveAccount" href="javascript:void" class=" text-sm hover:underline">Chưa có
-                        tài khoản?</a>
+                    <a name="notHaveAccount" href="javascript:void" class=" text-sm hover:underline">Chưa có tài khoản?</a>
                 </div>
-                <input name="emailAddress" type="email" autocomplete="username"
-                    class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+                <input name="emailAddress" type="email" autocomplete="username" class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
                 <p class="text-red-500 text-sm">&nbsp;</p>
             </div>
             <div>
@@ -67,9 +61,7 @@
                     class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
                 <p class="text-red-500 text-sm">&nbsp;</p>
             </div>
-            <button type="submit"
-                class="mt-4 w-full bg-white/30 hover:bg-white/40  font-semibold p-3 rounded-xl transition">Đăng
-                nhập</button>
+            <button type="submit" class="mt-4 w-full bg-white/30 hover:bg-white/40  font-semibold p-3 rounded-xl transition">Đăng nhập</button>
         </form>
         <form name="register" class="flex flex-col hidden" novalidate>
             <h1 class="text-2xl font-bold text-center mb-4">Đăng ký</h1>
@@ -77,34 +69,26 @@
             <div>
                 <div class="flex items-center justify-between">
                     <label for="">Email</label>
-                    <a name="haveAccount" href="javascript:void" class=" text-sm hover:underline">Đã có tài
-                        khoản?</a>
+                    <a name="haveAccount" href="javascript:void" class=" text-sm hover:underline">Đã có tài khoản?</a>
                 </div>
-                <input name="emailAddress" type="email" autocomplete="username"
-                    class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+                <input name="emailAddress" type="email" autocomplete="username" class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
                 <p class="text-red-500 text-sm">&nbsp;</p>
             </div>
             <div>
                 <label for="">Mật khẩu</label>
-                <input name="password" type="password" autocomplete="new-password"
-                    class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+                <input name="password" type="password" autocomplete="new-password" class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
                 <p class="text-red-500 text-sm">&nbsp;</p>
             </div>
             <div>
                 <label for="">Nhập lại mật khẩu</label>
-                <input name="passwordConfirm" type="password" autocomplete="new-password"
-                    class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
+                <input name="passwordConfirm" type="password" autocomplete="new-password" class="w-full p-3 bg-white/10  placeholder-white/70 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50">
                 <p class="text-red-500 text-sm">&nbsp;</p>
             </div>
             <div>
                 <input type="checkbox" name="userAgree" value="agree" class="mr-2">
-                <label for="userAgree">Tôi đồng ý với <a href="javascript:void"
-                        class="text-blue-500 hover:underline">Điều khoản dịch vụ</a> và <a href="javascript:void"
-                        class="text-blue-500 text-sm hover:underline">Chính sách bảo mật</a></label>
+                <label for="userAgree">Tôi đồng ý với <a href="javascript:void" class="text-blue-500 hover:underline">Điều khoản dịch vụ</a> và <a href="javascript:void" class="text-blue-500 text-sm hover:underline">Chính sách bảo mật</a></label>
             </div>
-            <button type="submit"
-                class="w-full bg-white/30 hover:bg-white/40  font-semibold py-2 rounded-xl transition">Đăng
-                ký</button>
+            <button type="submit" class="w-full bg-white/30 hover:bg-white/40  font-semibold py-2 rounded-xl transition">Đăng ký</button>
         </form>
     </div>
     <script type="module" src="../src/js/main.js"></script>
