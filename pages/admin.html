@@ -20,7 +20,7 @@
 <body  class="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200 font-roboto">
     <header class="sticky top-0 bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700 p-4 flex justify-between items-center z-10">
         <div class="flex flex-col gap-2">
-            <h1 id="username" class="text-3xl font-bold">Sửa bài viết</h1>
+            <h1 id="username" class="text-3xl font-bold">Quản lý ứng dụng</h1>
             <h3 class="flex gap-8 text-gray-500">
                 <div class="flex gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -50,30 +50,7 @@
         </div>
     </header>
     <main class="p-4 container mx-auto flex flex-col gap-4">
-        <header class="flex justify-center gap-2">
-            <button id="tool-save" type="button" title="Lưu" class="bg-gray-200 text-gray-900 px-2 py-1 rounded-md cursor-pointer hover:text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M21 7v12q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h12zm-9 11q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-6-8h9V6H6z"/></svg>
-            </button>
-            <button id="tool-clear" type="button" title="Xoá" class="bg-gray-200 text-gray-900 px-2 py-1 rounded-md cursor-pointer hover:text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg>
-            </button>
-        </header>
-        <div id="editorjs"></div>
     </main>
-
-    <!-- Modal lưu bài viêt -->
-    <div id="saveModal" class="fixed inset-0 bg-gray-500/50 flex items-center justify-center z-50 hidden">
-        <form name="save" class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
-            <label for="articleTitle" class="block mb-2 font-medium text-gray-700">Tiêu đề</label>
-            <textarea id="articleTitle" name="articleTitle" rows="2" class="w-full p-2 mb-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none" placeholder="Nhập tiêu đề bài viết..."></textarea>
-            <label for="articleDescription" class="block mb-2 font-medium text-gray-700">Mô tả</label>
-            <textarea id="articleDescription" name="articleDescription" rows="3" class="w-full p-2 mb-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none" placeholder="Nhập mô tả ngắn..."></textarea>
-            <div class="flex justify-end gap-2">
-                <button type="button" id="cancelSave" class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700">Huỷ</button>
-                <button type="submit" id="confirmSave" class="px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white">Lưu</button>
-            </div>
-        </form>
-    </div>
 
     <script type="module" src="../src/js/main.js"></script>
     <script type="module" src="../src/js/edit-article.js"></script>

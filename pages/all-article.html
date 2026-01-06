@@ -22,6 +22,7 @@
         integrity="sha512-2WP3kcyJFX2VpAZsV7UOpbLjGS62iunKpT+kgn72tzNGnP7mSGoVl1u5AWzi59xeOaY+N62Cldi4qNR1Ug1NQg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="../src/css/components/toast.css">
 </head>
 
 <body class="min-h-screen bg-zinc-50 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-roboto">
@@ -79,18 +80,12 @@
                 <table id="articleTable" class="min-w-full divide-y divide-gray-500 rounded-xl overflow-hidden">
                     <thead class="bg-blue-500">
                         <tr>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">#
-                            </th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Tên
-                                bài viết</th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Tags
-                            </th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">
-                                Thumbnail</th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Nội
-                                dung</th>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Hành
-                                động</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">#</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Tên bài viết</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Tags</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Thumbnail</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Nội dung</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-50 uppercase tracking-wider">Hành động</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-500">
@@ -98,9 +93,7 @@
                 </table>
             </div>
         </div>
-        <a href="/pages/add-article.html"
-            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-center">Viết bài
-            mới</a>
+        <a href="/pages/add-article.html" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-center">Viết bài mới</a>
     </main>
 
     <div id="deleteModal" class="fixed inset-0 bg-gray-500/50 dark:bg-gray-500/10 flex items-center justify-center z-50 hidden">

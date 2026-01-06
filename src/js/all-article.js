@@ -45,7 +45,7 @@ const app = (function() {
                     <td class="px-6 py-2">${BtnEdit + BtnDelete}</td>
                 </tr>
                 `;
-            }
+            },
         })
     }
 

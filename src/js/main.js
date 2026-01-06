@@ -2,6 +2,7 @@ import * as datasync from '@lamlib/data-sync';
 // ============== Cấu hình ứng dụng ================
 
 const SERVICE_URL = "/api/v1";
+const PUBLIC_PAGES = ["/", "/pages/login"];
 
 // ============== Xử lý middleware ================
 /**
@@ -12,6 +13,10 @@ const SERVICE_URL = "/api/v1";
  * @param {*} request 
  */
 datasync.interceptors.before = async function (request) {
+    if(PUBLIC_PAGES.includes(location.pathname)) {
+        console.log('You are on public page');
+        return;
+    }
     let store = localStorage.getItem('lamlib_clover');
     if(store) {
         store = JSON.parse(store);
@@ -53,9 +58,16 @@ datasync.interceptors.after = async function(response) {
 datasync.registerPostEndpoint('postRegister', `${SERVICE_URL}/auth/register`);
 datasync.registerPostEndpoint('postLogin', `${SERVICE_URL}/auth/login`);
 datasync.registerGetEndpoint('getProfile', `${SERVICE_URL}/auth/profile`);
-datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
 datasync.registerPostEndpoint('postImage', `${SERVICE_URL}/files/byFile`);
+
+datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
 datasync.registerGetEndpoint('getArticles', `${SERVICE_URL}/articles`);
 datasync.registerGetEndpoint('getArticleById', `${SERVICE_URL}/articles/:id`);
 datasync.registerDeleteEndpoint('deleteArticleById', `${SERVICE_URL}/articles/:id`);
 datasync.registerPatchEndpoint('patchArticleById', `${SERVICE_URL}/articles/:id`);
+
+// Providers endpoints
+datasync.registerGetEndpoint('getProviders', `${SERVICE_URL}/providers`);
+datasync.registerGetEndpoint('deleteProviderById', `${SERVICE_URL}/providers/:id`);
+datasync.registerGetEndpoint('patchProviderById', `${SERVICE_URL}/providers/:id`);
+datasync.registerGetEndpoint('postProvider', `${SERVICE_URL}/providers/:id`);

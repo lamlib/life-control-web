@@ -1,9 +1,9 @@
 import { requestHandlers, messageState, hasError } from "@lamlib/data-sync";
 
-import { setError, clearError } from "./utils.js";
+import { setError, clearError, getOneElementOrFail } from "./utils.js";
 
 const app = (function() {
-    const { postLogin, postRegister } = requestHandlers;
+    const { postLogin, postRegister, getProviderEnabled } = requestHandlers;
 
     function _isLoginFormValid(loginForm) {
         let isFormValid = true;
