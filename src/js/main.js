@@ -75,3 +75,36 @@ datasync.registerGetEndpoint('getProviders', `${SERVICE_URL}/providers`);
 datasync.registerGetEndpoint('deleteProviderById', `${SERVICE_URL}/providers/:id`);
 datasync.registerGetEndpoint('patchProviderById', `${SERVICE_URL}/providers/:id`);
 datasync.registerGetEndpoint('postProvider', `${SERVICE_URL}/providers/:id`);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const _lamlib = {
+        dropdowns: new Map(),          
+        lastDropdownId: [],          
+    };
+    window.addEventListener('click', (event) => {
+        const dropdown = event.target.closest('[data-lamlib-trigger="dropdown"]');
+        if(dropdown) {
+            const queryString = dropdown?.dataset?.lamlibTarget;
+            if(queryString) {
+                const panel = document.querySelector(queryString);
+                panel.dataset.dropdownId = crypto.randomUUID();
+                if(!panel.classList.contains('hidden')) {
+                    _lamlib.lastDropdownId.splice(_lamlib.lastDropdownId.indexOf(panel.dataset.dropdownId), 1)
+                    _lamlib.dropdowns.delete(panel.dataset.dropdownId);
+                } else {
+                    _lamlib.lastDropdownId.push(panel.dataset.dropdownId);
+                    _lamlib.dropdowns.set(panel.dataset.dropdownId, panel);
+                }
+                panel.classList.toggle('hidden');
+            }
+        } else {
+            const lastId = _lamlib.lastDropdownId.at(-1);
+            const panel = _lamlib.dropdowns.get(lastId);
+            if(panel && !panel.classList.contains('hidden')) {
+                _lamlib.dropdowns.delete(lastId);
+                _lamlib.lastDropdownId.pop();
+                panel?.classList.add('hidden'); //TODO: find a solution with dom that removed ?
+            }
+        }
+    })
+})
