@@ -3,7 +3,7 @@ import { requestHandlers, messageState, hasError } from "@lamlib/data-sync";
 import { setError, clearError, getOneElementOrFail } from "./utils.js";
 
 const app = (function() {
-    const { postLogin, postRegister, getProviderEnabled } = requestHandlers;
+    const { postLogin, postRegister } = requestHandlers;
 
     function _isLoginFormValid(loginForm) {
         let isFormValid = true;
@@ -104,17 +104,16 @@ const app = (function() {
 
     async function _handleSubmitRegisterForm(registerForm) {
         const formData = new FormData(registerForm);
-        const data = await postRegister({
+        await postRegister({
             emailAddress: formData.get('emailAddress'),
             password: formData.get('password'),
         });
 
         if(hasError()) {
             throw new Error(messageState.error.message);
-        } else {
-            localStorage.setItem('lamlib_clover', JSON.stringify(data));
-            location.href = '/';
         }
+        
+        alert('Vui lòng xác nhận email!')
     }
 
     /** Hiển thị biểu mẫu đăng nhập */

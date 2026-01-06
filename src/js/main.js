@@ -13,10 +13,6 @@ const PUBLIC_PAGES = ["/", "/pages/login"];
  * @param {*} request 
  */
 datasync.interceptors.before = async function (request) {
-    if(PUBLIC_PAGES.includes(location.pathname)) {
-        console.log('You are on public page');
-        return;
-    }
     let store = localStorage.getItem('lamlib_clover');
     if(store) {
         store = JSON.parse(store);
@@ -32,7 +28,11 @@ datasync.interceptors.before = async function (request) {
                     }),
                     headers
                 });
-                if(!res.ok && location.pathname != '/pages/login') { // Refresh đã hết hạn, bắt bộc phải login lại.
+                if(!res.ok) { // Refresh đã hết hạn, bắt bộc phải login lại.
+                    if(PUBLIC_PAGES.includes(location.pathname)) {
+                        console.log('[Lamlib] You are on public page!');
+                        return;
+                    } 
                     location.href = '/pages/login';
                 } else {
                     const { data } = await res.json();
@@ -51,6 +51,10 @@ datasync.interceptors.before = async function (request) {
 
 datasync.interceptors.after = async function(response) {
     if(response.status == 401 && location.pathname != '/pages/login') {
+        if(PUBLIC_PAGES.includes(location.pathname)) {
+            console.log('[Lamlib] You are on public page!');
+            return;
+        }
         location.href = '/pages/login';
     }
 }
