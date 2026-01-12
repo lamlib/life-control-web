@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "@andreasnicolaou/toastify": "^1.1.1",
+    "@carbon/web-components": "^2.44.0",
     "@editorjs/editorjs": "^2.30.8",
     "@lamlib/data-sync": "^1.3.0",
     "@lamlib/pagination": "^1.1.0",

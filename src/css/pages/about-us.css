@@ -1,0 +1,28 @@
+:root {
+
+}
+
+body {
+    margin: auto;
+    font-weight: 300;
+    line-height: 200%;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.header-user__title {
+    font-size: 60px;
+    font-size: clamp(60px, -10.4225352113px + 14.0845070423vw, 260px);
+    line-height: 90%;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.header-user__subtitle {
+    margin: clamp(20px, 5vw, 35px) 0 clamp(40px, 5vw, 70px) 0;
+    font-size: 18px;
+    font-size: clamp(18px, 16.5915492958px + 0.2816901408vw, 22px);
+    font-weight: 300;
+}
