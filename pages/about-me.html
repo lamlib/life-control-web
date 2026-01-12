@@ -77,21 +77,21 @@
 <body class="font-inter-tight text-base">
     <header>
         <nav class="bg-gray-100 flex items-center justify-between mb-4" aria-label="Main navigation">
-            <ul class="text-nowrap flex gap-2 py-2 px-4 items-center">
+            <ul class="text-nowrap flex gap-2 py-3 px-4 items-center">
                 <li>
                     <a class="font-medium" href="/articles" aria-label="View all articles">Articles</a>
                 </li>
             </ul>
-            <ul class="text-nowrap flex gap-4 py-2 px-4 items-center">
+            <ul class="text-nowrap flex gap-4 py-3 px-4 items-center">
                 <li>
-                    <a type="button" href="/pages/login.html" class="font-medium" aria-label="Login to your account">Login</a>
+                    <a type="button" href="/pages/login.html" class="font-medium bg-red-500 text-white px-3 py-2 rounded-md" aria-label="Login to your account">Login</a>
                 </li>
             </ul>
         </nav>
 
         <div class="text-center px-4">
-            <p class="text-gray-500 tracking-widest text-sm uppercase mb-4">Software Engineer</p>
-            <h1 class="header-user__title">NHAT <br> NGUYEN</h1>
+            <p class="tracking-widest text-sm uppercase mb-5 text-red-500 font-medium">Software Engineer</p>
+            <h1 class="header-user__title">NHAT NGUYEN</h1>
             <p class="header-user__subtitle text-gray-400">VIET NAM - BAC NINH</p>
         </div>
     </header>
@@ -100,53 +100,55 @@
 
     <!-- Project Highlight Cards -->
     <section aria-labelledby="featured-projects" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 mt-8">
-        <div class="bg-black overflow-hidden cursor-pointer">
-            <div class="h-40 bg-gray-800 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-            </div>
-            <div class="p-4 text-white">
-                <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
-                <h2 class="text-2xl font-semibold mb-3">Factory GPT Ecosystem</h2>
-                <div class="flex justify-between text-gray-400 text-sm">
-                    <span>Foxconn corporation</span>
-                    <span class="bg-white/10 text-white px-2 py-0.5">6 modules</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="bg-black overflow-hidden cursor-pointer">
-            <div class="h-40 bg-gray-700 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                </svg>
-            </div>
-            <div class="p-4 text-white">
-                <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
-                <h2 class="text-2xl font-semibold mb-3">Training Application</h2>
-                <div class="flex justify-between text-gray-400 text-sm">
-                    <span>Foxconn corporation</span>
-                    <span class="bg-white/10 text-white px-2 py-0.5">3 modules</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-black overflow-hidden cursor-pointer">
-            <div class="h-40 bg-gray-600 flex items-center justify-center">
+        <div class="bg-gray-100 overflow-hidden cursor-pointer">
+            <div class="h-40 bg-gray-300 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V6a2 2 0 012-2h4a2 2 0 012 2v2M8 8V6a2 2 0 00-2-2H4"/><circle cx="12" cy="14" r="2"/>
                 </svg>
             </div>
-            <div class="p-4 text-white">
+            <div class="p-4 text-black">
                 <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
                 <h2 class="text-2xl font-semibold mb-3">Automatic Vehicle Guide</h2>
-                <div class="flex justify-between text-gray-400 text-sm">
+                <div class="flex justify-between text-gray-800 text-sm">
                     <span>Foxconn corporation</span>
-                    <span class="bg-white/10 text-white px-2 py-0.5">3 modules</span>
+                    <span class="bg-white/10 text-gray-800 px-2 py-0.5">3 modules</span>
                 </div>
             </div>
         </div>
+
+        <div class="bg-gray-100 overflow-hidden cursor-pointer">
+            <div class="h-40 bg-gray-300 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V6a2 2 0 012-2h4a2 2 0 012 2v2M8 8V6a2 2 0 00-2-2H4"/><circle cx="12" cy="14" r="2"/>
+                </svg>
+            </div>
+            <div class="p-4 text-black">
+                <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
+                <h2 class="text-2xl font-semibold mb-3">Smart Factory Platform</h2>
+                <div class="flex justify-between text-gray-800 text-sm">
+                    <span>Foxconn corporation</span>
+                    <span class="bg-white/10 text-gray-800 px-2 py-0.5">3 modules</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 overflow-hidden cursor-pointer">
+            <div class="h-40 bg-gray-300 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V6a2 2 0 012-2h4a2 2 0 012 2v2M8 8V6a2 2 0 00-2-2H4"/><circle cx="12" cy="14" r="2"/>
+                </svg>
+            </div>
+            <div class="p-4 text-black">
+                <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
+                <h2 class="text-2xl font-semibold mb-3">Training Application</h2>
+                <div class="flex justify-between text-gray-800 text-sm">
+                    <span>Foxconn corporation</span>
+                    <span class="bg-white/10 text-gray-800 px-2 py-0.5">3 modules</span>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <!-- Projects Table -->
@@ -158,52 +160,34 @@
                     <tr class="border-b border-dashed border-gray-300">
                         <th class="px-4 py-3 font-medium">#</th>
                         <th class="px-4 py-3 font-medium">Project Name</th>
-                        <th class="px-4 py-3 font-medium">Start Develop</th>
-                        <th class="px-4 py-3 font-medium">First Delivery</th>
-                        <th class="px-4 py-3 font-medium">Status</th>
-                        <th class="px-4 py-3 font-medium">Purpose</th>
+                        <th class="px-4 py-3 font-medium"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="border-b border-dashed border-gray-300">
                         <td class="px-4 py-3">1</td>
                         <td class="px-4 py-3 font-medium">Factory GPT Ecosystem</td>
-                        <td class="px-4 py-3">2024-01</td>
-                        <td class="px-4 py-3">2024-06</td>
-                        <td class="px-4 py-3"><span class="bg-black text-white px-2 py-1 text-sm">Active</span></td>
-                        <td class="px-4 py-3">AI-powered factory management</td>
+                        <td class="px-4 py-3">More</td>
                     </tr>
                     <tr class="border-b border-dashed border-gray-300">
                         <td class="px-4 py-3">2</td>
                         <td class="px-4 py-3 font-medium">Training Application</td>
-                        <td class="px-4 py-3">2023-08</td>
-                        <td class="px-4 py-3">2024-02</td>
-                        <td class="px-4 py-3"><span class="bg-black text-white px-2 py-1 text-sm">Active</span></td>
-                        <td class="px-4 py-3">Employee training platform</td>
+                        <td class="px-4 py-3">More</td>
                     </tr>
                     <tr class="border-b border-dashed border-gray-300">
                         <td class="px-4 py-3">3</td>
                         <td class="px-4 py-3 font-medium">Automatic Vehicle Guide</td>
-                        <td class="px-4 py-3">2023-03</td>
-                        <td class="px-4 py-3">2023-12</td>
-                        <td class="px-4 py-3"><span class="bg-black text-white px-2 py-1 text-sm">Active</span></td>
-                        <td class="px-4 py-3">AGV navigation system</td>
+                        <td class="px-4 py-3">More</td>
                     </tr>
                     <tr class="border-b border-dashed border-gray-300">
                         <td class="px-4 py-3">4</td>
                         <td class="px-4 py-3 font-medium">Life Control Web</td>
-                        <td class="px-4 py-3">2024-06</td>
-                        <td class="px-4 py-3">2024-09</td>
-                        <td class="px-4 py-3"><span class="bg-gray-200 text-gray-700 px-2 py-1 text-sm">Development</span></td>
-                        <td class="px-4 py-3">Personal productivity tool</td>
+                        <td class="px-4 py-3">More</td>
                     </tr>
                     <tr class="border-b border-dashed border-gray-300">
                         <td class="px-4 py-3">5</td>
                         <td class="px-4 py-3 font-medium">Internal Dashboard</td>
-                        <td class="px-4 py-3">2022-11</td>
-                        <td class="px-4 py-3">2023-04</td>
-                        <td class="px-4 py-3"><span class="bg-gray-400 text-white px-2 py-1 text-sm">Maintenance</span></td>
-                        <td class="px-4 py-3">Data visualization tool</td>
+                        <td class="px-4 py-3">More</td>
                     </tr>
                 </tbody>
             </table>
@@ -211,34 +195,34 @@
     </section>
 
     <!-- Workflow Section -->
-    <section aria-labelledby="workflow" class="bg-black text-white py-16 mt-12">
+    <section aria-labelledby="workflow" class="py-16 mt-12">
         <div class="px-4">
             <h2 id="workflow" class="text-4xl font-bold text-center mb-2">Professional Workflow</h2>
             <p class="text-gray-400 text-center text-lg mb-12">See how we work</p>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-white text-black flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
                         <span class="text-2xl font-bold">1</span>
                     </div>
                     <h3 class="font-semibold text-lg mb-2">Discovery</h3>
                     <p class="text-gray-400">Understand requirements and analyze the problem space</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-white text-black flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
                         <span class="text-2xl font-bold">2</span>
                     </div>
                     <h3 class="font-semibold text-lg mb-2">Design</h3>
                     <p class="text-gray-400">Create architecture and UI/UX wireframes</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-white text-black flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
                         <span class="text-2xl font-bold">3</span>
                     </div>
                     <h3 class="font-semibold text-lg mb-2">Development</h3>
                     <p class="text-gray-400">Build with clean code and best practices</p>
                 </div>
                 <div class="text-center">
-                    <div class="w-16 h-16 bg-white text-black flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
                         <span class="text-2xl font-bold">4</span>
                     </div>
                     <h3 class="font-semibold text-lg mb-2">Delivery</h3>
@@ -254,7 +238,7 @@
         <p class="text-gray-500 text-center text-lg mb-12">Technical articles and insights</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="border border-gray-200 overflow-hidden">
-                <div class="h-40 bg-gray-800"></div>
+                <div class="h-40 bg-gray-300"></div>
                 <div class="p-4">
                     <span class="text-sm text-gray-600 font-medium">Development</span>
                     <h3 class="font-semibold text-lg mt-2 mb-2">Building Scalable Web Applications</h3>
@@ -262,7 +246,7 @@
                 </div>
             </div>
             <div class="border border-gray-200 overflow-hidden">
-                <div class="h-40 bg-gray-600"></div>
+                <div class="h-40 bg-gray-300"></div>
                 <div class="p-4">
                     <span class="text-sm text-gray-600 font-medium">AI & ML</span>
                     <h3 class="font-semibold text-lg mt-2 mb-2">Introduction to Factory AI Systems</h3>
@@ -270,7 +254,7 @@
                 </div>
             </div>
             <div class="border border-gray-200 overflow-hidden">
-                <div class="h-40 bg-gray-400"></div>
+                <div class="h-40 bg-gray-300"></div>
                 <div class="p-4">
                     <span class="text-sm text-gray-600 font-medium">Career</span>
                     <h3 class="font-semibold text-lg mt-2 mb-2">My Journey as a Software Engineer</h3>
