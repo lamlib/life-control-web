@@ -2,7 +2,7 @@ import * as datasync from '@lamlib/data-sync';
 // ============== Cấu hình ứng dụng ================
 
 const SERVICE_URL = "/api/v1";
-const PUBLIC_PAGES = ["/", "/pages/login"];
+const PUBLIC_PAGES = ["/", "/pages/login", "/pages/about-me"];
 
 // ============== Xử lý middleware ================
 /**
