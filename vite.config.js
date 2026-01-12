@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         main: './index.html',
         addArticle: './pages/add-article.html',
+        aboutMe: './pages/about-me.html',
         allArticle: './pages/all-article.html',
         editArticle: './pages/edit-article.html',
         emailConfirm: './pages/email-confirm.html',
