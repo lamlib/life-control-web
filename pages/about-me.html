@@ -75,291 +75,545 @@
     </script>
 </head>
 <body class="font-inter-tight text-base">
-    <header>
-        <nav class="bg-gray-100 flex items-center justify-between mb-4" aria-label="Main navigation">
-            <ul class="text-nowrap flex gap-2 py-3 px-4 items-center">
-                <li>
-                    <a class="font-medium" href="/articles" aria-label="View all articles">Articles</a>
-                </li>
+    <!-- Navigation -->
+    <header class="nav-energy fixed top-0 left-0 right-0 z-50">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4" aria-label="Main navigation">
+            <a href="/" class="nav-logo">
+                NN
+                <span class="nav-logo-dot"></span>
+            </a>
+            <ul class="hidden md:flex items-center gap-8">
+                <li><a class="nav-link" href="#projects">Projects</a></li>
+                <li><a class="nav-link" href="#workflow">Process</a></li>
+                <li><a class="nav-link" href="#posts">Blog</a></li>
+                <li><a class="nav-link" href="#services">Services</a></li>
             </ul>
-            <ul class="text-nowrap flex gap-4 py-3 px-4 items-center">
-                <li>
-                    <a type="button" href="/pages/login.html" class="font-medium bg-red-500 text-white px-3 py-2 rounded-md" aria-label="Login to your account">Login</a>
-                </li>
-            </ul>
+            <div class="flex items-center gap-3">
+                <a href="/articles" class="nav-link hidden sm:block">Articles</a>
+                <a href="/pages/login.html" class="btn-energy btn-energy-primary text-sm py-2.5 px-5">Get Started</a>
+            </div>
         </nav>
-
-        <div class="text-center px-4">
-            <p class="tracking-widest text-sm uppercase mb-5 text-red-500 font-medium">Software Engineer</p>
-            <h1 class="header-user__title">NHAT <br> NGUYEN</h1>
-            <p class="header-user__subtitle text-gray-400">VIET NAM - BAC NINH</p>
-        </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero-energy min-h-screen flex items-center pt-24 pb-16 px-6">
+        <div class="max-w-6xl mx-auto w-full relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Content -->
+                <div class="order-2 md:order-1">
+                    <div class="status-badge mb-6">
+                        <span class="dot"></span>
+                        Open for Opportunities
+                    </div>
+
+                    <h1 class="hero-title mb-6">
+                        Hey, I'm <span class="highlight">Nhat</span>
+                    </h1>
+
+                    <p class="text-lg text-gray-500 leading-relaxed mb-8 max-w-lg">
+                        A driven <strong class="text-gray-900 font-semibold">Software Engineer</strong> building
+                        the future of tech. I turn complex problems into elegant solutions with code,
+                        creativity, and endless curiosity.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <a href="#projects" class="btn-energy btn-energy-primary">
+                            See My Work
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </a>
+                        <a href="#contact" class="btn-energy btn-energy-outline">
+                            Let's Talk
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-6 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            <span>Vietnam</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            <span>Foxconn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="order-1 md:order-2 flex justify-center hero-image-container">
+                    <div class="relative">
+                        <div class="hero-image-frame">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Nhat Nguyen - Software Engineer">
+                        </div>
+
+                        <!-- Floating Cards -->
+                        <div class="floating-card -bottom-4 -left-6">
+                            <div class="number">5+</div>
+                            <div class="label">Years Exp.</div>
+                        </div>
+
+                        <div class="floating-card -top-2 -right-6">
+                            <div class="number">20+</div>
+                            <div class="label">Projects</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Marquee -->
+    <section class="tech-marquee" aria-hidden="true">
+        <div class="tech-marquee-track">
+            <span class="tech-marquee-item">JavaScript</span>
+            <span class="tech-marquee-item">TypeScript</span>
+            <span class="tech-marquee-item">Python</span>
+            <span class="tech-marquee-item">React</span>
+            <span class="tech-marquee-item">Node.js</span>
+            <span class="tech-marquee-item">PostgreSQL</span>
+            <span class="tech-marquee-item">Docker</span>
+            <span class="tech-marquee-item">AWS</span>
+            <span class="tech-marquee-item">TensorFlow</span>
+            <span class="tech-marquee-item">JavaScript</span>
+            <span class="tech-marquee-item">TypeScript</span>
+            <span class="tech-marquee-item">Python</span>
+            <span class="tech-marquee-item">React</span>
+            <span class="tech-marquee-item">Node.js</span>
+            <span class="tech-marquee-item">PostgreSQL</span>
+            <span class="tech-marquee-item">Docker</span>
+        </div>
+    </section>
+
     <main>
-
-    <!-- Project Highlight Cards -->
-    <section aria-labelledby="featured-projects" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 mt-8">
-
-        <div class="bg-gray-100 overflow-hidden cursor-pointer">
-            <div class="h-40 bg-gray-300 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V6a2 2 0 012-2h4a2 2 0 012 2v2M8 8V6a2 2 0 00-2-2H4"/><circle cx="12" cy="14" r="2"/>
-                </svg>
-            </div>
-            <div class="p-4 text-black">
-                <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
-                <h2 class="text-2xl font-semibold mb-3">Automatic Vehicle Guide</h2>
-                <div class="flex justify-between text-gray-800 text-sm">
-                    <span>Foxconn corporation</span>
-                    <span class="bg-white/10 text-gray-800 px-2 py-0.5">3 modules</span>
+        <!-- Featured Projects -->
+        <section id="projects" aria-labelledby="featured-projects" class="section-energy bg-gray-50">
+            <div class="max-w-6xl mx-auto">
+                <div class="section-header center">
+                    <span class="section-label center">Portfolio</span>
+                    <h2 id="featured-projects" class="section-title">Featured Projects</h2>
+                    <p class="section-description">Impactful solutions I've built for enterprise clients</p>
                 </div>
-            </div>
-        </div>
 
-        <div class="bg-gray-100 overflow-hidden cursor-pointer">
-            <div class="h-40 bg-gray-300 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V6a2 2 0 012-2h4a2 2 0 012 2v2M8 8V6a2 2 0 00-2-2H4"/><circle cx="12" cy="14" r="2"/>
-                </svg>
-            </div>
-            <div class="p-4 text-black">
-                <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
-                <h2 class="text-2xl font-semibold mb-3">Smart Factory Platform</h2>
-                <div class="flex justify-between text-gray-800 text-sm">
-                    <span>Foxconn corporation</span>
-                    <span class="bg-white/10 text-gray-800 px-2 py-0.5">3 modules</span>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Project 1 -->
+                    <article class="project-card">
+                        <div class="project-card-image">
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop" alt="Automatic Vehicle Guide Project">
+                            <span class="project-card-badge">Automation</span>
+                        </div>
+                        <div class="project-card-content">
+                            <h3 class="project-card-title">Automatic Vehicle Guide</h3>
+                            <p class="project-card-description">Intelligent AGV system for automated factory logistics and material handling</p>
+                            <div class="project-card-meta">
+                                <span class="project-card-company">Foxconn</span>
+                                <div class="project-card-tags">
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">IoT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card">
+                        <div class="project-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Smart Factory Platform Project">
+                            <span class="project-card-badge">Platform</span>
+                        </div>
+                        <div class="project-card-content">
+                            <h3 class="project-card-title">Smart Factory Platform</h3>
+                            <p class="project-card-description">Manufacturing execution system with real-time monitoring & analytics</p>
+                            <div class="project-card-meta">
+                                <span class="project-card-company">Foxconn</span>
+                                <div class="project-card-tags">
+                                    <span class="project-tag">React</span>
+                                    <span class="project-tag">Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card">
+                        <div class="project-card-image">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop" alt="Training Application Project">
+                            <span class="project-card-badge">EdTech</span>
+                        </div>
+                        <div class="project-card-content">
+                            <h3 class="project-card-title">Training Application</h3>
+                            <p class="project-card-description">E-learning platform for employee skill development & certification</p>
+                            <div class="project-card-meta">
+                                <span class="project-card-company">Foxconn</span>
+                                <div class="project-card-tags">
+                                    <span class="project-tag">Vue.js</span>
+                                    <span class="project-tag">Django</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-            </div>
-        </div>
 
-        <div class="bg-gray-100 overflow-hidden cursor-pointer">
-            <div class="h-40 bg-gray-300 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8V6a2 2 0 012-2h4a2 2 0 012 2v2M8 8V6a2 2 0 00-2-2H4"/><circle cx="12" cy="14" r="2"/>
-                </svg>
-            </div>
-            <div class="p-4 text-black">
-                <h6 class="text-gray-400 text-sm uppercase tracking-wider mb-2">International</h6>
-                <h2 class="text-2xl font-semibold mb-3">Training Application</h2>
-                <div class="flex justify-between text-gray-800 text-sm">
-                    <span>Foxconn corporation</span>
-                    <span class="bg-white/10 text-gray-800 px-2 py-0.5">3 modules</span>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Projects Table -->
-    <section aria-labelledby="all-projects" class="p-4 mt-8">
-        <h2 id="all-projects" class="text-3xl font-semibold mb-4">All Projects</h2>
-        <div class="overflow-x-auto">
-            <table class="w-full text-left">
-                <thead>
-                    <tr class="border-b border-dashed border-gray-300">
-                        <th class="px-4 py-3 font-medium">#</th>
-                        <th class="px-4 py-3 font-medium">Project Name</th>
-                        <th class="px-4 py-3 font-medium"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-dashed border-gray-300">
-                        <td class="px-4 py-3">1</td>
-                        <td class="px-4 py-3 font-medium">Factory GPT Ecosystem</td>
-                        <td class="px-4 py-3 text-amber-300 text-sm">More</td>
-                    </tr>
-                    <tr class="border-b border-dashed border-gray-300">
-                        <td class="px-4 py-3">2</td>
-                        <td class="px-4 py-3 font-medium">Training Application</td>
-                        <td class="px-4 py-3 text-amber-300 text-sm">More</td>
-                    </tr>
-                    <tr class="border-b border-dashed border-gray-300">
-                        <td class="px-4 py-3">3</td>
-                        <td class="px-4 py-3 font-medium">Automatic Vehicle Guide</td>
-                        <td class="px-4 py-3 text-amber-300 text-sm">More</td>
-                    </tr>
-                    <tr class="border-b border-dashed border-gray-300">
-                        <td class="px-4 py-3">4</td>
-                        <td class="px-4 py-3 font-medium">Life Control Web</td>
-                        <td class="px-4 py-3 text-amber-300 text-sm">More</td>
-                    </tr>
-                    <tr class="border-b border-dashed border-gray-300">
-                        <td class="px-4 py-3">5</td>
-                        <td class="px-4 py-3 font-medium">Internal Dashboard</td>
-                        <td class="px-4 py-3 text-amber-300 text-sm">More</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Workflow Section -->
-    <section aria-labelledby="workflow" class="py-16 mt-12">
-        <div class="px-4">
-            <h2 id="workflow" class="text-4xl font-bold text-center mb-2">Professional Workflow</h2>
-            <p class="text-gray-400 text-center text-lg mb-12">See how we work</p>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl font-bold">1</span>
+                <!-- All Projects Table -->
+                <div class="mt-16">
+                    <h3 class="font-display text-xl font-bold text-gray-900 mb-6">All Projects</h3>
+                    <div class="projects-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="w-16">#</th>
+                                    <th>Project</th>
+                                    <th class="hidden md:table-cell">Tech Stack</th>
+                                    <th class="hidden md:table-cell w-20">Year</th>
+                                    <th class="w-20"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="row-number">01</td>
+                                    <td class="project-name">Factory GPT Ecosystem</td>
+                                    <td class="tech-stack hidden md:table-cell">Python, LangChain, React</td>
+                                    <td class="year hidden md:table-cell">2024</td>
+                                    <td class="text-right"><a href="#" class="view-link">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="row-number">02</td>
+                                    <td class="project-name">Training Application</td>
+                                    <td class="tech-stack hidden md:table-cell">Vue.js, Django, PostgreSQL</td>
+                                    <td class="year hidden md:table-cell">2023</td>
+                                    <td class="text-right"><a href="#" class="view-link">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="row-number">03</td>
+                                    <td class="project-name">Automatic Vehicle Guide</td>
+                                    <td class="tech-stack hidden md:table-cell">Python, ROS, TensorFlow</td>
+                                    <td class="year hidden md:table-cell">2023</td>
+                                    <td class="text-right"><a href="#" class="view-link">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="row-number">04</td>
+                                    <td class="project-name">Life Control Web</td>
+                                    <td class="tech-stack hidden md:table-cell">JavaScript, Vite, Tailwind</td>
+                                    <td class="year hidden md:table-cell">2024</td>
+                                    <td class="text-right"><a href="#" class="view-link">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="row-number">05</td>
+                                    <td class="project-name">Internal Dashboard</td>
+                                    <td class="tech-stack hidden md:table-cell">React, D3.js, Express</td>
+                                    <td class="year hidden md:table-cell">2022</td>
+                                    <td class="text-right"><a href="#" class="view-link">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2">Discovery</h3>
-                    <p class="text-gray-400">Understand requirements and analyze the problem space</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl font-bold">2</span>
-                    </div>
-                    <h3 class="font-semibold text-lg mb-2">Design</h3>
-                    <p class="text-gray-400">Create architecture and UI/UX wireframes</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl font-bold">3</span>
-                    </div>
-                    <h3 class="font-semibold text-lg mb-2">Development</h3>
-                    <p class="text-gray-400">Build with clean code and best practices</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-black text-white flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl font-bold">4</span>
-                    </div>
-                    <h3 class="font-semibold text-lg mb-2">Delivery</h3>
-                    <p class="text-gray-400">Deploy, test and iterate based on feedback</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Popular Posts Section -->
-    <section aria-labelledby="popular-posts" class="px-4 py-16">
-        <h2 id="popular-posts" class="text-4xl font-bold text-center mb-2">Explore Popular Posts</h2>
-        <p class="text-gray-500 text-center text-lg mb-12">Technical articles and insights</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="border border-gray-200 overflow-hidden">
-                <div class="h-40 bg-gray-300"></div>
-                <div class="p-4">
-                    <span class="text-sm text-gray-600 font-medium">Development</span>
-                    <h3 class="font-semibold text-lg mt-2 mb-2">Building Scalable Web Applications</h3>
-                    <p class="text-gray-500">Learn the fundamentals of building applications that scale...</p>
+        <!-- Workflow Section -->
+        <section id="workflow" aria-labelledby="workflow-heading" class="workflow-section section-energy">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="section-header center">
+                    <span class="section-label center text-red-400">How I Work</span>
+                    <h2 id="workflow-heading" class="section-title text-white">My Process</h2>
+                    <p class="section-description" style="color: rgba(255, 255, 255, 0.5);">A battle-tested approach to delivering great software</p>
                 </div>
-            </div>
-            <div class="border border-gray-200 overflow-hidden">
-                <div class="h-40 bg-gray-300"></div>
-                <div class="p-4">
-                    <span class="text-sm text-gray-600 font-medium">AI & ML</span>
-                    <h3 class="font-semibold text-lg mt-2 mb-2">Introduction to Factory AI Systems</h3>
-                    <p class="text-gray-500">How AI is revolutionizing manufacturing processes...</p>
-                </div>
-            </div>
-            <div class="border border-gray-200 overflow-hidden">
-                <div class="h-40 bg-gray-300"></div>
-                <div class="p-4">
-                    <span class="text-sm text-gray-600 font-medium">Career</span>
-                    <h3 class="font-semibold text-lg mt-2 mb-2">My Journey as a Software Engineer</h3>
-                    <p class="text-gray-500">Lessons learned from working on enterprise projects...</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section aria-labelledby="services" class="bg-gray-100 py-16">
-        <div class="px-4">
-            <h2 id="services" class="text-4xl font-bold text-center mb-2">Services</h2>
-            <p class="text-gray-500 text-center text-lg mb-12">What I can help you with</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 shadow-sm">
-                    <div class="w-12 h-12 bg-black flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Step 1 -->
+                    <div class="workflow-card relative">
+                        <div class="workflow-icon gradient-red">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </div>
+                        <div class="workflow-number">STEP 01</div>
+                        <h3 class="workflow-title">Discovery</h3>
+                        <p class="workflow-description">Understanding your goals, challenges, and what success looks like</p>
+                        <div class="workflow-connector hidden lg:block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </div>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2">Web Development</h3>
-                    <p class="text-gray-500">Full-stack web applications using modern frameworks</p>
-                </div>
-                <div class="bg-white p-6 shadow-sm">
-                    <div class="w-12 h-12 bg-black flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
+
+                    <!-- Step 2 -->
+                    <div class="workflow-card relative">
+                        <div class="workflow-icon gradient-orange">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
+                        </div>
+                        <div class="workflow-number">STEP 02</div>
+                        <h3 class="workflow-title">Design</h3>
+                        <p class="workflow-description">Crafting the architecture and user experience that fits perfectly</p>
+                        <div class="workflow-connector hidden lg:block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </div>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2">System Design</h3>
-                    <p class="text-gray-500">Architecture planning for scalable solutions</p>
-                </div>
-                <div class="bg-white p-6 shadow-sm">
-                    <div class="w-12 h-12 bg-black flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
+
+                    <!-- Step 3 -->
+                    <div class="workflow-card relative">
+                        <div class="workflow-icon gradient-coral">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        </div>
+                        <div class="workflow-number">STEP 03</div>
+                        <h3 class="workflow-title">Build</h3>
+                        <p class="workflow-description">Writing clean, scalable code with modern tools and practices</p>
+                        <div class="workflow-connector hidden lg:block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </div>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2">Data Analytics</h3>
-                    <p class="text-gray-500">Dashboard and reporting solutions</p>
-                </div>
-                <div class="bg-white p-6 shadow-sm">
-                    <div class="w-12 h-12 bg-black flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+
+                    <!-- Step 4 -->
+                    <div class="workflow-card">
+                        <div class="workflow-icon gradient-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        </div>
+                        <div class="workflow-number">STEP 04</div>
+                        <h3 class="workflow-title">Launch</h3>
+                        <p class="workflow-description">Deploying with confidence and iterating based on feedback</p>
                     </div>
-                    <h3 class="font-semibold text-lg mb-2">AI Integration</h3>
-                    <p class="text-gray-500">Implement AI solutions for your business</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Blog Section -->
+        <section id="posts" aria-labelledby="popular-posts" class="section-energy bg-white">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+                    <div class="section-header" style="margin-bottom: 0;">
+                        <span class="section-label">Blog</span>
+                        <h2 id="popular-posts" class="section-title">Latest Posts</h2>
+                        <p class="section-description">Ideas, tutorials, and lessons from the trenches</p>
+                    </div>
+                    <a href="/articles" class="mt-6 md:mt-0 btn-energy btn-energy-outline">
+                        All Articles
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Post 1 -->
+                    <article class="article-card">
+                        <div class="article-card-image">
+                            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop" alt="Building Scalable Web Applications">
+                        </div>
+                        <span class="article-category">Development</span>
+                        <h3 class="article-title">Building Scalable Web Apps</h3>
+                        <p class="article-excerpt">Learn the fundamentals of building apps that can handle millions of users.</p>
+                        <div class="article-meta">
+                            <span>Jan 15, 2024</span>
+                            <span class="divider"></span>
+                            <span>8 min</span>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="article-card">
+                        <div class="article-card-image">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="Introduction to Factory AI Systems">
+                        </div>
+                        <span class="article-category">AI & ML</span>
+                        <h3 class="article-title">Factory AI Systems 101</h3>
+                        <p class="article-excerpt">How AI is revolutionizing manufacturing and improving efficiency.</p>
+                        <div class="article-meta">
+                            <span>Dec 28, 2023</span>
+                            <span class="divider"></span>
+                            <span>12 min</span>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="article-card">
+                        <div class="article-card-image">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="My Journey as a Software Engineer">
+                        </div>
+                        <span class="article-category">Career</span>
+                        <h3 class="article-title">My Engineering Journey</h3>
+                        <p class="article-excerpt">Lessons learned from years of building enterprise software.</p>
+                        <div class="article-meta">
+                            <span>Nov 10, 2023</span>
+                            <span class="divider"></span>
+                            <span>6 min</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" aria-labelledby="services-heading" class="services-section section-energy">
+            <div class="max-w-6xl mx-auto">
+                <div class="section-header center">
+                    <span class="section-label center">Services</span>
+                    <h2 id="services-heading" class="section-title">What I Do</h2>
+                    <p class="section-description">Full-stack expertise to bring your ideas to life</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Service 1 -->
+                    <div class="service-card">
+                        <div class="service-icon gradient-red">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-description">Modern web apps built with React, Vue, Node.js</p>
+                        <ul class="service-list">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Responsive Design
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                REST & GraphQL APIs
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Performance Tuning
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card">
+                        <div class="service-icon gradient-orange">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">System Design</h3>
+                        <p class="service-description">Scalable architecture for enterprise needs</p>
+                        <ul class="service-list">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Microservices
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Database Design
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Cloud Architecture
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card">
+                        <div class="service-icon gradient-coral">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Data Analytics</h3>
+                        <p class="service-description">Turn your data into actionable insights</p>
+                        <ul class="service-list">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Data Visualization
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Real-time Dashboards
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                ETL Pipelines
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="service-card">
+                        <div class="service-icon gradient-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="service-title">AI Integration</h3>
+                        <p class="service-description">Supercharge your business with AI</p>
+                        <ul class="service-list">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                LLM Integration
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Machine Learning
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Automation
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contact" class="cta-section section-energy">
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <h2 class="cta-title">Ready to Build Something Great?</h2>
+                <p class="cta-description">Got a project in mind? Let's chat and make it happen. I'm always excited to take on new challenges.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:hello@nhatnguyen.dev" class="btn-energy btn-energy-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        Get In Touch
+                    </a>
+                    <a href="https://linkedin.com/in/nhatnguyen" target="_blank" rel="noopener noreferrer" class="btn-energy btn-energy-ghost-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-12" role="contentinfo">
-        <div class="px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="font-bold text-2xl mb-4">Nhat Nguyen</h3>
-                    <p class="text-gray-400">Software Engineer passionate about building impactful solutions.</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Home</a></li>
-                        <li><a href="#" class="hover:text-white transition">Projects</a></li>
-                        <li><a href="#" class="hover:text-white transition">Articles</a></li>
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-lg mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Web Development</a></li>
-                        <li><a href="#" class="hover:text-white transition">System Design</a></li>
-                        <li><a href="#" class="hover:text-white transition">Consulting</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-lg mb-4">Connect</h4>
-                    <div class="flex gap-4">
-                        <a href="https://github.com/nhatnguyen" aria-label="GitHub Profile" rel="noopener noreferrer" target="_blank" class="w-10 h-10 bg-white text-black flex items-center justify-center hover:bg-gray-200 transition">
+    <footer class="footer-energy py-16" role="contentinfo">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <a href="/" class="footer-logo inline-block mb-5">Nhat Nguyen</a>
+                    <p class="footer-description max-w-sm mb-6">Software Engineer building impactful solutions. Let's create something amazing together.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/nhatnguyen" aria-label="GitHub Profile" rel="noopener noreferrer" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
-                        <a href="https://linkedin.com/in/nhatnguyen" aria-label="LinkedIn Profile" rel="noopener noreferrer" target="_blank" class="w-10 h-10 bg-white text-black flex items-center justify-center hover:bg-gray-200 transition">
+                        <a href="https://linkedin.com/in/nhatnguyen" aria-label="LinkedIn Profile" rel="noopener noreferrer" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                         </a>
-                        <a href="https://twitter.com/nhatnguyen" aria-label="Twitter Profile" rel="noopener noreferrer" target="_blank" class="w-10 h-10 bg-white text-black flex items-center justify-center hover:bg-gray-200 transition">
+                        <a href="https://twitter.com/nhatnguyen" aria-label="Twitter Profile" rel="noopener noreferrer" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
+                <div>
+                    <h4 class="footer-heading">Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="footer-link">Home</a></li>
+                        <li><a href="#projects" class="footer-link">Projects</a></li>
+                        <li><a href="/articles" class="footer-link">Articles</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="footer-link">Web Dev</a></li>
+                        <li><a href="#services" class="footer-link">System Design</a></li>
+                        <li><a href="#services" class="footer-link">Data Analytics</a></li>
+                        <li><a href="#services" class="footer-link">AI Integration</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Nhat Nguyen. All rights reserved.</p>
+            <div class="footer-divider pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="footer-copyright">&copy; 2024 Nhat Nguyen. All rights reserved.</p>
+                <p class="footer-copyright">Made with passion in Vietnam</p>
             </div>
         </div>
     </footer>
