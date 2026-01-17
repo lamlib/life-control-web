@@ -9,12 +9,20 @@ import DOMPurify from 'dompurify';
 import dayjs from 'dayjs';
 
 const app = (function() {
-    const { getArticles } = requestHandlers;
+    const { getArticles, getProfile } = requestHandlers;
 
     const ui = {
         get articlesTable () {
             return getOneElementOrFail('#articleTable');
         },
+    }
+
+    async function _loadProfile () {
+        const profile = await getProfile();
+        if(hasError()) {
+            messageState.error = null;
+        }
+        console.log(profile);
     }
 
     /**
@@ -87,6 +95,7 @@ const app = (function() {
     function init (plugins) {
         plugins.forEach(plugin => plugin.init());
         _loadArticles();
+        _loadProfile();
     }
 
     return {
