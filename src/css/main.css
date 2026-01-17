@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
 
 /* https://tailwindcss.com/docs/preflight */
 @layer theme, base, components, utilities;
@@ -13,7 +13,7 @@
 /* Energy Design System - Young & Professional */
 @theme {
   --font-inter-tight: "Inter Tight", sans-serif;
-  --font-space: "Space Grotesk", sans-serif;
+  --font-merriweather: "Merriweather", sans-serif;
 
   /* Red Energy Color Palette */
   --color-red-50: #FEF2F2;

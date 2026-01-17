@@ -23,11 +23,11 @@ body {
    Typography
    ============================================ */
 .font-display {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
 }
 
 .energy-heading {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
@@ -52,7 +52,7 @@ body {
 }
 
 .nav-logo {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-gray-900, #171717);
@@ -140,7 +140,7 @@ body {
 
 /* Hero Title */
 .hero-title {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: clamp(3rem, 10vw, 6rem);
     font-weight: 700;
     letter-spacing: -0.04em;
@@ -250,7 +250,7 @@ body {
 }
 
 .floating-card .number {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--color-red-500, #EF4444);
@@ -283,7 +283,7 @@ body {
 .tech-marquee-item {
     flex-shrink: 0;
     padding: 0 2.5rem;
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-white, #FFFFFF);
@@ -347,7 +347,7 @@ body {
 }
 
 .section-title {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -421,7 +421,7 @@ body {
 }
 
 .project-card-title {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1.375rem;
     font-weight: 700;
     color: var(--color-gray-900, #171717);
@@ -510,13 +510,13 @@ body {
 }
 
 .projects-table .row-number {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-weight: 700;
     color: var(--color-gray-300, #D4D4D4);
 }
 
 .projects-table .project-name {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-weight: 600;
     color: var(--color-gray-900, #171717);
 }
@@ -622,7 +622,7 @@ body {
 }
 
 .workflow-number {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--color-red-400, #F87171);
@@ -631,7 +631,7 @@ body {
 }
 
 .workflow-title {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1.375rem;
     font-weight: 700;
     color: var(--color-white, #FFFFFF);
@@ -704,7 +704,7 @@ body {
 }
 
 .article-title {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1.375rem;
     font-weight: 700;
     color: var(--color-gray-900, #171717);
@@ -807,7 +807,7 @@ body {
 
 .service-title {
     position: relative;
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-gray-900, #171717);
@@ -884,7 +884,7 @@ body {
 }
 
 .cta-title {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -909,7 +909,7 @@ body {
     gap: 0.625rem;
     padding: 0.875rem 1.75rem;
     border-radius: 12px;
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
@@ -984,7 +984,7 @@ body {
 }
 
 .footer-logo {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--color-white, #FFFFFF);
@@ -998,7 +998,7 @@ body {
 }
 
 .footer-heading {
-    font-family: var(--font-space, "Space Grotesk", sans-serif);
+    font-family: var(--font-merriweather, "Merriweather", sans-serif);
     font-size: 1rem;
     font-weight: 700;
     color: var(--color-white, #FFFFFF);
