@@ -3,50 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hồ sơ - Nhat Nguyen</title>
     <link rel="stylesheet" href="../src/css/main.css">
     <link rel="stylesheet" href="../src/css/components/toast.css">
     <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header class="sticky top-0 border-b border-zinc-200 p-4 flex justify-between items-center">
-        <div class="flex flex-col gap-2">
-            <h1 id="username" class="text-3xl font-bold">Hồ sơ</h1>
-            <h3 class="flex gap-8 text-gray-500">
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M17 21.025q-.2 0-.4-.05t-.375-.175l-3-1.75q-.35-.2-.537-.537t-.188-.738V14.25q0-.4.188-.737t.537-.538l3-1.75q.175-.125.375-.175T17 11t.388.063t.362.162l3 1.75q.35.2.55.538t.2.737v3.525q0 .4-.2.738t-.55.537l-3 1.75q-.175.1-.363.163t-.387.062M2 20v-2.8q0-.825.425-1.55t1.175-1.1q1.275-.65 2.875-1.1T10 13h.35q.15 0 .3.05q-.725 1.8-.6 3.575T11.25 20zm8-8q-1.65 0-2.825-1.175T6 8t1.175-2.825T10 4t2.825 1.175T14 8t-1.175 2.825T10 12m4.65 1.85L17 15.225l2.35-1.375L17 12.5zm3.1 5.2l2.25-1.3V15l-2.25 1.325zM14 17.75l2.25 1.325V16.35L14 15.025z"/></svg>
-                    <span class="hover:underline cursor-pointer">Ẩn danh</span>
-                </div>
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M4 21q-.825 0-1.412-.587T2 19V8q0-.825.588-1.412T4 6h4V4q0-.825.588-1.412T10 2h4q.825 0 1.413.588T16 4v2h4q.825 0 1.413.588T22 8v11q0 .825-.587 1.413T20 21zm6-15h4V4h-4z"/></svg>
-                    <span class="hover:underline cursor-pointer">Không có dealine</span>
-                </div>
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M2.1 11.1L0 9q2.375-2.425 5.488-3.713T12 4q.6 0 1.2.038t1.2.112l-1.5 2.9q-.225-.025-.45-.038T12 7Q9.2 7 6.637 8.063T2.1 11.1m4.25 4.25l-2.1-2.15q1.425-1.425 3.275-2.225t3.875-.925l-1.6 3.275q-.975.275-1.85.788t-1.6 1.237m4.95 4.5q-.825-.275-1.2-1.037t0-1.513l6-12.2q.1-.2.3-.262t.4.012t.3.263t.05.387L13.9 18.65q-.2.825-.987 1.175t-1.613.025m6.35-4.5q-.175-.175-.337-.312t-.363-.288l.8-3.125q.525.35 1.038.738t.962.837zm4.225-4.225q-.8-.725-1.638-1.375T18.45 8.6l.7-3q1.35.65 2.575 1.5T24 9z"/></svg>
-                    <span class="hover:underline cursor-pointer">Truy cập 23 phút trước</span>
-                </div>
-            </h3>
-        </div>
+<body class="font-inter-tight text-base min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <header class="nav-energy fixed top-0 left-0 right-0 z-50">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="/" class="nav-logo">
+                NN
+                <span class="nav-logo-dot"></span>
+            </a>
+            <ul class="hidden md:flex items-center gap-8">
+                <li><a class="nav-link" href="/pages/about-me.html">About</a></li>
+                <li><a class="nav-link" href="/">Articles</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <a href="/pages/login.html" class="btn-energy btn-energy-primary text-sm py-2.5 px-5">Get Started</a>
+            </div>
+        </nav>
     </header>
-    <main class="p-4 container mx-auto flex flex-col gap-4">
-        <div class="bg-white rounded-2xl border border-gray-200 text-gray-500 p-4 transition flex gap-2 items-center">
-            <div>Trang chủ</div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10z"/></svg>
-            <div>Ẩn danh</div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10z"/></svg>
-            <div>Hồ sơ</div>
-        </div>
-        <div class="bg-white rounded-2xl border border-gray-200 text-gray-500 p-4 transition flex gap-2 items-center">
-            <div>Trang chủ</div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10z"/></svg>
-            <div>Ẩn danh</div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10z"/></svg>
-            <div>Hồ sơ</div>
+
+    <!-- Main Content -->
+    <main class="flex-1 pt-24 pb-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="section-title mb-2">Hồ sơ</h1>
+                <p class="text-gray-500">Quản lý thông tin cá nhân của bạn</p>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="bg-white rounded-xl border border-gray-100 p-4 flex gap-2 items-center text-sm text-gray-500 mb-6">
+                <a href="/" class="hover:text-red-500 transition">Trang chủ</a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10z"/>
+                </svg>
+                <span class="text-gray-900 font-medium">Hồ sơ</span>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="bg-white rounded-xl border border-gray-100 p-6">
+                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
+                    <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-red-500">A</span>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-900">Ẩn danh</h2>
+                        <p class="text-sm text-gray-500">Thành viên</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                        <span class="text-gray-600">Email</span>
+                        <span class="text-gray-900 font-medium">user@example.com</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100">
+                        <span class="text-gray-600">Ngày tham gia</span>
+                        <span class="text-gray-900 font-medium">01/01/2024</span>
+                    </div>
+                    <div class="flex items-center justify-between py-3">
+                        <span class="text-gray-600">Trạng thái</span>
+                        <span class="inline-flex items-center gap-1 text-green-600 font-medium">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            Hoạt động
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer-energy py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <a href="/" class="footer-logo inline-block mb-5">Nhat Nguyen</a>
+                    <p class="footer-description max-w-sm mb-6">Software Engineer building impactful solutions.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="footer-link">Home</a></li>
+                        <li><a href="/pages/about-me.html" class="footer-link">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider pt-8 flex justify-between items-center">
+                <p class="footer-copyright">&copy; 2024 Nhat Nguyen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script type="module" src="../src/js/main.js"></script>
     <script type="module" src="../src/js/profile.js"></script>
 </body>

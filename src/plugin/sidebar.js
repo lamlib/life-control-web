@@ -32,13 +32,20 @@ export const sidebar = (function () {
     }
 
     function _setupEventListeners() {
-        _ui.toggle.addEventListener('click', _handleChangeToggle);
+        if (_ui.toggle) {
+            _ui.toggle.addEventListener('click', _handleChangeToggle);
+        }
         _ui.listSubmenuToggle.forEach(button => {
             button.addEventListener('click', _handleSubmenuToggle);
         });
     }
 
     function init() {
+        // Skip initialization if sidebar elements don't exist
+        if (!_ui.bar || !_ui.toggle) {
+            console.log('[Sidebar] Sidebar elements not found, skipping initialization');
+            return;
+        }
         _setupEventListeners();
     }
 

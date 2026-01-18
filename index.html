@@ -1,136 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" data-overlayscrollbars-initialize>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang chủ</title>
-  <script>
-    (() => {
-        const theme = (localStorage.getItem('theme') || 'light');
-        if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-        }
-    })();
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/browser/overlayscrollbars.browser.es5.min.js" integrity="sha512-GF7WfYmKBuq3HAnaWShvov9x98MKHOxtIlldp3QiesJ5M5uhIyHVq091O6RlFBgs9o0q1O4PAF4X9bCtAj4Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/styles/overlayscrollbars.min.css" integrity="sha512-2WP3kcyJFX2VpAZsV7UOpbLjGS62iunKpT+kgn72tzNGnP7mSGoVl1u5AWzi59xeOaY+N62Cldi4qNR1Ug1NQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Trang chủ - Nhat Nguyen Blog</title>
   <link rel="stylesheet" href="/src/css/main.css">
   <link rel="stylesheet" href="/src/css/components/toast.css">
 </head>
-<body class="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200 font-roboto">
-  <header class="bg-zinc-100 dark:bg-zinc-900 sticky top-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-4">
-          <button id="sidebarToggle" class="p-2 rounded-full cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-800">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-            <path fill="#b70b0b" d="M27.5 5.5h-9.3l-2.1 4.2H4.4v16.8h25.2v-21Zm0 4.2h-8.2l1.1-2.1h7.1Z"/><path fill="#fac6c5" d="M28.3 27.423c-1.729-.4-2.332-2.482-1.329-4.583a8.95 8.95 0 0 1 2.217-2.779l.314-.26l.009.357a6.7 6.7 0 0 0 .748 2.425a14 14 0 0 1 .625 1.631a3.2 3.2 0 0 1-.073 1.958a2.67 2.67 0 0 1-1.111 1.087a2.8 2.8 0 0 1-1.4.164m.351-3.565c.124-.143.155-.332.164-1l.011-.825l-.2.158a1.68 1.68 0 0 0-.635 1.4c.07.214.286.448.411.446a.5.5 0 0 0 .249-.179m-15.527 7.087a3.85 3.85 0 0 1-3.031-4.563c.254-1.07.2-1.008 5.726-6.787l5.2-5.442l.738.7l.738.7l-3 3.132l-3 3.132l2.508-.054l2.508-.054l1.773-1.85l1.773-1.85l.735.707l.735.707l-5.213 5.43c-4.783 4.982-5.257 5.452-5.743 5.692a3.9 3.9 0 0 1-2.452.393Zm14.662-12.484c-.138-.082-1.546-1.4-3.129-2.921l-2.879-2.772l-.009-.421a.86.86 0 0 1 .194-.673A.99.99 0 0 1 23 11.3a69 69 0 0 1 6.277 6.023a1 1 0 0 1-1.492 1.133Z"/><path fill="#fac6c5" d="M11.578 26.851a2.1 2.1 0 0 0 2.579 2.614c.191-.2 2.407-2.515 7.387-7.737c-2.505.054-2.475-.055-4.98 0c-5.015 5.195-5.114 5.157-4.986 5.123"/>
-          </svg>
-        </div>
-        <div class="flex items-center gap-4">
-          <label class="flex items-center cursor-pointer" for="darkToggle">
-            <input type="checkbox" id="darkToggle" class="hidden peer" />
-            <span class="text-xl peer-checked:text-light-400 transition">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18t.288-.712T9 17h6q.425 0 .713.288T16 18t-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2t5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16z"/>
-              </svg>
-            </span>
-          </label>
-          <nav class="hidden md:flex items-center gap-6">
-            <a href="javascript:void(0)" class="text-sm font-medium text-red-500">Trang chủ</a>
-            <a href="/pages/about-me.html" class="text-sm font-medium hover:text-red-500">Giới thiệu</a>
-            <a href="#" class="text-sm font-medium hover:text-red-500">Thành tựu</a>
-            <a href="#" class="text-sm font-medium hover:text-red-500">Thử thách</a>
-            <a href="#" class="text-sm font-medium hover:text-red-500">Điểm nhấn</a>
-            <a href="#" class="text-sm font-medium hover:text-red-500">Bài viết</a>
-          </nav>
-          <a href="/pages/add-article.html" type="button" class="bg-red-800 hover:bg-red-900 px-4 py-2 rounded-lg text-sm font-medium text-zinc-50">
-            + Create
-          </a>
-          <div class="relative" data-lamlib-trigger="dropdown" data-lamlib-target="#account-panel">
-            <div class="rounded-full size-9 bg-zinc-800 flex items-center justify-center cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5.85 17.1q1.275-.975 2.85-1.537T12 15t3.3.563t2.85 1.537q.875-1.025 1.363-2.325T20 12q0-3.325-2.337-5.663T12 4T6.337 6.338T4 12q0 1.475.488 2.775T5.85 17.1M12 13q-1.475 0-2.488-1.012T8.5 9.5t1.013-2.488T12 6t2.488 1.013T15.5 9.5t-1.012 2.488T12 13m0 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q1.325 0 2.5-.387t2.15-1.113q-.975-.725-2.15-1.112T12 17t-2.5.388T7.35 18.5q.975.725 2.15 1.113T12 20m0-9q.65 0 1.075-.425T13.5 9.5t-.425-1.075T12 8t-1.075.425T10.5 9.5t.425 1.075T12 11m0 7.5"/></svg>
+<body class="font-inter-tight text-base">
+  <!-- Navigation -->
+  <header class="nav-energy fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="/" class="nav-logo">
+        NN
+        <span class="nav-logo-dot"></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a class="nav-link" href="/pages/about-me.html">About</a></li>
+        <li><a class="nav-link" href="/">Articles</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="/pages/add-article.html" class="btn-energy btn-energy-primary text-sm py-2.5 px-5">
+          + Create
+        </a>
+        <div class="relative" data-lamlib-trigger="dropdown" data-lamlib-target="#account-panel">
+          <div class="rounded-full size-9 bg-gray-200 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M5.85 17.1q1.275-.975 2.85-1.537T12 15t3.3.563t2.85 1.537q.875-1.025 1.363-2.325T20 12q0-3.325-2.337-5.663T12 4T6.337 6.338T4 12q0 1.475.488 2.775T5.85 17.1M12 13q-1.475 0-2.488-1.012T8.5 9.5t1.013-2.488T12 6t2.488 1.013T15.5 9.5t-1.012 2.488T12 13m0 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q1.325 0 2.5-.387t2.15-1.113q-.975-.725-2.15-1.112T12 17t-2.5.388T7.35 18.5q.975.725 2.15 1.113T12 20m0-9q.65 0 1.075-.425T13.5 9.5t-.425-1.075T12 8t-1.075.425T10.5 9.5t.425 1.075T12 11m0 7.5"/></svg>
+          </div>
+          <div id="account-panel" class="hidden absolute z-10 top-11 text-sm right-0 min-w-40 text-nowrap bg-white border border-gray-100 rounded-lg shadow-lg overflow-hidden">
+            <div class="transition-colors flex items-center gap-2 w-full px-4 py-3 cursor-pointer hover:bg-red-50 hover:text-red-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 13.077q1.258 0 2.129-.871T15 10.077t-.871-2.129T12 7.077t-2.129.871T9 10.077t.871 2.129t2.129.871M5.616 20q-.691 0-1.153-.462T4 18.384V5.616q0-.691.463-1.153T5.616 4h12.769q.69 0 1.153.463T20 5.616v12.769q0 .69-.462 1.153T18.384 20zm-.193-1h13.154q.212-.133.289-.354t.134-.412q-1.35-1.325-3.137-2.087T12 15.385t-3.863.762T5 18.235q.058.19.134.411t.289.354"/></svg>
+              <span>Nguyễn Văn Nhật</span>
             </div>
-            <div id="account-panel" class="hidden absolute z-10 top-11 text-sm right-0 min-w-40 text-nowrap opacity-80 backdrop-blur-xs bg-white text-zinc-800 rounded-md">
-              <div class="transition-colors flex items-center gap-2 w-full px-3 py-1 cursor-pointer hover:bg-red-500 hover:text-white rounded-t-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 13.077q1.258 0 2.129-.871T15 10.077t-.871-2.129T12 7.077t-2.129.871T9 10.077t.871 2.129t2.129.871M5.616 20q-.691 0-1.153-.462T4 18.384V5.616q0-.691.463-1.153T5.616 4h12.769q.69 0 1.153.463T20 5.616v12.769q0 .69-.462 1.153T18.384 20zm-.193-1h13.154q.212-.133.289-.354t.134-.412q-1.35-1.325-3.137-2.087T12 15.385t-3.863.762T5 18.235q.058.19.134.411t.289.354"/></svg>
-                <span>Nguyễn Văn Nhật</span>
-              </div>
-              <div class="transition-colors flex items-center gap-2 w-full px-3 py-1 cursor-pointer hover:bg-red-500 hover:text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14.654 21.846q-.529 0-.9-.37t-.37-.899v-5.923q0-.529.37-.9t.9-.37h5.923q.529 0 .899.37t.37.9v5.923q0 .529-.37.899t-.899.37zM10.134 21l-.361-2.892q-.479-.145-1.035-.454q-.557-.31-.947-.664l-2.668 1.135l-1.865-3.25l2.306-1.739q-.045-.27-.073-.558q-.03-.288-.03-.559q0-.252.03-.53q.028-.278.073-.626L3.258 9.126l1.865-3.212L7.771 7.03q.448-.373.97-.673q.52-.3 1.013-.464L10.134 3h3.732l.361 2.912q.575.202 1.016.463t.909.654l2.725-1.115l1.865 3.211l-2.278 1.721q0 .038.009.077q.01.039.01.077h-4.237q-.292-.652-.894-1.076T11.973 9.5q-1.046 0-1.773.727T9.473 12q0 .796.416 1.408q.415.611 1.111.904V21zm4.635-.538h5.693v-.69q-.53-.633-1.275-.972q-.746-.338-1.571-.338t-1.572.338t-1.275.971zm2.846-2.846q.53 0 .9-.37q.37-.371.37-.9t-.37-.899t-.9-.37q-.528 0-.899.37q-.37.37-.37.9q0 .528.37.898t.9.37"/></svg>
-                <span>Quản Lý Tài Khoản</span>
-              </div>
-              <div onclick="location.href = '/pages/login'" class="transition-colors flex items-center gap-2 w-full px-3 py-1 cursor-pointer hover:bg-red-500 hover:text-white rounded-b-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11 12V4q0-.425.288-.712T12 3t.713.288T13 4v8q0 .425-.288.713T12 13t-.712-.288T11 12m1 9q-1.85 0-3.488-.712T5.65 18.35t-1.937-2.863T3 12q0-1.725.638-3.312T5.425 5.85q.275-.3.7-.3t.725.3q.275.275.25.688t-.3.737q-.85.95-1.325 2.163T5 12q0 2.9 2.05 4.95T12 19q2.925 0 4.963-2.05T19 12q0-1.35-.475-2.588t-1.35-2.187q-.275-.3-.288-.7t.263-.675q.3-.3.725-.3t.7.3q1.175 1.25 1.8 2.838T21 12q0 1.85-.712 3.488t-1.925 2.862t-2.85 1.938T12 21"/></svg>
-                <span>Đăng Xuất</span>
-              </div>
+            <div class="transition-colors flex items-center gap-2 w-full px-4 py-3 cursor-pointer hover:bg-red-50 hover:text-red-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M14.654 21.846q-.529 0-.9-.37t-.37-.899v-5.923q0-.529.37-.9t.9-.37h5.923q.529 0 .899.37t.37.9v5.923q0 .529-.37.899t-.899.37zM10.134 21l-.361-2.892q-.479-.145-1.035-.454q-.557-.31-.947-.664l-2.668 1.135l-1.865-3.25l2.306-1.739q-.045-.27-.073-.558q-.03-.288-.03-.559q0-.252.03-.53q.028-.278.073-.626L3.258 9.126l1.865-3.212L7.771 7.03q.448-.373.97-.673q.52-.3 1.013-.464L10.134 3h3.732l.361 2.912q.575.202 1.016.463t.909.654l2.725-1.115l1.865 3.211l-2.278 1.721q0 .038.009.077q.01.039.01.077h-4.237q-.292-.652-.894-1.076T11.973 9.5q-1.046 0-1.773.727T9.473 12q0 .796.416 1.408q.415.611 1.111.904V21zm4.635-.538h5.693v-.69q-.53-.633-1.275-.972q-.746-.338-1.571-.338t-1.572.338t-1.275.971zm2.846-2.846q.53 0 .9-.37q.37-.371.37-.9t-.37-.899t-.9-.37q-.528 0-.899.37q-.37.37-.37.9q0 .528.37.898t.9.37"/></svg>
+              <span>Quản Lý Tài Khoản</span>
+            </div>
+            <div onclick="location.href = '/pages/login.html'" class="transition-colors flex items-center gap-2 w-full px-4 py-3 cursor-pointer hover:bg-red-50 hover:text-red-500 border-t border-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M11 12V4q0-.425.288-.712T12 3t.713.288T13 4v8q0 .425-.288.713T12 13t-.712-.288T11 12m1 9q-1.85 0-3.488-.712T5.65 18.35t-1.937-2.863T3 12q0-1.725.638-3.312T5.425 5.85q.275-.3.7-.3t.725.3q.275.275.25.688t-.3.737q-.85.95-1.325 2.163T5 12q0 2.9 2.05 4.95T12 19q2.925 0 4.963-2.05T19 12q0-1.35-.475-2.588t-1.35-2.187q-.275-.3-.288-.7t.263-.675q.3-.3.725-.3t.7.3q1.175 1.25 1.8 2.838T21 12q0 1.85-.712 3.488t-1.925 2.862t-2.85 1.938T12 21"/></svg>
+              <span>Đăng Xuất</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="flex flex-col lg:flex-row gap-8">
-      <aside id="sidebar" class="bg-zinc-100 dark:bg-zinc-800 rounded-2xl p-6 w-full lg:w-80 space-y-6">
-        <div class="space-y-4">
-          <h1 class="text-3xl font-bold">Chào bạn!</h1>
-          <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-            Mình là Nhật, mình yêu lập trình và thiết kế phần mềm. Những bài viết được chia sẻ dựa trên những trải nghiệm thực tế trong quá trình học tập và làm việc. Hy vọng chúng sẽ hữu ích cho bạn trong hành trình lập trình của mình.
-          </p>
-        </div>
-        <nav>
-          <ul class="space-y-3">
-            <li>
-              <button type="button" class="cursor-pointer text-sm font-bold flex items-center gap-3 w-full py-2 px-3 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all submenu-toggle">
-                TRANG CHỦ
-                <svg class="ml-auto h-4 w-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <ul class="ml-4 mt-2 pl-2 border-l border-zinc-300 space-y-1 hidden submenu">
-                <li><a href="#" class="cursor-pointer block text-sm px-3 py-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-800 transition">Dashboard</a></li>
-                <li><a href="#" class="cursor-pointer block text-sm px-3 py-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-800 transition">Activity</a></li>
-              </ul>
-            </li>
-            <li>
-              <button type="button" class="cursor-pointer text-sm font-bold flex items-center gap-3 w-full py-2 px-3 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all submenu-toggle">
-                BÀI VIẾT
-                <svg class="ml-auto h-4 w-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <ul class="ml-4 mt-2 pl-2 border-l border-zinc-300 space-y-1 hidden submenu">
-                <li><a href="/pages/all-article.html" class="cursor-pointer block text-sm px-3 py-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-800 transition">Tất cả</a></li>
-                <li><a href="/pages/add-article.html" class="cursor-pointer block text-sm px-3 py-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-800 transition">Thêm mới</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" class="cursor-pointer text-sm font-bold flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition">
-                KHÓA HỌC
-              </a>
-            </li>
-            <li>
-              <a href="#" class="cursor-pointer text-sm font-bold flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-800 transition">
-                LIÊN HỆ
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <main class="flex-1">
-        <div class="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3" id="articleTable">
-        </div>
-      </main>
+
+  <!-- Main Content -->
+  <main class="pt-24 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Hero Section -->
+      <div class="mb-12">
+        <h1 class="section-title mb-4">Bài Viết</h1>
+        <p class="section-description">Những bài viết được chia sẻ dựa trên trải nghiệm thực tế trong quá trình học tập và làm việc.</p>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="articleTable">
+      </div>
     </div>
-  </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-energy py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <a href="/" class="footer-logo inline-block mb-5">Nhat Nguyen</a>
+          <p class="footer-description max-w-sm mb-6">Software Engineer building impactful solutions.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Links</h4>
+          <ul class="space-y-3">
+            <li><a href="/" class="footer-link">Home</a></li>
+            <li><a href="/pages/about-me.html" class="footer-link">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Admin</h4>
+          <ul class="space-y-3">
+            <li><a href="/pages/all-article.html" class="footer-link">All Articles</a></li>
+            <li><a href="/pages/add-article.html" class="footer-link">New Article</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-divider pt-8 flex justify-between items-center">
+        <p class="footer-copyright">&copy; 2024 Nhat Nguyen. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <script type="module" src="/src/js/home.js"></script>
 </body>
 </html>

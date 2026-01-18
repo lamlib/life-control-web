@@ -3,77 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sửa bài</title>
-    <script>
-        (() => {
-            const theme = (localStorage.getItem('theme') || 'light');
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
-        })();
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/browser/overlayscrollbars.browser.es5.min.js" integrity="sha512-GF7WfYmKBuq3HAnaWShvov9x98MKHOxtIlldp3QiesJ5M5uhIyHVq091O6RlFBgs9o0q1O4PAF4X9bCtAj4Vfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/styles/overlayscrollbars.min.css" integrity="sha512-2WP3kcyJFX2VpAZsV7UOpbLjGS62iunKpT+kgn72tzNGnP7mSGoVl1u5AWzi59xeOaY+N62Cldi4qNR1Ug1NQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sửa bài viết - Admin</title>
     <link rel="stylesheet" href="../src/css/main.css">
     <link rel="stylesheet" href="../src/css/components/toast.css">
 </head>
-<body  class="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200 font-roboto">
-    <header class="sticky top-0 bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700 p-4 flex justify-between items-center z-10">
-        <div class="flex flex-col gap-2">
-            <h1 id="username" class="text-3xl font-bold">Sửa bài viết</h1>
-            <h3 class="flex gap-8 text-gray-500">
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
-                        <path fill="currentColor"
-                            d="M17 21.025q-.2 0-.4-.05t-.375-.175l-3-1.75q-.35-.2-.537-.537t-.188-.738V14.25q0-.4.188-.737t.537-.538l3-1.75q.175-.125.375-.175T17 11t.388.063t.362.162l3 1.75q.35.2.55.538t.2.737v3.525q0 .4-.2.738t-.55.537l-3 1.75q-.175.1-.363.163t-.387.062M2 20v-2.8q0-.825.425-1.55t1.175-1.1q1.275-.65 2.875-1.1T10 13h.35q.15 0 .3.05q-.725 1.8-.6 3.575T11.25 20zm8-8q-1.65 0-2.825-1.175T6 8t1.175-2.825T10 4t2.825 1.175T14 8t-1.175 2.825T10 12m4.65 1.85L17 15.225l2.35-1.375L17 12.5zm3.1 5.2l2.25-1.3V15l-2.25 1.325zM14 17.75l2.25 1.325V16.35L14 15.025z" />
-                    </svg>
-                    <span class="hover:underline cursor-pointer">Ẩn danh</span>
-                </div>
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
-                        <path fill="currentColor"
-                            d="M4 21q-.825 0-1.412-.587T2 19V8q0-.825.588-1.412T4 6h4V4q0-.825.588-1.412T10 2h4q.825 0 1.413.588T16 4v2h4q.825 0 1.413.588T22 8v11q0 .825-.587 1.413T20 21zm6-15h4V4h-4z" />
-                    </svg>
-                    <span class="hover:underline cursor-pointer">Không có dealine</span>
-                </div>
-                <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
-                        <path fill="currentColor"
-                            d="M2.1 11.1L0 9q2.375-2.425 5.488-3.713T12 4q.6 0 1.2.038t1.2.112l-1.5 2.9q-.225-.025-.45-.038T12 7Q9.2 7 6.637 8.063T2.1 11.1m4.25 4.25l-2.1-2.15q1.425-1.425 3.275-2.225t3.875-.925l-1.6 3.275q-.975.275-1.85.788t-1.6 1.237m4.95 4.5q-.825-.275-1.2-1.037t0-1.513l6-12.2q.1-.2.3-.262t.4.012t.3.263t.05.387L13.9 18.65q-.2.825-.987 1.175t-1.613.025m6.35-4.5q-.175-.175-.337-.312t-.363-.288l.8-3.125q.525.35 1.038.738t.962.837zm4.225-4.225q-.8-.725-1.638-1.375T18.45 8.6l.7-3q1.35.65 2.575 1.5T24 9z" />
-                    </svg>
-                    <span class="hover:underline cursor-pointer">Truy cập 23 phút trước</span>
-                </div>
-            </h3>
+<body class="font-inter-tight text-base min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="nav-energy sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="/" class="nav-logo">
+                    NN
+                    <span class="nav-logo-dot"></span>
+                </a>
+                <span class="text-gray-300">|</span>
+                <h1 class="text-lg font-semibold text-gray-900">Sửa bài viết</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/" class="nav-link hidden md:block">Trang chủ</a>
+                <a href="/pages/all-article.html" class="nav-link hidden md:block">Tất cả bài viết</a>
+            </div>
         </div>
     </header>
-    <main class="p-4 container mx-auto flex flex-col gap-4">
-        <header class="flex justify-center gap-2">
-            <button id="tool-save" type="button" title="Lưu" class="bg-gray-200 text-gray-900 px-2 py-1 rounded-md cursor-pointer hover:text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M21 7v12q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h12zm-9 11q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-6-8h9V6H6z"/></svg>
-            </button>
-            <button id="tool-clear" type="button" title="Xoá" class="bg-gray-200 text-gray-900 px-2 py-1 rounded-md cursor-pointer hover:text-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg>
-            </button>
-        </header>
-        <div id="editorjs"></div>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Toolbar -->
+            <header class="flex justify-center gap-2 mb-6">
+                <button id="tool-save" type="button" title="Lưu"
+                    class="btn-energy btn-energy-outline py-2 px-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M21 7v12q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h12zm-9 11q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-6-8h9V6H6z"/>
+                    </svg>
+                </button>
+                <button id="tool-clear" type="button" title="Xoá"
+                    class="btn-energy btn-energy-outline py-2 px-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/>
+                    </svg>
+                </button>
+            </header>
+
+            <!-- Editor -->
+            <div id="editorjs" class="bg-white rounded-xl border border-gray-100 p-6 min-h-[400px]"></div>
+        </div>
     </main>
 
-    <!-- Modal lưu bài viêt -->
-    <div id="saveModal" class="fixed inset-0 bg-gray-500/50 flex items-center justify-center z-50 hidden">
-        <form name="save" class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
-            <label for="articleTitle" class="block mb-2 font-medium text-gray-700">Tiêu đề</label>
-            <textarea id="articleTitle" name="articleTitle" rows="2" class="w-full p-2 mb-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none" placeholder="Nhập tiêu đề bài viết..."></textarea>
-            <label for="articleDescription" class="block mb-2 font-medium text-gray-700">Mô tả</label>
-            <textarea id="articleDescription" name="articleDescription" rows="3" class="w-full p-2 mb-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none" placeholder="Nhập mô tả ngắn..."></textarea>
-            <div class="flex justify-end gap-2">
-                <button type="button" id="cancelSave" class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 text-gray-700">Huỷ</button>
-                <button type="submit" id="confirmSave" class="px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white">Lưu</button>
+    <!-- Save Modal -->
+    <div id="saveModal" class="fixed inset-0 bg-gray-900/50 flex items-center justify-center z-50 hidden">
+        <form name="save" class="bg-white rounded-xl shadow-xl p-6 w-full max-w-md">
+            <h2 class="text-xl font-semibold mb-6 text-gray-900">Cập nhật bài viết</h2>
+
+            <label for="articleTitle" class="block mb-2 text-sm font-medium text-gray-700">Tiêu đề</label>
+            <textarea id="articleTitle" name="articleTitle" rows="2"
+                class="w-full rounded-lg p-3 mb-4 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
+                placeholder="Nhập tiêu đề bài viết..."></textarea>
+
+            <label for="articleDescription" class="block mb-2 text-sm font-medium text-gray-700">Mô tả</label>
+            <textarea id="articleDescription" name="articleDescription" rows="3"
+                class="w-full rounded-lg p-3 mb-4 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
+                placeholder="Nhập mô tả ngắn..."></textarea>
+
+            <div class="flex justify-end gap-3">
+                <button type="button" id="cancelSave" class="btn-energy btn-energy-outline">Huỷ</button>
+                <button type="submit" id="confirmSave" class="btn-energy btn-energy-primary">Lưu</button>
             </div>
         </form>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer-energy py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="footer-divider pt-8 flex justify-between items-center">
+                <p class="footer-copyright">&copy; 2024 Nhat Nguyen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script type="module" src="../src/js/main.js"></script>
     <script type="module" src="../src/js/edit-article.js"></script>

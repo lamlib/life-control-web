@@ -4,63 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Access</title>
+    <title>Account Access - Nhat Nguyen</title>
     <link rel="stylesheet" href="../src/css/main.css">
     <link rel="stylesheet" href="../src/css/components/toast.css">
     <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="flex md:items-start items-stretch justify-center min-h-svh bg-[url('/src/img/background-login.svg')] bg-cover bg-bottom bg-no-repeat md:p-4">
-    <div class="w-xl md:backdrop-blur-md bg-white md:border md:border-white/30 md:shadow-lg p-4 max-w-md text-zinc-800">
-        <form name="login" class="flex flex-col" novalidate>
-            <h1 class="text-2xl font-bold text-center mb-4">ĐĂNG NHẬP</h1>
-            <p id="msg-error-login" class="text-red-500 text-center text-xl">&nbsp;</p>
-            <div>
-                <div class="flex items-center justify-between">
-                    <label for="">Email</label>
-                    <a name="notHaveAccount" href="javascript:void" class=" text-sm hover:underline">Chưa có tài khoản?</a>
+<body class="font-inter-tight text-base min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <header class="nav-energy fixed top-0 left-0 right-0 z-50">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="/" class="nav-logo">
+                NN
+                <span class="nav-logo-dot"></span>
+            </a>
+            <ul class="hidden md:flex items-center gap-8">
+                <li><a class="nav-link" href="/pages/about-me.html">About</a></li>
+                <li><a class="nav-link" href="/">Articles</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <a href="/pages/login.html" class="btn-energy btn-energy-primary text-sm py-2.5 px-5">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center pt-24 pb-16 px-6 bg-[url('/src/img/background-login.svg')] bg-cover bg-bottom bg-no-repeat">
+        <div class="w-full max-w-md bg-white/95 backdrop-blur-md border border-gray-100 shadow-xl rounded-2xl p-8">
+            <form name="login" class="flex flex-col" novalidate>
+                <h1 class="text-2xl font-bold text-center mb-6 font-display text-gray-900">ĐĂNG NHẬP</h1>
+                <p id="msg-error-login" class="text-red-500 text-center text-sm mb-4">&nbsp;</p>
+                <div class="mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="text-sm font-medium text-gray-700">Email</label>
+                        <a name="notHaveAccount" href="javascript:void(0)" class="text-sm text-red-500 hover:underline">Chưa có tài khoản?</a>
+                    </div>
+                    <input name="emailAddress" type="email" autocomplete="username" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                    <p class="text-red-500 text-sm mt-1">&nbsp;</p>
                 </div>
-                <input name="emailAddress" type="email" autocomplete="username" class="w-full p-3 bg-gray-100 placeholder-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200">
-                <p class="text-red-500 text-sm">&nbsp;</p>
-            </div>
-            <div>
-                <label for="">Password</label>
-                <input name="password" type="password" autocomplete="current-password" class="w-full p-3 bg-gray-100 placeholder-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200">
-                <p class="text-red-500 text-sm">&nbsp;</p>
-            </div>
-            <button type="submit" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 font-semibold p-3 transition text-white cursor-pointer">Đăng nhập</button>
-        </form>
-        <form name="register" class="flex flex-col hidden" novalidate>
-            <h1 class="text-2xl font-bold text-center mb-4">Đăng ký</h1>
-            <p id="msg-error-register" class="text-red-500 text-center text-xl">&nbsp;</p>
-            <div>
-                <div class="flex items-center justify-between">
-                    <label for="">Email</label>
-                    <a name="haveAccount" href="javascript:void" class=" text-sm hover:underline">Đã có tài khoản?</a>
+                <div class="mb-4">
+                    <label class="text-sm font-medium text-gray-700 mb-2 block">Password</label>
+                    <input name="password" type="password" autocomplete="current-password" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                    <p class="text-red-500 text-sm mt-1">&nbsp;</p>
                 </div>
-                <input name="emailAddress" type="email" autocomplete="username" class="w-full p-3 bg-gray-100 placeholder-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200">
-                <p class="text-red-500 text-sm">&nbsp;</p>
+                <button type="submit" class="btn-energy btn-energy-primary w-full justify-center mt-2">Đăng nhập</button>
+            </form>
+            <form name="register" class="flex flex-col hidden" novalidate>
+                <h1 class="text-2xl font-bold text-center mb-6 font-display text-gray-900">Đăng ký</h1>
+                <p id="msg-error-register" class="text-red-500 text-center text-sm mb-4">&nbsp;</p>
+                <div class="mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="text-sm font-medium text-gray-700">Email</label>
+                        <a name="haveAccount" href="javascript:void(0)" class="text-sm text-red-500 hover:underline">Đã có tài khoản?</a>
+                    </div>
+                    <input name="emailAddress" type="email" autocomplete="username" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                    <p class="text-red-500 text-sm mt-1">&nbsp;</p>
+                </div>
+                <div class="mb-4">
+                    <label class="text-sm font-medium text-gray-700 mb-2 block">Mật khẩu</label>
+                    <input name="password" type="password" autocomplete="new-password" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                    <p class="text-red-500 text-sm mt-1">&nbsp;</p>
+                </div>
+                <div class="mb-4">
+                    <label class="text-sm font-medium text-gray-700 mb-2 block">Nhập lại mật khẩu</label>
+                    <input name="passwordConfirm" type="password" autocomplete="new-password" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition">
+                    <p class="text-red-500 text-sm mt-1">&nbsp;</p>
+                </div>
+                <div class="mb-4">
+                    <label class="flex items-start gap-2 text-sm text-gray-600 cursor-pointer">
+                        <input type="checkbox" name="userAgree" value="agree" class="mt-0.5 accent-red-500">
+                        <span>Tôi đồng ý với <a href="javascript:void(0)" class="text-red-500 hover:underline">Điều khoản dịch vụ</a> và <a href="javascript:void(0)" class="text-red-500 hover:underline">Chính sách bảo mật</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn-energy btn-energy-primary w-full justify-center mt-2">Đăng ký</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-energy py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="footer-divider pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="footer-copyright">&copy; 2024 Nhat Nguyen. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/pages/about-me.html" class="footer-link">About</a>
+                </div>
             </div>
-            <div>
-                <label for="">Mật khẩu</label>
-                <input name="password" type="password" autocomplete="new-password" class="w-full p-3 bg-gray-100 placeholder-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200">
-                <p class="text-red-500 text-sm">&nbsp;</p>
-            </div>
-            <div>
-                <label for="">Nhập lại mật khẩu</label>
-                <input name="passwordConfirm" type="password" autocomplete="new-password" class="w-full p-3 bg-gray-100 placeholder-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200">
-                <p class="text-red-500 text-sm">&nbsp;</p>
-            </div>
-            <div>
-                <input type="checkbox" name="userAgree" value="agree" class="mr-2">
-                <label for="userAgree">Tôi đồng ý với <a href="javascript:void" class="text-blue-500 hover:underline">Điều khoản dịch vụ</a> và <a href="javascript:void" class="text-blue-500 text-sm hover:underline">Chính sách bảo mật</a></label>
-            </div>
-            <button type="submit" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 font-semibold p-3 transition text-white cursor-pointer">Đăng ký</button>
-        </form>
-    </div>
+        </div>
+    </footer>
+
     <script type="module" src="../src/js/main.js"></script>
     <script type="module" src="../src/js/login.js"></script>
 </body>

@@ -11,7 +11,9 @@ export const theme = (function () {
     }
 
     function _setupEventListeners() {
-        _ui.toggle.addEventListener('change', _handleChangeToggle);
+        if (_ui.toggle) {
+            _ui.toggle.addEventListener('change', _handleChangeToggle);
+        }
     }
 
     function isDark() {
@@ -22,6 +24,11 @@ export const theme = (function () {
     }
 
     function init() {
+        // Skip dark mode initialization if toggle doesn't exist (dark mode removed from design)
+        if (!_ui.toggle) {
+            console.log('[Theme] Dark mode toggle not found, skipping initialization');
+            return;
+        }
         if(localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark");
             _ui.toggle.checked = true;
