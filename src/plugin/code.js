@@ -32,7 +32,7 @@ export default class CodeBlock {
     this.supportedLanguages = [ 'plaintext', 'javascript', 'typescript', 'html', 'css', 'json', 'python', 'c', 'cpp'];
 
     this.data = {
-      files: data.files || [{ name: 'Untitled.js', code: '', language: 'plaintext' }],
+      files: data.files || [{ name: 'untitled.txt', code: '', language: 'plaintext' }],
       activeFileIndex: data.activeFileIndex || 0
     };
   }
@@ -158,7 +158,7 @@ export default class CodeBlock {
     this.tabBarEl.appendChild(addBtn);
   }
 
-  /** 📌 Auto-resize Editor */
+  /**Auto-resize Editor */
   updateEditorHeight() {
     if (!this.editor || !this.editorContainerEl) return;
 
@@ -208,7 +208,7 @@ export default class CodeBlock {
       });
     }
 
-    // 📌 Auto-resize theo nội dung
+    //Auto-resize theo nội dung
     this.editor.onDidContentSizeChange(() => this.updateEditorHeight());
     this.updateEditorHeight();
 
