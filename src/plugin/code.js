@@ -29,10 +29,10 @@ export default class CodeBlock {
     this.statusBarEl = null;
     this.editor = null;
 
-    this.supportedLanguages = ['javascript', 'typescript', 'html', 'css', 'json', 'python', 'c', 'cpp'];
+    this.supportedLanguages = [ 'plaintext', 'javascript', 'typescript', 'html', 'css', 'json', 'python', 'c', 'cpp'];
 
     this.data = {
-      files: data.files || [{ name: 'Untitled.js', code: '', language: 'javascript' }],
+      files: data.files || [{ name: 'Untitled.js', code: '', language: 'plaintext' }],
       activeFileIndex: data.activeFileIndex || 0
     };
   }
