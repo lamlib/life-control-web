@@ -51,7 +51,7 @@ const app = (function() {
                             </div>
                             <div class="flex items-center gap-2 text-gray-400">
                                 <time datetime="${element.publishedAt}">${_convertPublishDate(element.publishedAt)}</time>
-                                <div class="flex items-center gap-1">
+                                <div class="flex items-center gap-1 text-nowrap">
                                     <span>${element.viewCount}</span> lượt xem
                                 </div>
                             </div>

@@ -33,8 +33,7 @@ const app = (function() {
                 const Thumbnail = `<img src="${DOMPurify.sanitize(article.thumbnail)}" class="w-16 h-16 object-cover rounded" alt="Thumbnail" />`
                 const BtnView = `<a href="/pages/view-article?id=${DOMPurify.sanitize(article.id)}" class="text-blue-500 hover:text-blue-700">Xem</a>`;
                 const BtnEdit = `<a href="/pages/edit-article?id=${DOMPurify.sanitize(article.id)}" class="text-orange-500 hover:text-orange-700 mr-2">Sửa</a>`;
-                const BtnDelete = `<button data-id="${DOMPurify.sanitize(article.id)}" class="text-red-500 hover:text-red-700 deleteBtn">Xoá</button>`;
-                
+                const BtnDelete = `<button data-id="${DOMPurify.sanitize(article.id)}" class="text-red-500 hover:text-red-700 cursor-pointer deleteBtn">Xoá</button>`;
                 return `
                 <tr>
                     <td class="px-6 py-2">${DOMPurify.sanitize(idx + 1)}</td>
