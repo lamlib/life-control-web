@@ -17,14 +17,6 @@ const app = (function() {
         },
     }
 
-    async function _loadProfile () {
-        const profile = await getProfile();
-        if(hasError()) {
-            messageState.error = null;
-        }
-        console.log(profile);
-    }
-
     /**
      * @param {string | undefined} date 
      */
@@ -95,7 +87,6 @@ const app = (function() {
     function init (plugins) {
         plugins.forEach(plugin => plugin.init());
         _loadArticles();
-        _loadProfile();
     }
 
     return {

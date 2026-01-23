@@ -6,6 +6,7 @@ import Heading from '../plugin/heading';
 import List from '../plugin/list';
 import Note from '../plugin/note';
 import Table from '../plugin/table';
+import { toast } from '../plugin/toast.js';
 import EditorJS from '@editorjs/editorjs';
 import InlineCodeTool from "../plugin/code-inline";
 
@@ -75,11 +76,11 @@ const app = (function () {
             const title = _ui.saveForm.articleTitle.value.trim();
             const description = _ui.saveForm.articleDescription.value.trim();
             if(!title) {
-                alert('Vui lòng nhập tiêu đề bài viết');
+                toast.warning('Hệ thống', 'Vui lòng nhập tiêu đề bài viết');
                 return;
             }
             if(!description) {
-                alert('Vui lòng nhập mô tả bài viết');
+                toast.warning('Hệ thống', 'Vui lòng nhập mô tả bài viết');
                 return;
             }
             const data = await _editor.save();
@@ -89,10 +90,10 @@ const app = (function () {
                 content: JSON.stringify(data),
             }, { id: _article.id });
             if(hasError()) {
-                alert('Lỗi, không thể chỉnh sửa bài viết, vui lòng thử lại sau.');
+                toast.error('Hệ thống', 'không thể chỉnh sửa bài viết, vui lòng thử lại sau.');
             } else {
-                alert('Chỉnh sửa bài viết thành công!');
-                location.href = '/pages/all-article';
+                toast.success('Hệ thống', 'Cập nhập bài viết thành công!');
+                _ui.saveModal.classList.add('hidden');
             }
         });
         _ui.saveModal.addEventListener('click', (e) => {

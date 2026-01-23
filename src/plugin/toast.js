@@ -426,8 +426,8 @@ class ToastFactory {
     }
 }
 
-const toast = new ToastFactory('bottom-right', {
-    animationType: 'none',
+const toast = new ToastFactory('top-center', {
+    animationType: 'slide',
     closeButton: true,
     showIcons: false,
 });

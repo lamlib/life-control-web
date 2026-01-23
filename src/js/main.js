@@ -21,7 +21,7 @@ datasync.interceptors.before = async function (request) {
                 const headers = new Headers();
                 headers.append('Accept', 'application/json')
                 headers.append('Content-Type', 'application/json')
-                const res = await fetch('/api/v1/auth/refresh', {
+                const res = await fetch(`${SERVICE_URL}/auth/refresh`, {
                     method: 'POST',
                     body: JSON.stringify({
                         refreshToken: store.refreshToken,
