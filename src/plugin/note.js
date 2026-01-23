@@ -73,7 +73,7 @@ export default class Note {
 
     this.container = document.createElement('div');
     this.container.classList.add(
-      'rounded-lg', 'p-4', 'my-4', 'border-l-4'
+      'p-4', 'my-4', 'border-l-4'
     );
     this._updateStyle(this.container);
 
@@ -105,7 +105,7 @@ export default class Note {
   }
 
   _updateStyle(container) {
-    container.className = 'rounded-lg p-4 my-4 border-l-4';
+    container.className = 'p-4 my-4 border-l-4';
     const classes = this.getTypeClasses();
     if (classes[this.data.type]) {
       classes[this.data.type].split(' ').forEach(cls => container.classList.add(cls));
