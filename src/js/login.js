@@ -1,9 +1,11 @@
 import { requestHandlers, messageState, hasError } from "@lamlib/data-sync";
 
 import { setError, clearError, getOneElementOrFail } from "./utils.js";
+import { LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USER_KEY } from "./main.js";
+import { deleteDataOnLocalStorage } from "./helpers.js";
 
 const app = (function() {
-    const { postLogin, postRegister } = requestHandlers;
+    const { postLogin, postRegister, getProfile } = requestHandlers;
 
     function _isLoginFormValid(loginForm) {
         let isFormValid = true;
@@ -97,7 +99,10 @@ const app = (function() {
         if(hasError()) {
             throw new Error(messageState.error.message);
         } else {
-            localStorage.setItem('lamlib_clover', JSON.stringify(data));
+            // Lay thong tin nguoi dung
+            localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(data));
+            const user = await getProfile();
+            localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
             location.href = '/';
         }
     }
@@ -168,12 +173,8 @@ const app = (function() {
         });
     }
 
-    function _deleteLocalStorage() {
-        localStorage.removeItem('lamlib_clover');
-    }
-
     function init () {
-        _deleteLocalStorage();
+        deleteDataOnLocalStorage();
         _setupEventListener();
     }
 

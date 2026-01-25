@@ -1,8 +1,27 @@
 import * as datasync from '@lamlib/data-sync';
 // ============== Cấu hình ứng dụng ================
 
-const SERVICE_URL = "https://lamlib.com/api/v1";
+const SERVICE_URL = "/api/v1";
 const PUBLIC_PAGES = ["/", "/pages/login", "/pages/about-me", "/pages/view-article"];
+export const LOCAL_STORAGE_TOKEN_KEY = 'lamlib_clover';
+export const LOCAL_STORAGE_USER_KEY = 'lamlib_user';
+
+datasync.registerPostEndpoint('postRegister', `${SERVICE_URL}/auth/register`);
+datasync.registerPostEndpoint('postLogin', `${SERVICE_URL}/auth/login`);
+datasync.registerGetEndpoint('getProfile', `${SERVICE_URL}/auth/profile`);
+datasync.registerPostEndpoint('postImage', `${SERVICE_URL}/files/byFile`);
+
+datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
+datasync.registerGetEndpoint('getArticles', `${SERVICE_URL}/articles`);
+datasync.registerGetEndpoint('getArticleById', `${SERVICE_URL}/articles/:id`);
+datasync.registerDeleteEndpoint('deleteArticleById', `${SERVICE_URL}/articles/:id`);
+datasync.registerPatchEndpoint('patchArticleById', `${SERVICE_URL}/articles/:id`);
+
+// Providers endpoints
+datasync.registerGetEndpoint('getProviders', `${SERVICE_URL}/providers`);
+datasync.registerGetEndpoint('deleteProviderById', `${SERVICE_URL}/providers/:id`);
+datasync.registerGetEndpoint('patchProviderById', `${SERVICE_URL}/providers/:id`);
+datasync.registerGetEndpoint('postProvider', `${SERVICE_URL}/providers/:id`);
 
 // ============== Xử lý middleware ================
 /**
@@ -13,7 +32,7 @@ const PUBLIC_PAGES = ["/", "/pages/login", "/pages/about-me", "/pages/view-artic
  * @param {*} request 
  */
 datasync.interceptors.before = async function (request) {
-    let store = localStorage.getItem('lamlib_clover');
+    let store = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     if(store) {
         store = JSON.parse(store);
         if(store?.accessToken) {
@@ -37,7 +56,9 @@ datasync.interceptors.before = async function (request) {
                 } else {
                     const { data } = await res.json();
                     store = data;
-                    localStorage.setItem('lamlib_clover', JSON.stringify(store));
+                    localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, JSON.stringify(store));
+                    const user = await datasync.requestHandlers.getProfile();
+                    localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
                 }
             }
             request.headers.append('Authorization', 'Bearer ' + store.accessToken);
@@ -58,23 +79,6 @@ datasync.interceptors.after = async function(response) {
         location.href = '/pages/login';
     }
 }
-
-datasync.registerPostEndpoint('postRegister', `${SERVICE_URL}/auth/register`);
-datasync.registerPostEndpoint('postLogin', `${SERVICE_URL}/auth/login`);
-datasync.registerGetEndpoint('getProfile', `${SERVICE_URL}/auth/profile`);
-datasync.registerPostEndpoint('postImage', `${SERVICE_URL}/files/byFile`);
-
-datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
-datasync.registerGetEndpoint('getArticles', `${SERVICE_URL}/articles`);
-datasync.registerGetEndpoint('getArticleById', `${SERVICE_URL}/articles/:id`);
-datasync.registerDeleteEndpoint('deleteArticleById', `${SERVICE_URL}/articles/:id`);
-datasync.registerPatchEndpoint('patchArticleById', `${SERVICE_URL}/articles/:id`);
-
-// Providers endpoints
-datasync.registerGetEndpoint('getProviders', `${SERVICE_URL}/providers`);
-datasync.registerGetEndpoint('deleteProviderById', `${SERVICE_URL}/providers/:id`);
-datasync.registerGetEndpoint('patchProviderById', `${SERVICE_URL}/providers/:id`);
-datasync.registerGetEndpoint('postProvider', `${SERVICE_URL}/providers/:id`);
 
 document.addEventListener('DOMContentLoaded', () => {
     const _lamlib = {

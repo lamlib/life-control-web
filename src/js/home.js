@@ -3,13 +3,16 @@ import { hasError, requestHandlers, messageState } from '@lamlib/data-sync';
 import { getOneElementOrFail } from './utils';
 import { sidebar } from '../plugin/sidebar.js';
 import { theme } from '../plugin/theme.js';
+import { navbar } from '../plugin/navbar.js';
 import { toast } from '../plugin/toast.js';
 import fallbackAvatar from '../img/fallback/avatar.svg';
 import DOMPurify from 'dompurify';
 import dayjs from 'dayjs';
+import { LOCAL_STORAGE_USER_KEY } from './main.js';
+import { retriveUserPublicDataFromLocalStorage } from './helpers.js';
 
 const app = (function() {
-    const { getArticles, getProfile } = requestHandlers;
+    const { getArticles } = requestHandlers;
 
     const ui = {
         get articlesTable () {
@@ -17,9 +20,6 @@ const app = (function() {
         },
     }
 
-    /**
-     * @param {string | undefined} date 
-     */
     function _convertPublishDate(date) {
         if(date == null) {
             return 'Chưa xuất bản';
@@ -85,7 +85,8 @@ const app = (function() {
     }
 
     function init (plugins) {
-        plugins.forEach(plugin => plugin.init());
+        const userPublicData = retriveUserPublicDataFromLocalStorage()
+        plugins.forEach(plugin => plugin.init(userPublicData));
         _loadArticles();
     }
 
@@ -95,6 +96,6 @@ const app = (function() {
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    const plugins = [ sidebar, theme ];
+    const plugins = [ sidebar, theme, navbar ];
     app.init(plugins);
 });
