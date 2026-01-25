@@ -1,11 +1,6 @@
 import * as monaco from 'monaco-editor';
 import { theme } from './theme.js';
 import { IconCode } from '../svg/icons.js';
-import githubDark from 'monaco-themes/themes/GitHub Dark.json'; 
-import githubLight from 'monaco-themes/themes/GitHub Light.json';
-
-monaco.editor.defineTheme('github-dark', githubDark);
-monaco.editor.defineTheme('github-light', githubLight);
 
 export default class CodeBlock {
   static get toolbox() {
@@ -179,7 +174,6 @@ export default class CodeBlock {
     this.editor = monaco.editor.create(this.editorContainerEl, {
       value: file.code,
       language: file.language,
-      theme: theme.isDark() ? 'github-dark' : 'github-light',
       readOnly: this.readOnly,
       minimap: { enabled: false },
       padding: { top: 20, bottom: 20 },

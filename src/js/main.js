@@ -6,13 +6,25 @@ const PUBLIC_PAGES = ["/", "/pages/login", "/pages/about-me", "/pages/view-artic
 export const LOCAL_STORAGE_TOKEN_KEY = 'lamlib_clover';
 export const LOCAL_STORAGE_USER_KEY = 'lamlib_user';
 
+
 datasync.setLoadingHooks({
     onQueueAdd: () => {
-        document.getElementById('loading')?.classList.replace('hidden', 'flex');
+        const loader = document.getElementById('loading'); 
+        if(loader && loader.classList.contains('hidden')) {
+            loader.classList.replace('hidden', 'flex');
+        }
     },
     onQueueEmpty: () => {
-        document.getElementById('loading')?.classList.replace('flex', 'hidden');
+        const loader = document.getElementById('loading'); 
+        if(loader && loader.classList.contains('flex')) {
+            loader.classList.replace('flex', 'hidden');
+        }
     },
+});
+
+datasync.setLoadingDelay({
+    queueAddDelay: 0,
+    queueEmptyDelay: 250,
 })
 
 datasync.registerPostEndpoint('postRegister', `${SERVICE_URL}/auth/register`);
@@ -119,5 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 panel?.classList.add('hidden'); //TODO: find a solution with dom that removed ?
             }
         }
-    })
+    });
+    if(window.OverlayScrollbarsGlobal) {
+        const { OverlayScrollbars } = OverlayScrollbarsGlobal;
+        OverlayScrollbars(document.body, {});
+    }
 })
