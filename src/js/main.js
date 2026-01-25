@@ -1,10 +1,19 @@
 import * as datasync from '@lamlib/data-sync';
 // ============== Cấu hình ứng dụng ================
 
-const SERVICE_URL = "/api/v1";
+const SERVICE_URL = "https://lamlib.com/api/v1";
 const PUBLIC_PAGES = ["/", "/pages/login", "/pages/about-me", "/pages/view-article"];
 export const LOCAL_STORAGE_TOKEN_KEY = 'lamlib_clover';
 export const LOCAL_STORAGE_USER_KEY = 'lamlib_user';
+
+datasync.setLoadingHooks({
+    onQueueAdd: () => {
+        document.getElementById('loading')?.classList.replace('hidden', 'flex');
+    },
+    onQueueEmpty: () => {
+        document.getElementById('loading')?.classList.replace('flex', 'hidden');
+    },
+})
 
 datasync.registerPostEndpoint('postRegister', `${SERVICE_URL}/auth/register`);
 datasync.registerPostEndpoint('postLogin', `${SERVICE_URL}/auth/login`);
