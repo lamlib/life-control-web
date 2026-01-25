@@ -19,7 +19,7 @@ export const navbar = (function () {
 
     function _setupEventListeners() {
         _ui.accountPanel.addEventListener('click', (event) => {
-            const isLogout = event.target.closest('#nabar-logout');
+            const isLogout = event.target.closest('#navbar-logout');
             if(isLogout) {
                 deleteDataOnLocalStorage();
                 location.reload();
