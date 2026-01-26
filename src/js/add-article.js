@@ -1,17 +1,17 @@
-import MonacoCodeBlock from "../plugin/code";
-import Heading from "../plugin/heading";
-import List from "../plugin/list";
+import MonacoCodeBlock from "./plugin/code";
+import Heading from "./plugin/heading";
+import List from "./plugin/list";
 import { getOneElementOrFail } from "./utils";
 import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator, messageState } from'@lamlib/data-sync';
-import Delimiter from "../plugin/delimiter";
-import Note from "../plugin/note";
-import { sidebar } from "../plugin/sidebar";
-import { theme } from "../plugin/theme";
-import { toast } from "../plugin/toast";
+import Delimiter from "./plugin/delimiter";
+import Note from "./plugin/note";
+import { sidebar } from "./plugin/sidebar";
+import { theme } from "./plugin/theme";
+import { toast } from "./plugin/toast";
 import EditorJS from '@editorjs/editorjs';
-import InlineCodeTool from "../plugin/code-inline";
-import EditorJSMarker from "../plugin/marker";
-import Bold from "../plugin/bold";
+import InlineCodeTool from "./plugin/code-inline";
+import EditorJSMarker from "./plugin/marker";
+import Bold from "./plugin/bold";
 
 const app = (function () {
     let _editor;    

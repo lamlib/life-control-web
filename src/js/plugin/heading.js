@@ -1,4 +1,4 @@
-import { IconH, IconH1, IconH2, IconH3, IconH4, IconH5, IconH6 } from "../svg/icons";
+import { IconH, IconH1, IconH2, IconH3, IconH4, IconH5, IconH6 } from "../../svg/icons";
 
 export default class Heading {
   static get toolbox() {

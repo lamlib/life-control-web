@@ -1,9 +1,15 @@
-export default class Image {
+import { requestHandlers as apiService, hasError, setResponseOperator, resetResponseOperator, messageState } from'@lamlib/data-sync';
+
+export default class ImageBlock {
   static get toolbox() {
     return {
       title: 'Image',
       icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Huge Icons by Hugeicons - undefined --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="currentColor"><circle cx="7.5" cy="7.5" r="1.5"/><path d="M2.5 12c0-4.478 0-6.718 1.391-8.109S7.521 2.5 12 2.5c4.478 0 6.718 0 8.109 1.391S21.5 7.521 21.5 12c0 4.478 0 6.718-1.391 8.109S16.479 21.5 12 21.5c-4.478 0-6.718 0-8.109-1.391S2.5 16.479 2.5 12"/><path d="M5 21c4.372-5.225 9.274-12.116 16.498-7.458"/></g></svg>'
     };
+  }
+
+  static get isReadOnlySupported() {
+    return true;
   }
 
   static get pasteConfig() {
@@ -19,9 +25,10 @@ export default class Image {
     };
   }
 
-  constructor({data, api, config}) {
+  constructor({data, api, config, readOnly}) {
     this.api = api;
     this.config = config || {};
+    this.readOnly = readOnly || false;
     this.data = {
       url: data.url || '',
       caption: data.caption || '',
@@ -53,6 +60,15 @@ export default class Image {
 
     if (this.data.url) {
       this._createImage(this.data.url);
+      return this.wrapper;
+    }
+
+    // In readonly mode, show nothing if there's no image
+    if (this.readOnly) {
+      const placeholder = document.createElement('div');
+      placeholder.classList.add('p-4', 'text-center', 'text-gray-400', 'text-sm');
+      placeholder.textContent = 'No image';
+      this.wrapper.appendChild(placeholder);
       return this.wrapper;
     }
 
@@ -120,17 +136,18 @@ export default class Image {
     return this.wrapper;
   }
 
-  _uploadImage(file) {
-    // Here you should implement your own image upload logic
-    // For this example, we'll use FileReader to create a data URL
-    const reader = new FileReader();
-    
-    reader.onload = (e) => {
-      this.data.url = e.target.result;
-      this._createImage(this.data.url);
-    };
-    
-    reader.readAsDataURL(file);
+  async _uploadImage(file) {
+    const formData = new FormData();
+    formData.append('image', file);
+    setResponseOperator({ picker: result => result });
+    const data = await apiService.postImage(formData);
+    resetResponseOperator();
+    if(hasError()) {
+        alert('Lỗi, không thể lưu image, vui lòng thử lại sau.');
+    } else {
+        this.data.url = data.file.url;
+        this._createImage(this.data.url);
+    }
   }
 
   _createImage(url) {
@@ -142,18 +159,29 @@ export default class Image {
     image.src = url;
     image.alt = this.data.caption;
     
-    caption.contentEditable = true;
+    // Make caption non-editable in readonly mode
+    caption.contentEditable = !this.readOnly;
     caption.dataset.placeholder = 'Enter a caption';
     caption.classList.add(
       'mt-2', 'text-center', 'text-sm', 'text-gray-500',
-      'focus:outline-none', 'empty:before:content-[attr(data-placeholder)]',
-      'empty:before:text-gray-400'
+      'focus:outline-none'
     );
+    
+    // Only add placeholder styles if not in readonly mode
+    if (!this.readOnly) {
+      caption.classList.add(
+        'empty:before:content-[attr(data-placeholder)]',
+        'empty:before:text-gray-400'
+      );
+    }
+    
     caption.innerHTML = this.data.caption;
 
-    caption.addEventListener('input', () => {
-      this.data.caption = caption.innerHTML;
-    });
+    if (!this.readOnly) {
+      caption.addEventListener('input', () => {
+        this.data.caption = caption.innerHTML;
+      });
+    }
 
     const container = document.createElement('div');
     container.classList.add('relative');
@@ -173,16 +201,20 @@ export default class Image {
       container.classList.add('inline-block');
     }
 
-    const controls = this._createControls();
-    controls.classList.add(
-      'absolute', 'right-[-24px]', 'top-1/2', '-translate-y-1/2',
-      'opacity-0', 'group-hover:opacity-100',
-      'transition-opacity', 'bg-white', 'rounded-lg',
-      'shadow-sm', 'p-1', 'flex', 'flex-col', 'gap-1'
-    );
-
     container.appendChild(image);
-    container.appendChild(controls);
+    
+    // Only add controls in edit mode
+    if (!this.readOnly) {
+      const controls = this._createControls();
+      controls.classList.add(
+        'absolute', 'right-[-24px]', 'top-1/2', '-translate-y-1/2',
+        'opacity-0', 'group-hover:opacity-100',
+        'transition-opacity', 'bg-white', 'rounded-lg',
+        'shadow-sm', 'p-1', 'flex', 'flex-col', 'gap-1'
+      );
+      container.appendChild(controls);
+    }
+    
     this.wrapper.appendChild(container);
     this.wrapper.appendChild(caption);
   }
@@ -196,9 +228,10 @@ export default class Image {
       button.classList.add(
         'p-2', 'rounded', 'hover:bg-gray-100',
         'focus:outline-none', 'focus:ring-2', 'focus:ring-blue-500',
-        this.data[item.name] ? 'bg-gray-200' : ''
       );
-      
+      if(this.data[item.name]) {
+        button.classList.add(this.data[item.name]);
+      }
       button.innerHTML = item.icon;
 
       button.addEventListener('click', () => {

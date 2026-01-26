@@ -1,5 +1,5 @@
 import DOMPurify from 'dompurify';
-import { deleteDataOnLocalStorage } from '../js/helpers';
+import { deleteDataOnLocalStorage } from '../helpers';
 export const navbar = (function () {
     const _state = {
         userPublicData: null,

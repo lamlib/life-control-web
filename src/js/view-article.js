@@ -1,14 +1,15 @@
 import { requestHandlers as articlesService } from'@lamlib/data-sync';
 import { getSearchParams } from './utils';
-import MonacoCodeBlock from "../plugin/code";
-import Delimiter from '../plugin/delimiter';
-import Heading from '../plugin/heading';
-import List from '../plugin/list';
-import Note from '../plugin/note';
+import MonacoCodeBlock from "./plugin/code";
+import Delimiter from './plugin/delimiter';
+import Heading from './plugin/heading';
+import List from './plugin/list';
+import Note from './plugin/note';
+import ImageBlock from './plugin/image';
 import EditorJS from '@editorjs/editorjs';
-import { sidebar } from '../plugin/sidebar';
-import { theme } from '../plugin/theme';
-import InlineCodeTool from '../plugin/code-inline';
+import { sidebar } from './plugin/sidebar';
+import { theme } from './plugin/theme';
+import InlineCodeTool from './plugin/code-inline';
 
 const app = (function () {
     function _setupEditor(data = {}) {
@@ -20,7 +21,8 @@ const app = (function () {
                 heading: Heading,
                 list: List,
                 note: Note,
-                inlineCode: InlineCodeTool
+                inlineCode: InlineCodeTool,
+                image: ImageBlock,
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },

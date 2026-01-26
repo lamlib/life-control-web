@@ -1,8 +1,8 @@
 import * as monaco from 'monaco-editor';
 import { theme } from './theme.js';
-import { IconCode } from '../svg/icons.js';
-import githubDark from '../theme/GitHub Dark.json'; 
-import githubLight from '../theme/GitHub Light.json';
+import { IconCode } from '../../svg/icons.js';
+import githubDark from '../../theme/GitHub Dark.json'; 
+import githubLight from '../../theme/GitHub Light.json';
 
 monaco.editor.defineTheme('github-dark', githubDark);
 monaco.editor.defineTheme('github-light', githubLight);

@@ -1,17 +1,17 @@
-import { IconCode, IconMarker } from "../svg/icons";
+import { IconCode } from "../../svg/icons";
 
-export default class EditorJSMarker {
+export default class EditorJSCodeInline {
   static get isInline() {
     return true;
   }
 
   static get shortcut() {
-    return 'CMD+M';
+    return 'CMD+G';
   }
 
   static get sanitize() {
     return {
-        mark: true
+        code: true
     };
   }
 
@@ -30,14 +30,14 @@ export default class EditorJSMarker {
     this.button = null;
     this._state = false;
 
-    this.tag = 'MARK';
-    this.class = 'bg-yellow-200';
+    this.tag = 'CODE';
+    this.class = `font-mono text-[0.95em] px-[4px] py-[2px] rounded bg-zinc-200 text-red-500 dark:bg-zinc-700`;
   }
 
   render() {
     this.button = document.createElement('button');
     this.button.type = "button";
-    this.button.innerHTML = IconMarker;
+    this.button.innerHTML = IconCode;
     this.button.classList.add(this.api.styles.inlineToolButton);
 
     return this.button;
@@ -57,13 +57,13 @@ export default class EditorJSMarker {
 
   wrap(range) {
     const selectedText = range.extractContents();
-    const mark = document.createElement(this.tag);
+    const code = document.createElement(this.tag);
 
-    mark.classList.add(...this.class.split(' '));
-    mark.appendChild(selectedText);
-    range.insertNode(mark);
+    code.classList.add(...this.class.split(' '));
+    code.appendChild(selectedText);
+    range.insertNode(code);
 
-    this.api.selection.expandToTag(mark);
+    this.api.selection.expandToTag(code);
   }
 
   unwrap(wrapper) {
@@ -85,7 +85,6 @@ export default class EditorJSMarker {
 
   checkState() {
     const mark = this.api.selection.findParentTag(this.tag);
-
     this.state = !!mark;
   }
 }

@@ -1,10 +1,10 @@
 import './main.js';
 import { hasError, requestHandlers, messageState } from '@lamlib/data-sync';
 import { getOneElementOrFail } from './utils';
-import { sidebar } from '../plugin/sidebar.js';
-import { theme } from '../plugin/theme.js';
-import { navbar } from '../plugin/navbar.js';
-import { toast } from '../plugin/toast.js';
+import { sidebar } from './plugin/sidebar.js';
+import { theme } from './plugin/theme.js';
+import { navbar } from './plugin/navbar.js';
+import { toast } from './plugin/toast.js';
 import fallbackAvatar from '../img/fallback/avatar.svg';
 import DOMPurify from 'dompurify';
 import dayjs from 'dayjs';

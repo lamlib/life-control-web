@@ -1,4 +1,4 @@
-import { IconDelimiter, IconDelimiterDot, IconDelimiterLine, IconDelimiterStar } from "../svg/icons";
+import { IconDelimiter, IconDelimiterDot, IconDelimiterLine, IconDelimiterStar } from "../../svg/icons";
 
 export default class Delimiter {
   static get toolbox() {

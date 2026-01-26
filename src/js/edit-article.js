@@ -1,14 +1,15 @@
 import { getOneElementOrFail, getSearchParams } from "./utils";
 import { requestHandlers as articlesService, hasError } from'@lamlib/data-sync';
-import MonacoCodeBlock from "../plugin/code";
-import Delimiter from '../plugin/delimiter';
-import Heading from '../plugin/heading';
-import List from '../plugin/list';
-import Note from '../plugin/note';
-import Table from '../plugin/table';
-import { toast } from '../plugin/toast.js';
+import MonacoCodeBlock from "./plugin/code.js";
+import Delimiter from './plugin/delimiter.js';
+import Heading from './plugin/heading.js';
+import List from './plugin/list.js';
+import Note from './plugin/note.js';
+import ImageBlock from './plugin/image.js';
+import Table from './plugin/table.js';
+import { toast } from './plugin/toast.js';
 import EditorJS from '@editorjs/editorjs';
-import InlineCodeTool from "../plugin/code-inline";
+import InlineCodeTool from "./plugin/code-inline.js";
 
 const app = (function () {
     let _editor;
@@ -40,6 +41,7 @@ const app = (function () {
                 list: List,
                 note: Note,
                 inlineCode: InlineCodeTool,
+                image: ImageBlock,
             },
             onChange: function () {
                 console.log('Nội dung đã thay đổi');
