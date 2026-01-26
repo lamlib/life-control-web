@@ -34,6 +34,7 @@ datasync.registerPostEndpoint('postImage', `${SERVICE_URL}/files/byFile`);
 
 datasync.registerPostEndpoint('postArticle', `${SERVICE_URL}/articles`);
 datasync.registerGetEndpoint('getArticles', `${SERVICE_URL}/articles`);
+datasync.registerGetEndpoint('getArticlesByMe', `${SERVICE_URL}/articles/me`);
 datasync.registerGetEndpoint('getArticleById', `${SERVICE_URL}/articles/:id`);
 datasync.registerDeleteEndpoint('deleteArticleById', `${SERVICE_URL}/articles/:id`);
 datasync.registerPatchEndpoint('patchArticleById', `${SERVICE_URL}/articles/:id`);
