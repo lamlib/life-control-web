@@ -5,6 +5,7 @@ import { getOneElementOrFail } from "./utils";
 import { requestHandlers as articlesService, hasError, setResponseOperator, resetResponseOperator, messageState } from'@lamlib/data-sync';
 import Delimiter from "./plugin/delimiter";
 import Note from "./plugin/note";
+import ImageBlock from './plugin/image.js';
 import { sidebar } from "./plugin/sidebar";
 import { theme } from "./plugin/theme";
 import { toast } from "./plugin/toast";
@@ -54,6 +55,7 @@ const app = (function () {
                  note: Note,
                  inlineCode: InlineCodeTool,
                  marker: EditorJSMarker,
+                 image: ImageBlock,
             },
             onChange: () => { console.log('Nội dung đã thay đổi') },
             onReady: () => { console.log('Editor sẵn sàng hoạt động!') },
