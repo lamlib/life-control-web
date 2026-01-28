@@ -196,9 +196,9 @@ export default class CodeBlock {
       smoothScrolling: false,
       hover: { enabled: false },
       parameterHints: { enabled: false },
-      quickSuggestions: false,
-      suggestOnTriggerCharacters: false,
-      wordBasedSuggestions: false,
+      quickSuggestions: true,
+      suggestOnTriggerCharacters: true,
+      wordBasedSuggestions: true,
       renderLineHighlight: "none"
     });
 
