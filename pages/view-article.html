@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Article - Nhat Nguyen</title>
+    <link rel="icon" type="image/png" href="/src/img/logo.png">
+    <title>View Article - Lamlib</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.12.0/styles/overlayscrollbars.min.css" integrity="sha512-2WP3kcyJFX2VpAZsV7UOpbLjGS62iunKpT+kgn72tzNGnP7mSGoVl1u5AWzi59xeOaY+N62Cldi4qNR1Ug1NQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../src/css/main.css">
     <link rel="stylesheet" href="../src/css/components/toast.css">
@@ -19,15 +20,16 @@
     <!-- Navigation -->
     <header class="nav-energy">
         <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-            <a href="/" class="nav-logo">
-                NN
-                <span class="nav-logo-dot"></span>
+            <a href="/" class="nav-logo flex items-center gap-2">
+                <img src="/src/img/logo.png" alt="Logo" class="h-8">
+                <span class="font-display font-bold text-xl text-gray-900">Lamlib</span>
             </a>
             <ul class="hidden md:flex items-center gap-8">
                 <li><a class="nav-link" href="/pages/about-me.html">About</a></li>
                 <li><a class="nav-link" href="/">Articles</a></li>
             </ul>
-            <div class="flex items-center gap-3">
+            <!-- Create button hidden -->
+            <div class="flex items-center gap-3 hidden">
                 <a href="/pages/add-article.html" class="btn-energy btn-energy-primary text-sm py-2.5 px-5">
                     + Create
                 </a>
@@ -47,7 +49,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
                 <div class="md:col-span-2">
-                    <a href="/" class="footer-logo inline-block mb-5">Nhat Nguyen</a>
+                    <a href="/" class="footer-logo inline-block mb-5">Lamlib</a>
                     <p class="footer-description max-w-sm mb-6">Software Engineer building impactful solutions.</p>
                 </div>
                 <div>
@@ -57,7 +59,8 @@
                         <li><a href="/pages/about-me.html" class="footer-link">About</a></li>
                     </ul>
                 </div>
-                <div>
+                <!-- Admin section hidden -->
+                <div class="hidden">
                     <h4 class="footer-heading">Admin</h4>
                     <ul class="space-y-3">
                         <li><a href="/pages/all-article.html" class="footer-link">All Articles</a></li>
@@ -66,7 +69,7 @@
                 </div>
             </div>
             <div class="footer-divider pt-8 flex justify-between items-center">
-                <p class="footer-copyright">&copy; 2024 Nhat Nguyen. All rights reserved.</p>
+                <p class="footer-copyright">&copy; 2024 Lamlib. All rights reserved.</p>
             </div>
         </div>
     </footer>
